@@ -6,12 +6,12 @@ User Manual
 Authentication
 --------------
 
-By default, the 'uftp' client will use the current username (``$USER``) with SSH key authentication to authenticate to the Auth server.
+By default, the UFTP client will use the current username (``$USER``) with SSH key authentication to authenticate to the :ref:`authserver`.
 
 You can set a different default username via the ``UFTP_USER`` environment variable. This is useful if your remote username is not the same as your local username.
 
 
-The 'uftp' client supports various means of authentication. Depending
+The UFTP client supports various means of authentication. Depending
 on the server you want to access, you can choose from
 
  * user name with SSH key (default)
@@ -433,7 +433,7 @@ Anonymous (http) access
 +++++++++++++++++++++++
 
 For anonymous access via HTTP you need to use the correct URL. If you create (or list) shares,
-the 'uftp' client will show the required links. You can download the file e.g. using ``wget``.
+the UFTP client will show the required links. You can download the file e.g. using ``wget``.
 
 
 Downloading/uploading using the UFTP protocol

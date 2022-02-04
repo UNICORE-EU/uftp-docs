@@ -10,9 +10,9 @@ Prerequisites
 
 * Java 8 or later (OpenJDK preferred)
 	
-* Access to a :ref:`UFTP authentication service <authserver>` and the corresponding :ref:`UFTPD server <uftp>`. 
+* Access to a UFTP authentication service (either a UNICORE/X server or the :ref:`authserver`) and to the corresponding :ref:`uftpd`. 
 
-To use the client, you need to know the address of the :ref:`UFTP authentication service <authserver>`. You need also to have the valid credentials for the UFTP authentication.
+To use the client, you need to know the address of the UFTP authentication service. You need also to have the valid credentials for the UFTP authentication.
 
 
 Installation and Configuration

@@ -75,7 +75,7 @@ html_theme_options = {
     #'display_version': True,
     'prev_next_buttons_location': 'both',
     #'style_external_links': False,
-    #'vcs_pageview_mode': 'view',
+    #'vcs_pageview_mode': 'blob',
     #'style_nav_header_background': '#2980B9',
     # Toc options
     'collapse_navigation': False,

@@ -10,19 +10,33 @@ UFTP Components
 
 The UFTP contains client and server components for the UNICORE high-performance file transfer toolkit:
 
-* :ref:`uftp-client` - the standalone "uftp" client application
-* :ref:`uftpd` - the 'uftpd' server
+* :ref:`uftp-client` - the standalone UFTP client application
+* :ref:`uftpd` - the UFTP file server 
 * :ref:`authserver` - a set of services providing authentication for UFTP as well as data sharing features
 
 UFTP is best used using the client-side application (:ref:`uftp-client`), but is easily integrated into custom applications due to its FTP compliance.
 
 A full UFTP server installation consists of two parts:
 
- #. The :ref:`UFTP file server <uftpd>`
+ #. The :ref:`UFTPD server <uftpd>`
 
  #. Either a UNICORE/X server or a standalone authentication service (:ref:`authserver`).
 
 
+How does UFTP work
+~~~~~~~~~~~~~~~~~~
+
+The UFTP file server, called ':ref:`UFTPD <uftpd>`', listens on two ports (which may be on two different network interfaces):
+
+ - the command port receives control commands
+
+ - the listen port accepts data connections from clients.
+
+The UFTPD server is "controlled" by an :ref:`Auth server <authserver>` or UNICORE/X via the
+command port, and receives/sends data directly from/to a client
+machine (which can be an actual user client machine or another
+server). The client, e.g. :ref:`uftp-client`, connnects to the "listen" port, which has to
+be accessible from external machines. The client opens additional data commection(s) via the passive FTP protocol.
 
 UFTP features
 ~~~~~~~~~~~~~
@@ -55,22 +69,6 @@ UFTP features
  - support for getting file checksums with the HASH command
 
  - command port protected by SSL
-
-
-How does UFTP work
-~~~~~~~~~~~~~~~~~~
-
-The :ref:`UFTP file server <uftpd>`, called 'uftpd', listens on two ports (which may be on two different network interfaces):
-
- - the command port receives control commands
-
- - the listen port accepts data connections from clients.
-
-The uftpd server is "controlled" by an :ref:`Auth server <authserver>` or UNICORE/X via the
-command port, and receives/sends data directly from/to a client
-machine (which can be an actual user client machine or another
-server). The client connnects to the "listen" port, which has to
-be accessible from external machines. The client opens additional data commection(s) via the passive FTP protocol.
 
 
 Getting Support

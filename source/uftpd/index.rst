@@ -3,20 +3,20 @@
 UFTPD Server
 ************
 
-The UFTP server provides a high-performance data transfer based on passive FTP. 
+The UFTPD server provides a high-performance data transfer based on passive FTP. 
 
 For a full UFTP server installation, you will additionally need either a  UNICORE/X server installation or the more lightweight :ref:`Auth server <authserver>` package.
 
 
 .. topic:: How does UFTP work
 
-  The UFTP file server, called 'uftpd', listens on two ports (which may be on two different network interfaces):
+  The UFTP file server, called ':ref:`UFTPD <uftpd>`', listens on two ports (which may be on two different network interfaces):
   
   - the command port receives control commands
   
   - the listen port accepts data connections from clients.
   
-  The uftpd server is "controlled" by an :ref:`Auth server <authserver>` or UNICORE/X via the command port, and receives/sends data directly from/to a client machine (which can be an actual user client machine or another server). The client connnects to the "listen" port, which has to be accessible from external machines. The client opens additional data commection(s) via the passive FTP protocol.
+  The UFTPD server is "controlled" by an :ref:`Auth server <authserver>` or UNICORE/X via the command port, and receives/sends data directly from/to a client machine (which can be an actual user client machine or another server). The client, e.g. :ref:`uftp-client`, connnects to the "listen" port, which has to be accessible from external machines. The client opens additional data commection(s) via the passive FTP protocol.
   
   The sequence for a UFTP file transfer is as follows:
   

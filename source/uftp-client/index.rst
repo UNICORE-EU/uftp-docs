@@ -5,7 +5,7 @@
 UFTP standalone client
 **********************
 
-This is the documentation for a UFTP commandline client. It enables to 
+The UFTP commandline client enables to 
 
  * list remote directories
  * upload/download files
@@ -16,11 +16,10 @@ This is the documentation for a UFTP commandline client. It enables to
  * perform authentication to help integrate
    UFTP with other tools
 
-The 'uftp' client will connect to an authentication server (either a
-UNICORE/X server or the :ref:`UFTP Auth server <authserver>`) to authenticate and then to
-the :ref:`UNICORE UFTP server <uftpd>` for transferring data or making a file operation.
+The UFTP client will connect to an authentication server (either a UNICORE/X server or the :ref:`authserver`) to authenticate and then to
+the :ref:`uftpd` for transferring data or making a file operation.
 
-The 'uftp' client supports username/password authentication, OIDC
+The UFTP client supports username/password authentication, OIDC
 token authentication and ssh-key authentication. It supports multiple concurrent FTP connections for highly efficient data transfers in high-performance environments.
 
 

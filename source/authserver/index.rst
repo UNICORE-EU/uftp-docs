@@ -8,9 +8,9 @@ service for authenticating users and initiating UFTP transfers. It is indended t
 
 Besides data transfer via UFTP and data management features like ``ls``, the Auth server also provides REST services for data sharing and accessing shared data sets.
 
-.. image:: ../_static/authserver.png
+.. image:: ../_static/auth-server.png
   :width: 300
-  :alt: UFTP Architecture
+  :alt: UFTP architecture
 
 The Auth server is based on the UNICORE Services Environment, and all usual UNICORE features and security configuration options are
 available as well. For example, the Auth server can be deployed behind a UNICORE Gateway, or it can be configured to use Unity for authenticating users.

@@ -38,6 +38,10 @@ machine (which can be an actual user client machine or another
 server). The client, e.g. :ref:`uftp-client`, connnects to the "listen" port, which has to
 be accessible from external machines. The client opens additional data commection(s) via the passive FTP protocol.
 
+.. image:: _static/uftp-architecture.png
+  :width: 400
+  :alt: UFTP Architecture
+
 UFTP features
 ~~~~~~~~~~~~~
 

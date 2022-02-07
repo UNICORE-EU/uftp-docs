@@ -35,6 +35,10 @@ For a full UFTP server installation, you will additionally need either a  UNICOR
   
   * for each UFTP session, UFTPD will fork a process which runs as the requested user (with the requested primary group).
 
+.. image:: ../_static/uftp-architecture.png
+  :width: 400
+  :alt: UFTP Architecture
+
 
 :doc:`manual`
   Installation and Operating the UFTPD server.

@@ -7,6 +7,14 @@ Change log for the UFTP standalone client
 The issue tracker is at
 https://sourceforge.net/p/unicore/uftp-issues/
 
+UFTP Client 1.4.4 (released Feb 03, 2022)
+----------------------------------------
+ - fix: when running on Windows, remote paths
+   erroneously contained '\' characters
+ - fix: better error messages in case of missing arguments
+ - improvement: for 'rm' command, add '-r' option that
+   will also delete (sub-)directories
+
 UFTP Client 1.4.3 (released Dec 15, 2021)
 -----------------------------------------
  - update to latest UNICORE base libs

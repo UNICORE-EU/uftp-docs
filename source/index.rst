@@ -3,7 +3,7 @@
 UFTP Documentation
 ******************
 
-**UFTP** (**U**\ NICORE **F**\ ile **T**\ ransfer **P**\ rotocol) is a high-performance data streaming library and file transfer tool. It can be also integrated into `UNICORE <https://www.unicore.eu>`_, allowing to transfer data from client to server (and vice versa), as well as providing data staging and third-party transfer between UFTP-enabled UNICORE sites.
+**UFTP** (**U**\ NICORE **F**\ ile **T**\ ransfer **P**\ rotocol) is a high-performance data streaming library and file transfer tool with sharing capabilities. It can be also integrated into `UNICORE <https://www.unicore.eu>`_, allowing to transfer data from client to server (and vice versa), as well as providing data staging and third-party transfer between UFTP-enabled UNICORE sites.
 
 UFTP Components
 ~~~~~~~~~~~~~~~

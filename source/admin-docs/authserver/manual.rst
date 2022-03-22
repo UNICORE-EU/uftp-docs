@@ -223,9 +223,9 @@ i.e. each line gives the username, the hashed password, the salt and the user's 
 
 .. code:: console
 
-	$> SALT=$(tr -dc "A-Za-z0-9_" < /dev/urandom | head -c 16 | xargs)
-	$> /bin/echo "Salt is ${SALT}"
-	$> /bin/echo -n "${SALT}test123" | md5sum
+	$ SALT=$(tr -dc "A-Za-z0-9_" < /dev/urandom | head -c 16 | xargs)
+	$ /bin/echo "Salt is ${SALT}"
+	$ /bin/echo -n "${SALT}test123" | md5sum
 
 which will output the salted and hashed password. Here we generate a
 random string as the salt. Enter these together with the username, and
@@ -420,7 +420,7 @@ The command
 
 .. code:: console
 
-	$> curl -k https://<host:port>/rest/auth \
+	$ curl -k https://<host:port>/rest/auth \
 		-H "Accept: application/json" \
 		-u username:password
 

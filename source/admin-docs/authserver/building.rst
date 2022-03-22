@@ -1,15 +1,21 @@
 .. _auth-server-building:
 
-Building packages 
-=================
+Building
+========
+
+Prerequisites
+-------------
 
 You need Java 8 and Apache Maven.
+
+Buiding Java code
+-----------------
 
 The java code is then built and tested using
 
 .. code:: console
 
-	$> mvn install
+	$ mvn install
 
 
 Creating distribution packages
@@ -24,7 +30,7 @@ tgz
 
 .. code:: console
 
-	$> mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
+	$ mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
 
 
 deb
@@ -32,7 +38,7 @@ deb
 
 .. code:: console
 
-	$> mvn package -DskipTests -Ppackman -Dpackage.type=deb -Ddistribution=Debian
+	$ mvn package -DskipTests -Ppackman -Dpackage.type=deb -Ddistribution=Debian
 
 
 rpm
@@ -40,7 +46,7 @@ rpm
 
 .. code:: console
 
-	$> mvn package -DskipTests -Ppackman -Dpackage.type=rpm -Ddistribution=RedHat
+	$ mvn package -DskipTests -Ppackman -Dpackage.type=rpm -Ddistribution=RedHat
 
 
 

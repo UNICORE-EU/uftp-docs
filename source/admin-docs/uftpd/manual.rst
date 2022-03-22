@@ -8,8 +8,9 @@ This is the user manual providing information on running and using the UNICORE U
 
 .. important:: **IMPORTANT SECURITY NOTE**
 
-	The UNICORE UFTPD server is running with **elevated privileges**, it can set its UID and GID to that of any user except root. 
-	Make sure to read and understand the section below on `Protecting the Command socket`_.  Otherwise, users logged on to the UFTPD machine can possibly read and write other user\'s files.
+   The UNICORE UFTPD server is running with **elevated privileges**, it can set its UID and GID to that of any user except root. 
+   Make sure to read and understand the section below on `Protecting the Command socket`_.  Otherwise, users logged on to the UFTPD 
+   machine can possibly read and write other user\'s files.
 
 
 Installation and operation
@@ -33,32 +34,33 @@ A functional UFTP installation requires either an :ref:`authserver` or a full UN
 Installation
 ~~~~~~~~~~~~~
 
-The UNICORE UFTPD server (available from https://sourceforge.net/projects/unicore/files/Servers/UFTPD) is distributed either as a platform independent and portable ``tar.gz`` or ``zip`` bundle, or as an installable, platform dependent package such as ``RPM``.
+The UNICORE UFTPD server (available from https://sourceforge.net/projects/unicore/files/Servers/UFTPD) is distributed either 
+as a platform independent and portable ``tar.gz`` or ``zip`` bundle, or as an installable, platform dependent package such as ``RPM``.
 
-.. note:: 
-  **Note on paths**
-  
+.. important:: 
+  **IMPORTANT NOTE ON PATHS**
+    
   Depending on the installation package, the paths to various files are different. 
-
-
-If installing using distribution-specific package 
-the following paths are used::
+  
+  If installing using distribution-specific package 
+  the following paths are used::
 
 	CONF=/etc/unicore/uftpd
 	BIN=/usr/share/unicore/uftpd/bin
 	LIB=/usr/share/unicore/uftpd/lib
-
-If installing using the portable bundle, all UFTPD files are installed
-under a single directory. Path prefixes are as follows, where `INST` is the directory where UFTPD was installed::
-
+  
+  If installing using the portable bundle, all UFTPD files are installed
+  under a single directory. Path prefixes are as follows, where `INST` is the directory where UFTPD was installed::
+  
 	CONF=INST/conf
 	BIN=INST/bin
 	LIB=INST/lib
 
-These variables (`CONF`, `BIN` and `LOG`) are used throughout the rest of this manual.
+  These variables (`CONF`, `BIN` and `LOG`) are used throughout the rest of this manual.
 
 .. note::
-	Note that after installation UFTPD is **NOT** automatically enabled as a systemd service, since you will need to edit the configuration and provide a server certificate.
+  Note that after installation UFTPD is **NOT** automatically enabled as a systemd service, since you will need 
+  to edit the configuration and provide a server certificate.
 
 
 Starting and stopping the UFTPD server
@@ -150,7 +152,8 @@ machine, **SSL MUST** be enabled to prevent unauthorized data access!
 
 .. important:: **IMPORTANT SECURITY NOTE**
 
-	Without SSL enabled, users logged in to the UFTPD server can easily create exploits to read or write files with arbitrary user privileges (except `root`).
+  Without SSL enabled, users logged in to the UFTPD server can easily create 
+  exploits to read or write files with arbitrary user privileges (except `root`).
 
 
 SSL setup
@@ -263,7 +266,8 @@ A fairly small range (e.g. 10 ports) is usually enough, since these are server p
 Logging
 ~~~~~~~
 
-By default, UFTPD writes to syslog, and you can use ``journalctl`` to read log messages. To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftpd.conf`` file.
+By default, UFTPD writes to syslog, and you can use ``journalctl`` to read log messages. 
+To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftpd.conf`` file.
 
 
 UNICORE integration

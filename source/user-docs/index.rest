@@ -1,0 +1,17 @@
+.. _user-docs:
+
+
+User Documentation
+==================
+
+* :ref:`uftp-client` - the standalone UFTP client application 
+
+.. toctree::
+	:maxdepth: 5
+	:caption: User Documentation
+	:hidden:
+
+	user-docs/uftp-client/index
+
+
+

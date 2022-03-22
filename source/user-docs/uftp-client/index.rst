@@ -1,9 +1,8 @@
 
-
 .. _uftp-client:
 
-UFTP standalone client
-**********************
+UFTP client
+***********
 
 The UFTP commandline client enables to 
 
@@ -20,10 +19,11 @@ The UFTP client will connect to an authentication server (either a UNICORE/X ser
 the :ref:`uftpd` for transferring data or making a file operation.
 
 The UFTP client supports username/password authentication, OIDC
-token authentication and ssh-key authentication. It supports multiple concurrent FTP connections for highly efficient data transfers in high-performance environments.
+token authentication and ssh-key authentication. 
+It supports multiple concurrent FTP connections for highly efficient data transfers in high-performance environments.
 
 
-.. topic:: Documentation for UNICORE Users
+.. topic:: User Documentation
 
   :doc:`installing`
       How to install and configure the UNICORE Client.
@@ -39,7 +39,7 @@ token authentication and ssh-key authentication. It supports multiple concurrent
 
 
 
-.. topic:: Documentation for UNICORE Administrators
+.. topic:: Administrator Documentation
 
   :doc:`building`
       Building the UNICORE Client distribution packages.

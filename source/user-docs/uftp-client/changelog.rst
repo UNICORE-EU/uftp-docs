@@ -8,7 +8,7 @@ The issue tracker is at
 https://sourceforge.net/p/unicore/uftp-issues/
 
 UFTP Client 1.4.4 (released Feb 03, 2022)
-----------------------------------------
+-----------------------------------------
  - fix: when running on Windows, remote paths
    erroneously contained '\' characters
  - fix: better error messages in case of missing arguments

@@ -1,0 +1,26 @@
+.. _admin-docs:
+
+
+Admin Documentation
+===================
+
+* :ref:`uftpd` - the UFTP file server 
+* :ref:`authserver` - a set of services providing authentication for UFTP as well as data 
+  sharing features
+
+.. note:  
+ A full UFTP server installation consists of two parts:
+
+  #. The :ref:`UFTPD server <uftpd>`
+  #. Either a `UNICORE/X
+     <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ or a 
+	 standalone authentication service (:ref:`authserver`).
+ 
+
+.. toctree::
+	:maxdepth: 5
+	:caption: Admin Documentation
+	:hidden:
+
+	admin-docs/uftpd/index
+	admin-docs/authserver/index

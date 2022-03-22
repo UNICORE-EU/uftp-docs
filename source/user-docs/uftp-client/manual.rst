@@ -27,7 +27,7 @@ To explicitely specify the remote username, use the ``-u <username>`` option, e.
 
 .. code:: console
 
-	$> uftp ls -u username https://localhost:9000/rest/auth/TEST:/home/demo/
+	$ uftp ls -u username https://localhost:9000/rest/auth/TEST:/home/demo/
 
 
 The credentials can be given in multiple ways.
@@ -36,13 +36,13 @@ The credentials can be given in multiple ways.
 
   .. code:: console
 
-    $> uftp ls -u username:password ...
+    $ uftp ls -u username:password ...
 
 * You can tell the uftp client to query the password interactively by giving the ``-P`` option, e.g.
 
   .. code:: console
 
-	 $> uftp ls -u username -P ...
+	 $ uftp ls -u username -P ...
 
 * If no password is given, the client will attempt to use an SSH key for authentication, this has to be configured on the authentication server accordingly. If you have multiple keys, use the ``-i`` option to select one. Otherwise, the client will check ``~/.uftp/`` and ``~/.ssh/`` for useable keys. The SSH agent is supported, too.
 
@@ -50,7 +50,7 @@ The credentials can be given in multiple ways.
 
   .. code:: console
 
-    $> uftp ls -O hbp ...
+    $ uftp ls -O hbp ...
 
 * Last not least you can directly specify a value for the HTTP `Authorization` header with
   the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
@@ -58,7 +58,7 @@ The credentials can be given in multiple ways.
 
   .. code:: console
   
-    $> uftp ls -A "Bearer <oidc_token>" ...
+    $ uftp ls -A "Bearer <oidc_token>" ...
 
 
 Usage
@@ -74,7 +74,7 @@ Listing a directory: the `ls` command
 
 .. code:: console
 
-	$> uftp ls https://localhost:9000/rest/auth/TEST:/home/demo/
+	$ uftp ls https://localhost:9000/rest/auth/TEST:/home/demo/
 
 will list the `/home/demo` directory.
 
@@ -96,7 +96,7 @@ Basic usage
 
   .. code:: console
 
-	$> uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
   will download the `/home/demo/test.data` file to the current directory
 
@@ -104,7 +104,7 @@ Basic usage
 
   .. code:: console
 
-    $> uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/data/* .
+    $ uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/data/* .
 
   will download all files in the `/home/demo/test` directory to the current directory
 
@@ -114,7 +114,7 @@ Similar commands work for upload.
 
   .. code:: console
 
-     $> uftp cp "/data/*" https://localhost:9000/rest/auth/TEST:/home/demo/data/ .
+     $ uftp cp "/data/*" https://localhost:9000/rest/auth/TEST:/home/demo/data/ .
 
 .. note:
 
@@ -136,19 +136,19 @@ For example to tar the contents of a directory and upload the tar file using uft
 
 .. code:: console
 
-	$> tar cz dir/* | uftp cp - https://localhost:9000/rest/auth/TEST:/archive.tgz 
+	$ tar cz dir/* | uftp cp - https://localhost:9000/rest/auth/TEST:/archive.tgz 
 
 The UFTPD server can also unpack tar and zip streams, this is very useful to efficiently transfer many small files. To enable this, add the ``-a`` option, and DO NOT compress the tar stream.
 
 .. code:: console
 
-	$> tar c dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
+	$ tar c dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
 
 or, using ``zip``
 
 .. code:: console
 
-	$> zip -r - dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
+	$ zip -r - dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
 
 **Note** that zip will compress data, so might be slower or faster than tar, depending on network bandwith and processing speed.
 
@@ -158,13 +158,13 @@ As an example, consider this
 
 .. code:: console
 
-	$> uftp cp https://localhost:9000/rest/auth/TEST:/archive.tgz - | tar tz
+	$ uftp cp https://localhost:9000/rest/auth/TEST:/archive.tgz - | tar tz
 
 Or use ``uftp`` to cat a remote file
 
 .. code:: console
 
-	$> uftp cp https://localhost:9000/rest/auth/TEST:/foo.txt -
+	$ uftp cp https://localhost:9000/rest/auth/TEST:/foo.txt -
 
 
 Using multiple FTP connections
@@ -180,7 +180,7 @@ administrator.
 
 .. code:: console
 
-	$> uftp cp -t 2 https://localhost:9000/rest/auth/TEST:/home/demo/* .
+	$ uftp cp -t 2 https://localhost:9000/rest/auth/TEST:/home/demo/* .
 
 
 Files larger than a certain size will be transferred concurrently
@@ -189,7 +189,7 @@ different value using the ``-T`` option. For example, to split files larger than
 
 .. code:: console
 
-	$> uftp cp -t 2 -T 1M https://localhost:9000/rest/auth/TEST:/home/demo/* .
+	$ uftp cp -t 2 -T 1M https://localhost:9000/rest/auth/TEST:/home/demo/* .
 
 
 Byte ranges
@@ -201,14 +201,14 @@ first 1024 bytes of file (i.e. the byte range 0 - 1023), you would do
 
 .. code:: console
 
-	$> uftp cp -B 0-1023 https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp -B 0-1023 https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 As an additional feature, you can use the additional ``-p`` flag, which
 will write also only the given range. For example
 
 .. code:: console
 
-	$> uftp cp -B 1024-2047-p https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp -B 1024-2047-p https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 will write bytes 1024-2047 of the remote file to the local file,
 starting at offset 1024. The local file will have length 2048.
@@ -226,7 +226,7 @@ This is handy for quick performance tests:
 
 .. code:: console
 
-	$> uftp cp -B 10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
+	$ uftp cp -B 10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
 Encryption and compression
@@ -255,13 +255,13 @@ So if your inital copy operation
 
 .. code:: console
 
-	$> uftp cp -u username https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp -u username https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 did not finish correctly, you can resume it with
 
 .. code:: console
 
-	$> uftp cp -R https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp -R https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 
 Performance testing
@@ -273,14 +273,14 @@ For example to transfer 10 gigabytes of zeros from the remote server:
 
 .. code:: console
 
-	$> uftp cp -B 0-10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
+	$ uftp cp -B 0-10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
 This can also be combined with the multi-connection option ``-t``. To use two connections each transferring 5 gigabytes
 
 .. code:: console
 
-	$> uftp cp -B 0-10G -t 2 https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
+	$ uftp cp -B 0-10G -t 2 https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
 Computing checksums for remote files
@@ -290,14 +290,14 @@ To compute a checksum for a remote file, use the ``checksum`` command:
 
 .. code:: console
 
-	$> uftp checksum https://localhost:9000/rest/auth/TEST:/data/*.dat
+	$ uftp checksum https://localhost:9000/rest/auth/TEST:/data/*.dat
 
 A number of different hashing algorithms are available, which can be selected
-using the ``-a``` option (MD5, SHA-1, SHA-256, SHA-256). For example
+using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 
 .. code:: console
 
-	$> uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
+	$ uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
 
 
 Synchronizing a file: the "sync" command
@@ -308,19 +308,19 @@ The syntax is
 
 .. code:: console
 
-	$> uftp sync <master> <slave>
+	$ uftp sync <master> <slave>
 
 For example, to synchronize a local file with a remote "master" file:
 
 .. code:: console
 
-	$> uftp sync https://localhost:9000/rest/auth/TEST:/master.file local.file
+	$ uftp sync https://localhost:9000/rest/auth/TEST:/master.file local.file
 
 To synchronize a remote file with a local "master" file:
 
 .. code:: console
 
-	$> uftp sync master.file https://localhost:9000/rest/auth/TEST:/remote.file
+	$ uftp sync master.file https://localhost:9000/rest/auth/TEST:/remote.file
 
 
 Data sharing
@@ -346,7 +346,7 @@ the UFTP protocol or plain HTTPs.
 
 Shares can be deleted by their owner, i.e. the user who created them.
 
-.. .note::
+.. note::
 	Not all UFTP installations support data sharing.  You can check if a server has the sharing feature enabled by running ``uftp info --server ...``
 
 
@@ -358,8 +358,8 @@ the environment variable ``UFTP_SHARE_URL``
 
 .. code:: console
 
-	$> export UFTP_SHARE_URL=https://localhost:9000/rest/share/TEST
-	$> uftp share --list
+	$ export UFTP_SHARE_URL=https://localhost:9000/rest/share/TEST
+	$ uftp share --list
 
 
 Listing shares
@@ -367,7 +367,7 @@ Listing shares
 
 .. code:: console
 
-	$> uftp share --list --server https://localhost:9000/rest/share/TEST
+	$ uftp share --list --server https://localhost:9000/rest/share/TEST
 
 The output will show both the files you have shared, as well as files that other
 users have shared with you.
@@ -383,7 +383,7 @@ To share a file,
 
 .. code:: console
 
-	$> uftp share  \
+	$ uftp share  \
 		--server https://localhost:9000/rest/share/TEST  \
 		/data/public/somefile.pdf
 
@@ -391,9 +391,9 @@ If you use a relative path, ``uftp`` will make it absolute.
 
 .. code:: console
 
-	$> pwd
-	/data/public/
-	$> uftp share somefile.pdf
+	$ pwd
+	> /data/public/
+	$ uftp share somefile.pdf
 
 will share the path `/data/public/somefile.pdf`.
 
@@ -409,7 +409,7 @@ For example to share "/data/public/somefile.pdf" with the user "CN=User"
 
 .. code:: console
 
-	$> uftp share  \
+	$ uftp share  \
 		--server https://localhost:9000/rest/share/TEST  \
 		--access "CN=User"  \
 		/data/public/somefile.pdf
@@ -422,7 +422,7 @@ To delete you need the path and the target user, which you can get via the ``uft
 
 .. code:: console
 
-	$> uftp share  \
+	$ uftp share  \
 		--delete  \
 		--server https://localhost:9000/rest/share/TEST  \
 		--access "CN=User"  \
@@ -443,7 +443,7 @@ To download a file that is shared with you, use the ``get-share`` command and th
 
 .. code:: console
 
-	$> uftp get-share https://localhost:9000/rest/share/TEST/auth:/data/public/somefile.pdf
+	$ uftp get-share https://localhost:9000/rest/share/TEST/auth:/data/public/somefile.pdf
 
 Currently this command does not support wildcards.
 
@@ -453,7 +453,7 @@ shared with you, use the ``put-share`` command
 
 .. code:: console
 
-	$> uftp put-share data/*.pdf https://localhost:9000/rest/share/TEST/auth:/data/public/
+	$ uftp put-share data/*.pdf https://localhost:9000/rest/share/TEST/auth:/data/public/
 
 
 Using a proxy server (EXPERIMENTAL)
@@ -490,13 +490,13 @@ Troubleshooting
 
 |:man_shrugging:| **How can I get more detailed logging?** 
 
-	|:point_right:| In the client\'s `conf` directory you\'ll find a `logging.properties` file that allows you to increase the log levels.
+	|:point_right:| In the client\'s **conf** directory you\'ll find a ``logging.properties`` file that allows you to increase the log levels.
 
 |:man_shrugging:| **I get "Invalid server response 500" and "Exception.... Authentication failure"**
 
-	|:point_right:| Probably you gave a wrong username or password. Contact your site administrator if in doubt! If using a password, make sure you give the "`-P`" flag.
+	|:point_right:| Probably you gave a wrong username or password. Contact your site administrator if in doubt! If using a password, make sure you give the ``-P`` flag.
 
 
 |:man_shrugging:| **I get "Invalid server response 405 Unable to connect to server for listing"**
 
-	|:point_right:| Check the remote URL that you use. Maybe you have a typo in the `/rest/auth/<servername>` part.
+	|:point_right:| Check the remote URL that you use. Maybe you have a typo in the **/rest/auth/<servername>** part.

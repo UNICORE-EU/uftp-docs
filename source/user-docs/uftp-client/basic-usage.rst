@@ -9,7 +9,7 @@ that you can type on the command line:
 
 .. code:: console
 
-	$> some_command
+	$ some_command
 
 and assume that the bin directory of the UFTP client is on your path.
 
@@ -17,7 +17,7 @@ and assume that the bin directory of the UFTP client is on your path.
 
   .. code:: console
 
-	$> uftp
+	$ uftp
 
   will list the available commands.
 
@@ -28,7 +28,7 @@ and assume that the bin directory of the UFTP client is on your path.
  
   .. code:: console
 
-	$> uftp <command> -h
+	$ uftp <command> -h
 
   will show help for a particular command
 
@@ -36,7 +36,7 @@ and assume that the bin directory of the UFTP client is on your path.
 
   .. code:: console
 
-	$> uftp -version
+	$ uftp -version
 
   will show version information.
 
@@ -44,7 +44,7 @@ and assume that the bin directory of the UFTP client is on your path.
 
   .. code:: console
 
-	$> uftp ls -u demo:password https://localhost:9000/rest/auth/TEST:/home/demo/
+	$ uftp ls -u demo:password https://localhost:9000/rest/auth/TEST:/home/demo/
 
   If not given on the command line, the password will be queried interactively.
 

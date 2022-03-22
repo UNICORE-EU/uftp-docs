@@ -8,7 +8,7 @@ service for authenticating users and initiating UFTP transfers. It is indended t
 
 Besides data transfer via UFTP and data management features like ``ls``, the Auth server also provides REST services for data sharing and accessing shared data sets.
 
-.. image:: ../_static/auth-server.png
+.. image:: ../../_static/auth-server.png
   :width: 300
   :alt: UFTP architecture
 

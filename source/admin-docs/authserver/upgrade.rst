@@ -12,7 +12,7 @@ In the following, *LIB* refers to the directory containing the jar files for the
 
    .. code:: console
 
-	$> export NEW=/tmp/unicore-authserver-2.5.0
+	$ export NEW=/tmp/unicore-authserver-2.5.0
 
 * Stop the server. If not yet done, make a backup of the config files.
 
@@ -20,8 +20,8 @@ In the following, *LIB* refers to the directory containing the jar files for the
 
    .. code:: console
 
-   	$> rm -rf LIB/*
-   	$> cp $NEW/lib/*.jar LIB
+   	$ rm -rf LIB/*
+   	$ cp $NEW/lib/*.jar LIB
 
 * Start the server.
 

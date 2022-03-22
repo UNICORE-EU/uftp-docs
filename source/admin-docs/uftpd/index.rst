@@ -14,9 +14,6 @@ The UFTPD server provides a high-performance data transfer based on passive FTP.
      the more lightweight :ref:`Auth server <authserver>` package.
 
 
-How does UFTP work
-==================
-
 The UFTP server listens on two ports (which may be on two different network interfaces):
 
  - the command port receives control commands

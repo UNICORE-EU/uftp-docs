@@ -6,9 +6,11 @@ User Manual
 Authentication
 --------------
 
-By default, the UFTP client will use the current username (``$USER``) with SSH key authentication to authenticate to the :ref:`authserver`.
+By default, the UFTP client will use the current username (``$USER``) with SSH key 
+authentication to authenticate to the :ref:`authserver`.
 
-You can set a different default username via the ``UFTP_USER`` environment variable. This is useful if your remote username is not the same as your local username.
+You can set a different default username via the ``UFTP_USER`` environment variable. This is 
+useful if your remote username is not the same as your local username.
 
 
 The UFTP client supports various means of authentication. Depending
@@ -150,7 +152,9 @@ or, using ``zip``
 
 	$ zip -r - dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
 
-**Note** that zip will compress data, so might be slower or faster than tar, depending on network bandwith and processing speed.
+.. note::
+ Zip will compress data, so might be slower or faster than tar, depending on network bandwith 
+ and processing speed.
 
 
 Similarly, ``-`` can be used to write data to standard output.
@@ -181,7 +185,6 @@ administrator.
 .. code:: console
 
 	$ uftp cp -t 2 https://localhost:9000/rest/auth/TEST:/home/demo/* .
-
 
 Files larger than a certain size will be transferred concurrently
 using more than one stream. This threshold size is 512MB, but you can set it to a
@@ -235,10 +238,10 @@ Encryption and compression
 The cp command supports the ``-E`` and ``-C`` options, which enable data
 encryption and compression (during transfer) respectively. 
 
-Data encryption uses a symmetric algorithm, which nonetheless
-drastically lowers the performance.
+* Data encryption uses a symmetric algorithm, which nonetheless
+  drastically lowers the performance.
 
-Data compression uses the gzip algorithm.
+* Data compression uses the gzip algorithm.
 
 Compression and encryption can be combined.
 
@@ -276,7 +279,8 @@ For example to transfer 10 gigabytes of zeros from the remote server:
 	$ uftp cp -B 0-10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
-This can also be combined with the multi-connection option ``-t``. To use two connections each transferring 5 gigabytes
+This can also be combined with the multi-connection option ``-t``. To use two connections each 
+transferring 5 gigabytes
 
 .. code:: console
 
@@ -310,13 +314,13 @@ The syntax is
 
 	$ uftp sync <master> <slave>
 
-For example, to synchronize a local file with a remote "master" file:
+For example, to synchronize a local file with a remote *master* file:
 
 .. code:: console
 
 	$ uftp sync https://localhost:9000/rest/auth/TEST:/master.file local.file
 
-To synchronize a remote file with a local "master" file:
+To synchronize a remote file with a local *master* file:
 
 .. code:: console
 
@@ -332,8 +336,11 @@ access to the data.
 
 Data sharing works as follows:
 
- * when you share a file (or directory), the Auth server will store information about the path, the owner and the Unix user ID used to access the file in a database
- * the targetted user can now access this file via the Auth server, and the Auth server will use the owner's Unix user ID to access the file.
+* when you share a file (or directory), the Auth server will store information about the path, 
+  the owner and the Unix user ID used to access the file in a database
+  
+* the targetted user can now access this file via the Auth server, and the Auth server will 
+  use the owner's Unix user ID to access the file.
 
 By default, files will be shared for *anonymous* access. This will
 allow anyone who knows the sharing link to access the file using
@@ -347,7 +354,8 @@ the UFTP protocol or plain HTTPs.
 Shares can be deleted by their owner, i.e. the user who created them.
 
 .. note::
-	Not all UFTP installations support data sharing.  You can check if a server has the sharing feature enabled by running ``uftp info --server ...``
+	Not all UFTP installations support data sharing.  You can check if a server has the sharing 
+	feature enabled by running ``uftp info --server ...``
 
 
 Server URL
@@ -405,7 +413,7 @@ You can use the following options to modify the defaults:
 
 
 
-For example to share "/data/public/somefile.pdf" with the user "CN=User"
+For example to share */data/public/somefile.pdf* with the user *CN=User*
 
 .. code:: console
 
@@ -418,7 +426,8 @@ For example to share "/data/public/somefile.pdf" with the user "CN=User"
 Deleting shares
 +++++++++++++++
 
-To delete you need the path and the target user, which you can get via the ``uftp share --list`` command.
+To delete you need the path and the target user, which you can get via the 
+``uftp share --list`` command.
 
 .. code:: console
 
@@ -476,13 +485,13 @@ HTTP proxy
 	export UFTP_HTTP_PROXY=proxy.yourorg.edu
 	export UFTP_HTTP_PROXY_PORT=80
 
-FTP proxying was tested with the **DeleGate/9.9.13** and **frox** proxies
+FTP proxying was tested with the DeleGate/9.9.13 and frox proxies
 and requires UFTPD server version 2.8.1 or later to work.
 
-
 If this does not work for you, or if you require support for a
-different type of proxy, please contact us via a support ticket or via
-email.
+different type of proxy, please contact us via a `support ticket 
+<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via
+`email <unicore-support@lists.sf.net>`_.
 
 
 Troubleshooting
@@ -490,13 +499,17 @@ Troubleshooting
 
 |:man_shrugging:| **How can I get more detailed logging?** 
 
-	|:point_right:| In the client\'s **conf** directory you\'ll find a ``logging.properties`` file that allows you to increase the log levels.
+	|:point_right:| In the client\'s **conf** directory you\'ll find a ``logging.properties`` 
+	file that allows you to increase the log levels.
 
-|:man_shrugging:| **I get "Invalid server response 500" and "Exception.... Authentication failure"**
+|:man_shrugging:| **I get "Invalid server response 500" and "Exception.... Authentication 
+failure"**
 
-	|:point_right:| Probably you gave a wrong username or password. Contact your site administrator if in doubt! If using a password, make sure you give the ``-P`` flag.
+	|:point_right:| Probably you gave a wrong username or password. Contact your site 
+	administrator if in doubt! If using a password, make sure you give the ``-P`` flag.
 
 
 |:man_shrugging:| **I get "Invalid server response 405 Unable to connect to server for listing"**
 
-	|:point_right:| Check the remote URL that you use. Maybe you have a typo in the **/rest/auth/<servername>** part.
+	|:point_right:| Check the remote URL that you use. Maybe you have a typo in the 
+	``/rest/auth/<servername>`` part.

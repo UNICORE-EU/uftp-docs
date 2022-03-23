@@ -153,8 +153,10 @@ UFTP Client 0.6.0 (released  Nov 25, 2016)
 
 UFTP Client 0.5.0 (released June 14, 2016)
 ------------------------------------------
- - new feature: simpler URL scheme without username/password. Username/password given via "-u" option
- - new feature: support for different authorization headers, e.g. OIDC Bearer, via "-A" option
+ - new feature: simpler URL scheme without username/password. 
+   Username/password given via "-u" option
+ - new feature: support for different authorization headers, 
+   e.g. OIDC Bearer, via "-A" option
  - fix: better SSH agent support
 
 UFTP Client 0.4.0 (released Jan 26, 2015)

@@ -6,14 +6,19 @@ UFTP client
 
 The UFTP commandline client enables to 
 
- * list remote directories
- * upload/download files
- * sync files
- * make remote directories
- * delete remote files or directories
- * manage shares and access shared data
- * perform authentication to help integrate
-   UFTP with other tools
+* list remote directories
+
+* upload/download files
+* sync files
+
+* make remote directories
+
+* delete remote files or directories
+
+* manage shares and access shared data
+
+* perform authentication to help integrate
+  UFTP with other tools
 
 The UFTP client will connect to an authentication server (either a UNICORE/X server or the :ref:`authserver`) to authenticate and then to
 the :ref:`uftpd` for transferring data or making a file operation.

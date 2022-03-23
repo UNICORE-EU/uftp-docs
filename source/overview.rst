@@ -6,16 +6,16 @@ UFTP Overview
 UFTP Features
 ~~~~~~~~~~~~~
 
- - Based on FTP protocol with separate authentication via RESTful APIs 
+- Based on FTP protocol with separate authentication via RESTful APIs 
 
- - Powerful :ref:`UFTP standalone client <uftp-client>` available
+- Powerful :ref:`UFTP standalone client <uftp-client>` available
 
- - Optional: multiple FTP sessions per client for large-scale transfers,
-   encryption of the data streams, compression of the data streams
+- Optional: multiple FTP sessions per client for large-scale transfers,
+  encryption of the data streams, compression of the data streams
 
- - Flexible integration options (authentication, user mapping), firewall-friendly
+- Flexible integration options (authentication, user mapping), firewall-friendly
 
- - System requirements: client: Java 8+, server: Python3
+- System requirements: client: Java 8+, server: Python3
 
 
 UFTP Architecture

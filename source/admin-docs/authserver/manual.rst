@@ -3,7 +3,9 @@
 User Manual
 ===========
 
-This manual focuses on the configuration items specific to the Auth server. If you need more in-depth information on general configuration issues, please refer to the UNICORE/X manual, available via https://www.unicore.eu
+This manual focuses on the configuration items specific to the Auth server. If you need more 
+in-depth information on general configuration issues, please refer to the `UNICORE/X manual 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html>`__.
 
 Installation
 ------------
@@ -26,11 +28,15 @@ possible to deploy the Auth server behind a UNICORE Gateway.
 Installation
 ~~~~~~~~~~~~
 
-The UFTP Auth service (available from https://sourceforge.net/projects/unicore/files/Servers/UFTP-AuthServer) is distributed either as a platform independent and portable ``tar.gz`` or ``zip`` bundle. It comes with all required scripts and config files
-to be run as a standalone application. To install, unzip the downloaded package into a directory of your choice.
+The UFTP Auth service (available from 
+https://sourceforge.net/projects/unicore/files/Servers/UFTP-AuthServer) is distributed either 
+as a platform independent and portable ``tar.gz`` or ``zip`` bundle. It comes with all required 
+scripts and config files to be run as a standalone application. To install, unzip the 
+downloaded package into a directory of your choice.
 
 .. note::
-	You can run the service in an existing UNICORE/X server (8.0.0 or later). Please see `Running the Auth server behind a UNICORE Gateway`_ below for details.
+	You can run the service in an existing UNICORE/X server (8.0.0 or later). Please see 
+	`Running the Auth server behind a UNICORE Gateway`_ below for details.
 
 
 Basic server configuration (memory etc)
@@ -95,29 +101,30 @@ UFTPD server(s) configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For each UFTPD server that should be accessed, you'll need
-to configure the relevant properties in the Auth service's config file
+to configure the relevant properties in the Auth service's config file.
 
 The ``authservice.servers`` property is a list of server names. These
 should be meaningful, since users will need to use them, too.  The
 other properties are used to configure the UFTPD command address and
 the UFTPD listen address. Please refer to the :ref:`UFTPD manual <uftpd>` for details.
 
- :host: the IP address of the UFTPD 'listen' socket
+ :host: the IP address of the UFTPD *listen* socket
 
- :port: the port of the UFTPD 'listen' socket
+ :port: the port of the UFTPD *listen* socket
 
- :commandHost: the IP address of the UFTPD 'command' socket
+ :commandHost: the IP address of the UFTPD *command* socket
  
- :commandPort: the port of the UFTPD 'command' socket
+ :commandPort: the port of the UFTPD *command* socket
 
- :ssl: whether SSL is used to connect to the command socket. This MUST be set to its default of ``true`` in a production environment!
+ :ssl: whether SSL is used to connect to the command socket. This MUST be set to its default 
+  of ``true`` in a production environment!
 
  :description: human-readable description of the UFTPD server
 
 .. note::
 	The listen socket address will be communicated to clients, who will
-	attempt to connect to that address. Therefore, this has 	to be a public
-	interface. For example, if you are running UFTPD behind a 	NAT router,
+	attempt to connect to that address. Therefore, this has to be a public
+	interface. For example, if you are running UFTPD behind a NAT router,
 	you have to use the IP configured as the ``ADVERTISE_HOST`` in the UFTPD configuration.
 
 For example, we want to configure two UFTPD servers named "CLUSTER" and "TEST"::
@@ -148,13 +155,15 @@ need to add an entry to UFTPD's ACL file. This is explained in the UFTPD manual.
 Round-robin use / grouping of UFTPD servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can configure multiple UFTPD servers to form a "logical"
-UFTPD server.  The idea is that multiple UFTPD servers are used in a round robin fashion to provide better performance.
+You can configure multiple UFTPD servers to form a *logical*
+UFTPD server.  The idea is that multiple UFTPD servers are used in a round robin fashion to 
+provide better performance.
 
 Also, this mode of operation will provide fail-over if one of the
 UFTPD servers is down for maintenance or upgrades (or because of some error).
 
-In this case the configuration for the logical server has multiple blocks numbered "1", "2", ...
+In this case the configuration for the logical server has multiple blocks numbered "1", "2", 
+...
 
 Each block configures one physical server.
 
@@ -188,8 +197,9 @@ User authentication
 The Auth service is a RESTful UNICORE service, and as such all the
 configuration details for a UNICORE/X server apply here as well.
 
-We summarise the most important details, please refer to the UNICORE/X
-manual if you want to learn about further options.
+We summarise the most important details, please refer to the `UNICORE/X manual 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#authentication>`_ 
+if you want to learn about further options.
 
 The enabled authentication options and their order are configured 
 in ``container.properties``.
@@ -219,7 +229,9 @@ This configures to use the file ``conf/rest-users.txt``. The file format is
 	#
 	demouser:<...>:<...>:CN=Demo User, O=UNICORE, C=EU
 
-i.e. each line gives the username, the hashed password, the salt and the user's DN, separated by colons. To generate entries, i.e. to hash the password correctly, the ``md5sum`` utility can be used. For example, if your intended password is 'test123', you could do
+i.e. each line gives the username, the hashed password, the salt and the user's DN, separated 
+by colons. To generate entries, i.e. to hash the password correctly, the ``md5sum`` utility can 
+be used. For example, if your intended password is *test123*, you could do
 
 .. code:: console
 
@@ -260,13 +272,17 @@ To have Unity check the client's OAuth token::
 SSH Key validation
 ^^^^^^^^^^^^^^^^^^
 
-This authentication option is based on the validation of a token using the user's public SSH key. The token will be checked, and if successful, the user will be assigned a distinguished name for later authorisation.
+This authentication option is based on the validation of a token using the user's public SSH 
+key. The token will be checked, and if successful, the user will be assigned a distinguished 
+name for later authorisation.
 
-SSH keys are read from the user's ``~/.ssh/authorized_keys`` file, but can also be managed manually in a dedicated ssh keys file.
+SSH keys are read from the user's ``~/.ssh/authorized_keys`` file, but can also be managed 
+manually in a dedicated ssh keys file.
 
 .. note::
-	SSH key validation will not work for users on Windows, since the UFTP stand-alone client does not yet support SSH keys on Windows.
-	We recommand adding a username/password option for Windows users.
+	SSH key validation will not work for users on Windows, since the UFTP stand-alone client 
+	does not yet support SSH keys on Windows.
+	We recommend adding a username/password option for Windows users.
 
 SSH key validation is configured as follows:
 ::
@@ -322,9 +338,9 @@ SSH keys available. For example
 Attribute sources
 ~~~~~~~~~~~~~~~~~
 
-Please refer to the UNICORE/X manual on how to set up and configure 
-attribute sources like map file or XUUDB.
-
+Please refer to the `UNICORE/X manual 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#attribute-sources>`__ 
+on how to set up and configure attribute sources like map file or XUUDB.
 
 To use the automatic SSH key mapping, please use this config snippet
 ::
@@ -335,7 +351,7 @@ To use the automatic SSH key mapping, please use this config snippet
 	
 	container.security.attributes.PAM.class=eu.unicore.services.rest.security.PAMAttributeSource
 
-In this way users that successfully authenticate with their SSH key get the "user"
+In this way users that successfully authenticate with their SSH key get the *user*
 role automatically.
 
 
@@ -346,7 +362,8 @@ After successful authentication, the user is assigned attributes
 such as the Unix account and group which is used for file access.
 
 The Unix account and group are taken from the configured attribute
-sources (e.g. XUUDB). Since it is possible to access multiple UFTPD
+sources (e.g. `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/xuudb/>`_). 
+Since it is possible to access multiple UFTPD
 servers using a single Auth server, it may be required to configure
 different attributes for different UFTPD servers. This is easily
 possible using the file attribute source (map file).
@@ -398,23 +415,28 @@ The following map file entry gives a full example.
    </entry>
 
 
-Here, the "CLUSTER" must match a configured UFTPD server, see also `UFTPD server(s) configuration`_. Available attributes are
+Here, the "CLUSTER" must match a configured UFTPD server, see also `UFTPD server(s) 
+configuration`_. Available attributes are
 
-:role: the UNICORE role, usually this will be 'user'
+:role: the UNICORE role, usually this will be *user*.
 
-:xlogin, group: Unix account and group to be used for this user
+:xlogin, group: Unix account and group to be used for this user.
 
-:rateLimit: the number of bytes per second (per transfer) can be limited. You can use the units "K", "M", and "G" for kilo, mega or gigabytes, respectively.
+:rateLimit: the number of bytes per second (per transfer) can be limited. You can use the 
+ units "K", "M", and "G" for kilo, mega or gigabytes, respectively.
 
-:includes: file path patterns (separated by ":") that are allowed. If not given, all the user's files can be accessed.
+:includes: file path patterns (separated by ``:``) that are allowed. If not given, all the 
+ user's files can be accessed.
 
-:excludes: file path patterns (separated by ":") that are forbidden. If not given, no files are explicitely excluded.
+:excludes: file path patterns (separated by ``:``) that are forbidden. If not given, no files 
+ are explicitely excluded.
 
 
 Checking the installation
 -------------------------
 
-You can check that the server works using a simple HTTP client such as ``curl`` to access the Auth server's base URL, provided you have configured username/password authentication.
+You can check that the server works using a simple HTTP client such as ``curl`` to access the 
+Auth server's base URL, provided you have configured username/password authentication.
 
 The command
 
@@ -445,7 +467,8 @@ configured UFTPD servers and their status, such as
 
 
 .. note::
-	If you do not get any output, try adding the ``-i`` option to the ``curl`` command, most probably the username/password is incorrect.
+	If you do not get any output, try adding the ``-i`` option to the ``curl`` command, 
+	most probably the username/password is incorrect.
 
 
 Installing the Auth server in an existing UNICORE/X server
@@ -453,14 +476,16 @@ Installing the Auth server in an existing UNICORE/X server
 
 This option is interesting if you are already running a UNICORE
 installation and want to allow your users the option of using the
-standalone UFTP client. This requires UNICORE/X version 8.0 or later!
+standalone UFTP client. This requires `UNICORE/X 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ version 8.0 or later!
 
  * copy the ``authserver-*.jar`` file to the ``lib`` directory of UNICORE/X
 
  * copy the XACML policy file ``30uftpAuthService.xml`` to the
    ``conf/xacml2Policies`` directory
 
- * edit ``container.properties`` (or ``uas.config``) and setup UFTPD details and, if necessary, RESTful user authentication as described above
+ * edit ``container.properties`` (or ``uas.config``) and setup UFTPD details and, if necessary, 
+   RESTful user authentication as described above
 
 
 Running the Auth server behind a UNICORE Gateway
@@ -469,6 +494,8 @@ Running the Auth server behind a UNICORE Gateway
 If you want to place the Auth server behind a UNICORE gateway for easy
 firewall transversal, you need to configure an entry in the Gateway
 connections config file, and set the container base URL property
-(``container.baseurl``) in the Auth server's ``container.properties``. This option is also useful when the server's listen address differs from the publicly accessible server address, such as when running the Auth server behind a NAT firewall.
+(``container.baseurl``) in the Auth server's ``container.properties``. 
+This option is also useful when the server's listen address differs from the 
+publicly accessible server address, such as when running the Auth server behind a NAT firewall.
 
 

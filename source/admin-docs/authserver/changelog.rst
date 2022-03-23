@@ -7,7 +7,8 @@ Changelog
 The UFTP issue tracker is at
 https://sourceforge.net/p/unicore/uftp-issues
 
-**Note:** see :ref:authserver-update for how to update
+.. note::
+ See :ref:`auth-server-update` for how to update.
 
 
 Auth Server 2.6.0 (released Dec 15, 2021)

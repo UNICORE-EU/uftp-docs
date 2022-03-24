@@ -40,21 +40,26 @@ The credentials can be given in multiple ways.
 
     $ uftp ls -u username:password ...
 
-* You can tell the uftp client to query the password interactively by giving the ``-P`` option, e.g.
+* You can tell the uftp client to query the password interactively by giving the ``-P`` option, 
+  e.g.
 
   .. code:: console
 
 	 $ uftp ls -u username -P ...
 
-* If no password is given, the client will attempt to use an SSH key for authentication, this has to be configured on the authentication server accordingly. If you have multiple keys, use the ``-i`` option to select one. Otherwise, the client will check ``~/.uftp/`` and ``~/.ssh/`` for useable keys. The SSH agent is supported, too.
+* If no password is given, the client will attempt to use an SSH key for authentication, this has 
+  to be configured on the authentication server accordingly. If you have multiple keys, use the 
+  ``-i`` option to select one. Otherwise, the client will check ``~/.uftp/`` and ``~/.ssh/`` for 
+  useable keys. The SSH agent is supported, too.
 
-* The very useful ``oidc-agent`` tool is also directly supported via ``-O <account_name>``. In this case no username is required.
+* The very useful ``oidc-agent`` tool is also directly supported via ``-O <account_name>``. In 
+  this case no username is required.
 
   .. code:: console
 
     $ uftp ls -O hbp ...
 
-* Last not least you can directly specify a value for the HTTP `Authorization` header with
+* Last not least you can directly specify a value for the HTTP Authorization header with
   the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
   `-A "Bearer <oidc_token>"`. In this case no username is required.
 
@@ -67,7 +72,7 @@ Usage
 -----
 
 In the following usage examples, the authentication service is located
-at `localhost:9000/rest/auth/` and the user name is `username`.
+at *localhost:9000/rest/auth/* and the user name is *username*.
 Replace these values by the correct ones for your installation.
 
 
@@ -78,7 +83,7 @@ Listing a directory: the `ls` command
 
 	$ uftp ls https://localhost:9000/rest/auth/TEST:/home/demo/
 
-will list the `/home/demo` directory.
+will list the */home/demo* directory.
 
 
 Copying data: the `cp` command
@@ -100,7 +105,7 @@ Basic usage
 
 	$ uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
-  will download the `/home/demo/test.data` file to the current directory
+  will download the */home/demo/test.data* file to the current directory
 
 * Download files using wildcards:
 
@@ -120,7 +125,8 @@ Similar commands work for upload.
 
 .. note:
 
- The wildcards should be escaped to avoid the shell doing the expansion, which will also work, but generally be slower.
+ The wildcards should be escaped to avoid the shell doing the expansion, which will also work, 
+ but generally be slower.
 
 The recurse flag, ``-r``, tells uftp to also copy subdirectories.
 
@@ -128,7 +134,9 @@ The recurse flag, ``-r``, tells uftp to also copy subdirectories.
 Piping data
 +++++++++++
 
-The ``cp`` command can read/write from the console streams, which is great for integrating uftp into Unix pipes. The ``-`` is used as a special "file name" to indicate that data should be read/written using the console.
+The ``cp`` command can read/write from the console streams, which is great for integrating uftp 
+into Unix pipes. The ``-`` is used as a special *file name* to indicate that data should be 
+read/written using the console.
 
 
 Transferring with tar and zip
@@ -140,7 +148,9 @@ For example to tar the contents of a directory and upload the tar file using uft
 
 	$ tar cz dir/* | uftp cp - https://localhost:9000/rest/auth/TEST:/archive.tgz 
 
-The UFTPD server can also unpack tar and zip streams, this is very useful to efficiently transfer many small files. To enable this, add the ``-a`` option, and DO NOT compress the tar stream.
+The :ref:`UFTPD server <uftpd>` can also unpack tar and zip streams, this is very useful to 
+efficiently transfer many small files. To enable this, add the ``-a`` option, and DO NOT compress 
+the tar stream.
 
 .. code:: console
 
@@ -199,7 +209,7 @@ Byte ranges
 +++++++++++
 
 To copy just part of a file, a byte range can be given with the ``-B``
-option. Counting starts at "zero". For example to download only the
+option. Counting starts at *zero*. For example to download only the
 first 1024 bytes of file (i.e. the byte range 0 - 1023), you would do
 
 .. code:: console
@@ -250,7 +260,7 @@ Resuming a failed transfer
 ++++++++++++++++++++++++++
 
 If a copy command was terminated prematurely, it can be resumed using
-the ``-R`` option.  If the "-R" option is present, the UFTP client will
+the ``-R`` option.  If the ``-R`` option is present, the UFTP client will
 check if the target file exists, and will append only the missing
 data.
 
@@ -304,8 +314,8 @@ using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 	$ uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
 
 
-Synchronizing a file: the "sync" command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Synchronizing a file: the ``sync`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Currently, ``sync`` only supports single files, i.e. no directories or wildcards!
 The syntax is
@@ -336,10 +346,10 @@ access to the data.
 
 Data sharing works as follows:
 
-* when you share a file (or directory), the Auth server will store information about the path, 
-  the owner and the Unix user ID used to access the file in a database
+* when you share a file (or directory), the :ref:`authserver` will store information 
+  about the path, the owner and the Unix user ID used to access the file in a database
   
-* the targetted user can now access this file via the Auth server, and the Auth server will 
+* the targetted user can now access this file via the :ref:`authserver`, and the Auth server will 
   use the owner's Unix user ID to access the file.
 
 By default, files will be shared for *anonymous* access. This will
@@ -361,8 +371,8 @@ Shares can be deleted by their owner, i.e. the user who created them.
 Server URL
 ++++++++++
 
-If not given via the ``--server`` argument, the URL of the Auth server will be taken from
-the environment variable ``UFTP_SHARE_URL``
+If not given via the ``--server`` argument, the URL of the :ref:`authserver` will 
+be taken from the environment variable ``UFTP_SHARE_URL``
 
 .. code:: console
 
@@ -403,7 +413,7 @@ If you use a relative path, ``uftp`` will make it absolute.
 	> /data/public/
 	$ uftp share somefile.pdf
 
-will share the path `/data/public/somefile.pdf`.
+will share the path */data/public/somefile.pdf*.
 
 You can use the following options to modify the defaults:
 
@@ -486,7 +496,7 @@ HTTP proxy
 	export UFTP_HTTP_PROXY_PORT=80
 
 FTP proxying was tested with the DeleGate/9.9.13 and frox proxies
-and requires UFTPD server version 2.8.1 or later to work.
+and requires :ref:`UFTPD server <uftpd>` version 2.8.1 or later to work.
 
 If this does not work for you, or if you require support for a
 different type of proxy, please contact us via a `support ticket 

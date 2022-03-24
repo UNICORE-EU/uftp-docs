@@ -33,15 +33,16 @@ Prerequisites
 - a server certificate for the UFTPD server is a **MUST** for production use in a multi-user 
   environment (see the section on SSL below)
 
-A functional UFTP installation requires either an :ref:`authserver` or a full UNICORE/X server.
+A functional UFTP installation requires either an :ref:`authserver` or a full `UNICORE/X 
+server <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__.
 
 Installation
 ~~~~~~~~~~~~~
 
-The UNICORE UFTPD server (available from 
-https://sourceforge.net/projects/unicore/files/Servers/UFTPD) is distributed either 
-as a platform independent and portable ``tar.gz`` or ``zip`` bundle, or as an installable, 
-platform dependent package such as ``RPM``.
+The UNICORE UFTPD server is distributed either as a platform independent and portable 
+``tar.gz`` or ``zip`` bundle or as an installable, platform dependent package such as ``RPM``
+avalable at `sourceforge.net 
+<https://sourceforge.net/projects/unicore/files/Servers/UFTPD>`__.
 
 .. important:: 
   **IMPORTANT NOTE ON PATHS**
@@ -99,6 +100,8 @@ certificate), you can use ``systemctl``:
 
   $ sudo systemctl add-wants multi-user.target unicore-uftpd
 
+
+.. _config-parameters:
 
 Configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,6 +209,7 @@ The ``credential.password`` is only needed and used if the key is encrypted.
 	|:point_right:| If you already have a p12 keystore for UFTPD 2.x, you can use ``openssl`` 
 	to convert it to `PEM` format.
 
+.. _acl-setup:
 
 ACL setup
 ^^^^^^^^^

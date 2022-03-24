@@ -22,17 +22,19 @@ The Auth server needs an X.509 certificate and truststore
 for communicating with the :ref:`uftpd`.
 
 Users must be able to access the Auth server's https port. It is
-possible to deploy the Auth server behind a UNICORE Gateway.
+possible to deploy the Auth server behind a `UNICORE Gateway
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__.
 
 
 Installation
 ~~~~~~~~~~~~
 
-The UFTP Auth service (available from 
-https://sourceforge.net/projects/unicore/files/Servers/UFTP-AuthServer) is distributed either 
-as a platform independent and portable ``tar.gz`` or ``zip`` bundle. It comes with all required 
-scripts and config files to be run as a standalone application. To install, unzip the 
-downloaded package into a directory of your choice.
+The UFTP Auth service is distributed either 
+as a platform independent and portable ``tar.gz`` or ``zip`` bundle available at
+`sourceforge.net 
+<https://sourceforge.net/projects/unicore/files/Servers/UFTP-AuthServer>`__. 
+It comes with all required scripts and config files to be run as a standalone application. 
+To install, unzip the downloaded package into a directory of your choice.
 
 .. note::
 	You can run the service in an existing UNICORE/X server (8.0.0 or later). Please see 
@@ -106,7 +108,8 @@ to configure the relevant properties in the Auth service's config file.
 The ``authservice.servers`` property is a list of server names. These
 should be meaningful, since users will need to use them, too.  The
 other properties are used to configure the UFTPD command address and
-the UFTPD listen address. Please refer to the :ref:`UFTPD manual <uftpd>` for details.
+the UFTPD listen address. Please refer to the `UFTPD manual 
+<../uftpd/manual.html#config-parameters>`__ for details.
 
  :host: the IP address of the UFTPD *listen* socket
 
@@ -127,7 +130,7 @@ the UFTPD listen address. Please refer to the :ref:`UFTPD manual <uftpd>` for de
 	interface. For example, if you are running UFTPD behind a NAT router,
 	you have to use the IP configured as the ``ADVERTISE_HOST`` in the UFTPD configuration.
 
-For example, we want to configure two UFTPD servers named "CLUSTER" and "TEST"::
+For example, we want to configure two UFTPD servers named *CLUSTER* and *TEST*::
 
 	# configured UFTPD server(s)
 	authservice.servers=CLUSTER TEST
@@ -150,7 +153,8 @@ For example, we want to configure two UFTPD servers named "CLUSTER" and "TEST"::
 	authservice.server.TEST.description=Test UFTPD server
 
 To allow the Auth server access to the command port of UFTPD, you
-need to add an entry to UFTPD's ACL file. This is explained in the UFTPD manual.
+need to add an entry to UFTPD's ACL file. This is explained in the `UFTPD manual 
+<../uftpd/manual.html#acl-setup>`__.
 
 Round-robin use / grouping of UFTPD servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -165,9 +169,7 @@ UFTPD servers is down for maintenance or upgrades (or because of some error).
 In this case the configuration for the logical server has multiple blocks numbered "1", "2", 
 ...
 
-Each block configures one physical server.
-
-For example::
+Each block configures one physical server. For example::
 
 	# configuration for multiple UFTPD instances
 	# providing the logical 'CLUSTER' server
@@ -295,7 +297,7 @@ SSH key validation is configured as follows:
 When used like this, the users get an automatically assigned DN. By
 default, the DN is `CN=<username>, OU=ssh-local-users`. Using the "PAM
 attribute source" (see below), authenticated users can be assigned the
-"user" role automatically without further configuration.
+*user* role automatically without further configuration.
 
 The user DN can be modified by configuring the DN template like this::
 
@@ -415,7 +417,7 @@ The following map file entry gives a full example.
    </entry>
 
 
-Here, the "CLUSTER" must match a configured UFTPD server, see also `UFTPD server(s) 
+Here, the *CLUSTER* must match a configured UFTPD server, see also `UFTPD server(s) 
 configuration`_. Available attributes are
 
 :role: the UNICORE role, usually this will be *user*.
@@ -491,9 +493,12 @@ standalone UFTP client. This requires `UNICORE/X
 Running the Auth server behind a UNICORE Gateway
 ------------------------------------------------
 
-If you want to place the Auth server behind a UNICORE gateway for easy
-firewall transversal, you need to configure an entry in the Gateway
-connections config file, and set the container base URL property
+If you want to place the Auth server behind a `UNICORE gateway 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__
+for easy firewall transversal, you need to configure an entry in the `Gateway
+connections 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/manual.html#configuring-sites-connections-properties>`_ 
+config file, and set the container base URL property
 (``container.baseurl``) in the Auth server's ``container.properties``. 
 This option is also useful when the server's listen address differs from the 
 publicly accessible server address, such as when running the Auth server behind a NAT firewall.

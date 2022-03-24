@@ -6,11 +6,13 @@ Update procedure
 As a first step and precaution, you should make backups of your 
 existing config files and put them in a safe place.
 
-In the following, *LIB* refers to the directory containing the jar files for the component, and *CONF* to the config directory of the existing installation.
+In the following, *LIB* refers to the directory containing the jar files for the component, and 
+*CONF* to the config directory of the existing installation.
 
-* It is assumed that you have unpacked the **tar.gz** file somewhere, e.g. to ``/tmp/``. In the following, this location will be denoted as "`$NEW`":
+It is assumed that you have unpacked the ``tar.gz`` file somewhere, e.g. to ``/tmp/``. In the 
+following, this location will be denoted as *$NEW*:
 
-   .. code:: console
+.. code:: console
 
 	$ export NEW=/tmp/unicore-authserver-2.5.0
 
@@ -18,10 +20,10 @@ In the following, *LIB* refers to the directory containing the jar files for the
 
 * Update the jar files:
 
-   .. code:: console
+  .. code:: console
 
-   	$ rm -rf LIB/*
-   	$ cp $NEW/lib/*.jar LIB
+   $ rm -rf LIB/*
+   $ cp $NEW/lib/*.jar LIB
 
 * Start the server.
 

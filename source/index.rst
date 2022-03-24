@@ -13,7 +13,7 @@ UFTP is best used using the client-side application (:ref:`uftp-client`), but is
 into custom applications due to its FTP compliance.
 
   
-* :ref:`uftp-overview` gives an overview of the UFTP features and architecture.
+* :ref:`uftp-overview` gives an overview of the UFTP architecture and features.
 
 .. toctree::
 	:maxdepth: 5

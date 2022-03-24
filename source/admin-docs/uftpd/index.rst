@@ -5,32 +5,35 @@ UFTPD Server
 
 The UFTPD server provides a high-performance data transfer based on passive FTP. 
 
+
 .. note::  
  A full UFTP server installation consists of two parts:
 
-  #. The :ref:`UFTPD server <uftpd>`
-  #. Either a `UNICORE/X
-     <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ or 
-     the more lightweight :ref:`Auth server <authserver>` package.
+ #. The UFTPD server
+
+ #. Either a `UNICORE/X <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex>`__ 
+    or the more lightweight :ref:`authserver` package.
+
+
+.. image:: ../../_static/uftp-arch.png
+  :width: 400
+  :alt: UFTP architecture
 
 
 The UFTP server listens on two ports (which may be on two different network interfaces):
 
- - the command port receives control commands
+- the command port receives control commands
 
- - the listen port accepts data connections from clients.
+- the listen port accepts data connections from clients
 
-The UFTPD server is *controlled* by an :ref:`Auth server <authserver>` or `UNICORE/X
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ via the
+The UFTPD server is *controlled* by an :ref:`authserver` or `UNICORE/X
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ via the
 command port, and receives/sends data directly from/to a client
 machine (which can be an actual user client machine or another
 server). The client, e.g. :ref:`uftp-client`, connnects to the *listen* port, which has to
 be accessible from external machines. The client opens additional data commection(s) via the 
 passive FTP protocol.
 
-.. image:: ../../_static/uftp-arch.png
-  :width: 400
-  :alt: UFTP architecture
   
 The sequence for a UFTP file transfer is as follows:
   

@@ -20,12 +20,18 @@ The UFTP commandline client enables to
 * perform authentication to help integrate
   UFTP with other tools
 
-The UFTP client will connect to an authentication server (either a UNICORE/X server or the :ref:`authserver`) to authenticate and then to
-the :ref:`uftpd` for transferring data or making a file operation.
-
 The UFTP client supports username/password authentication, OIDC
 token authentication and ssh-key authentication. 
-It supports multiple concurrent FTP connections for highly efficient data transfers in high-performance environments.
+It supports multiple concurrent FTP connections for highly efficient data transfers in 
+high-performance environments.
+
+.. image:: ../../_static/uftp-client.png
+  :width: 400
+  :alt: UFTP Client
+  
+The UFTP client will connect to an authentication server (either a UNICORE/X server or the 
+:ref:`authserver`) to authenticate and then to
+the :ref:`uftpd` for transferring data or making a file operation.
 
 
 .. topic:: User Documentation

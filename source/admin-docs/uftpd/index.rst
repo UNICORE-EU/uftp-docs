@@ -15,9 +15,9 @@ The UFTPD server provides a high-performance data transfer based on passive FTP.
     or the more lightweight :ref:`authserver` package.
 
 
-.. image:: ../../_static/uftp-arch.png
+.. image:: ../../_static/uftpd-server.png
   :width: 400
-  :alt: UFTP architecture
+  :alt: UFTPD Server
 
 
 The UFTP server listens on two ports (which may be on two different network interfaces):

@@ -13,7 +13,7 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-The Auth server should be run as a non-root user (e.g. 'unicore'). It requires
+The Auth server should be run as a non-root user (e.g. *unicore*). It requires
 
  * Java 1.8
  * an installed :ref:`uftpd` (2.6.0 or later)
@@ -74,14 +74,15 @@ Configuration
 The following items need to be configured in the Auth 
 server's ``container.properties`` file:
 
- * UFTPD server(s) to be accessed
+ * :ref:`UFTPD server(s) <uftpd-conf>` to be accessed
 
- * User authentication: configure the Auth server to authenticate
-   users using username/password, ssh key or via Unity
+ * :ref:`User authentication <user-auth>`: configure the Auth server to authenticate
+   users using :ref:`username/password <user-pass-auth>`, :ref:`ssh key <ssh-key-auth>` 
+   or via :ref:`Unity <unity-auth>`
    
- * Attribute sources (XUUDB, map file, ...) for assigning 
+ * :ref:`Attribute sources <attr-sources>` (XUUDB, map file, ...) for assigning 
    local attributes like UNIX user name to authenticated 
-   users.
+   users
 
 Features
 ~~~~~~~~
@@ -98,6 +99,7 @@ both are enabled by default. To disable data sharing, set
 
 There are no further configuration options for these features.
 
+.. _uftpd-conf:
 
 UFTPD server(s) configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -192,6 +194,7 @@ Each block configures one physical server. For example::
 	authservice.server.CLUSTER.2.ssl=true
 
 
+.. _user-auth:
 
 User authentication
 ~~~~~~~~~~~~~~~~~~~
@@ -211,6 +214,7 @@ in ``container.properties``.
 
 The available options can be combined.
 
+.. _user-pass-auth:
 
 Username-password file
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -245,11 +249,12 @@ which will output the salted and hashed password. Here we generate a
 random string as the salt. Enter these together with the username, and
 the DN of the user into the password file.
 
+.. _unity-auth: 
 
 Unity SAML authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can also hook up with Unity, passing on the username/password and
+You can also hook up with `Unity <https://unity-idm.eu/>`__, passing on the username/password and
 retrieving an authentication assertion.
 ::
 
@@ -270,6 +275,8 @@ To have Unity check the client's OAuth token::
 	container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp.oidc/saml2unicoreidp-soap/AuthenticationService
 	container.security.rest.authentication.UNITY-OAUTH.validate=true
 
+
+.. _ssh-key-auth:
 
 SSH Key validation
 ^^^^^^^^^^^^^^^^^^
@@ -336,6 +343,7 @@ SSH keys available. For example
 	demouser:ssh-dss <...omitted keydata...>:CN=Demo User, O=UNICORE, C=EU
 	otheruser:ssh-rsa <...omitted keydata...>:CN=Other User, O=UNICORE, C=DE
 
+.. _attr-sources:
 
 Attribute sources
 ~~~~~~~~~~~~~~~~~
@@ -478,7 +486,7 @@ Installing the Auth server in an existing UNICORE/X server
 
 This option is interesting if you are already running a UNICORE
 installation and want to allow your users the option of using the
-standalone UFTP client. This requires `UNICORE/X 
+standalone :ref:`UFTP client <uftp-client>`. This requires `UNICORE/X 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ version 8.0 or later!
 
  * copy the ``authserver-*.jar`` file to the ``lib`` directory of UNICORE/X

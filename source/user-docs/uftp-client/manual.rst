@@ -3,6 +3,43 @@
 User Manual
 ===========
 
+The UFTP standalone Client is a Java-based commandline client for UFTP. It allows to list 
+remote directories, copy files (with many options such as wildcards or multiple threads), 
+and more. It can be used with either a :ref:`UFTP Authentication Server <authserver>` or 
+a UNICORE server to authenticate and initiate UFTP transfers. 
+
+
+Installation
+------------
+
+Prerequisites
+~~~~~~~~~~~~~
+
+* Java 8 or later (OpenJDK preferred)
+
+* Access to a UFTP authentication service (either a `UNICORE/X
+  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ server or the 
+  :ref:`authserver`) and to the corresponding :ref:`uftpd`. 
+
+To use the client, you need to know the address of the UFTP authentication service. You need also 
+to have the valid credentials for the UFTP authentication.
+
+
+Installation and Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The UFTP client distribution packages are available at `sourceforge.net  
+<https://sourceforge.net/projects/unicore/files/Clients/UFTP-Client>`__. 
+
+If using the ``zip`` or ``tar archive``, unpack it in a location of your choice. Add the ``bin`` 
+directory to your path. Alternatively, you can
+link or copy the ``bin/uft`` script to a directory that is already on
+your path, in this case edit the script and setup the required directories.
+
+If you use the ``rpm`` or ``deb`` package, install it using the package 
+manager of your Linux distribution.
+
+
 Authentication
 --------------
 
@@ -12,16 +49,12 @@ authentication to authenticate to the :ref:`authserver`.
 You can set a different default username via the ``UFTP_USER`` environment variable. This is 
 useful if your remote username is not the same as your local username.
 
-
 The UFTP client supports various means of authentication. Depending
 on the server you want to access, you can choose from
 
  * user name with SSH key (default)
-
  * user name with password
- 
- * oidc-agent (see https://github.com/indigo-dc/oidc-agent)
-
+ * `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__
  * manual specification of the HTTP Authorization header value
 
 
@@ -52,16 +85,16 @@ The credentials can be given in multiple ways.
   ``-i`` option to select one. Otherwise, the client will check ``~/.uftp/`` and ``~/.ssh/`` for 
   useable keys. The SSH agent is supported, too.
 
-* The very useful ``oidc-agent`` tool is also directly supported via ``-O <account_name>``. In 
-  this case no username is required.
+* The very useful `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__ tool is also directly 
+  supported via ``-O <account_name>``. In this case no username is required.
 
   .. code:: console
 
     $ uftp ls -O hbp ...
 
-* Last not least you can directly specify a value for the HTTP Authorization header with
+* Last not least you can directly specify a value for the HTTP *Authorization* header with
   the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
-  `-A "Bearer <oidc_token>"`. In this case no username is required.
+  ``-A "Bearer <oidc_token>``. In this case no username is required.
 
   .. code:: console
   
@@ -76,8 +109,8 @@ at *localhost:9000/rest/auth/* and the user name is *username*.
 Replace these values by the correct ones for your installation.
 
 
-Listing a directory: the `ls` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Listing a directory: the ``ls`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: console
 
@@ -86,8 +119,8 @@ Listing a directory: the `ls` command
 will list the */home/demo* directory.
 
 
-Copying data: the `cp` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Copying data: the ``cp`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``cp`` command is used to copy local data to a remote server or vice
 versa. Remote locations are indicated by the ``https://`` prefix, and you
@@ -125,8 +158,8 @@ Similar commands work for upload.
 
 .. note:
 
- The wildcards should be escaped to avoid the shell doing the expansion, which will also work, 
- but generally be slower.
+The wildcards should be escaped to avoid the shell doing the expansion, which will also work, 
+but generally be slower.
 
 The recurse flag, ``-r``, tells uftp to also copy subdirectories.
 
@@ -349,8 +382,8 @@ Data sharing works as follows:
 * when you share a file (or directory), the :ref:`authserver` will store information 
   about the path, the owner and the Unix user ID used to access the file in a database
   
-* the targetted user can now access this file via the :ref:`authserver`, and the Auth server will 
-  use the owner's Unix user ID to access the file.
+* the targetted user can now access this file via the :ref:`authserver`, and the Auth 
+  server will use the owner's Unix user ID to access the file.
 
 By default, files will be shared for *anonymous* access. This will
 allow anyone who knows the sharing link to access the file using
@@ -364,8 +397,8 @@ the UFTP protocol or plain HTTPs.
 Shares can be deleted by their owner, i.e. the user who created them.
 
 .. note::
-	Not all UFTP installations support data sharing.  You can check if a server has the sharing 
-	feature enabled by running ``uftp info --server ...``
+	Not all UFTP installations support data sharing.  You can check if a server has 
+	the sharing feature enabled by running ``uftp info --server ...``
 
 
 Server URL
@@ -421,8 +454,6 @@ You can use the following options to modify the defaults:
   * `--write` for write acces
   * `--delete` to delete a share
 
-
-
 For example to share */data/public/somefile.pdf* with the user *CN=User*
 
 .. code:: console
@@ -452,7 +483,8 @@ Anonymous (http) access
 +++++++++++++++++++++++
 
 For anonymous access via HTTP you need to use the correct URL. If you create (or list) shares,
-the UFTP client will show the required links. You can download the file e.g. using ``wget``.
+the UFTP client will show the required links. You can download the file e.g. using `wget 
+<https://www.gnu.org/software/wget/>`_.
 
 
 Downloading/uploading using the UFTP protocol
@@ -482,15 +514,14 @@ The uftp client has support for some types of FTP and HTTPs proxies.
 
 This is configured via enviroment settings. I.e. in your shell you can define
 
-
-FTP proxy
-::
+* FTP proxy
+  ::
 
 	export UFTP_PROXY=proxy.yourorg.edu
 	export UFTP_PROXY_PORT=21
 
-HTTP proxy
-::
+* HTTP proxy
+  ::
 
 	export UFTP_HTTP_PROXY=proxy.yourorg.edu
 	export UFTP_HTTP_PROXY_PORT=80

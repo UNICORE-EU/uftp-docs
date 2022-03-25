@@ -4,7 +4,8 @@
 User Manual
 ===========
 
-This is the user manual providing information on running and using the UNICORE UFTP server.
+This is the user manual providing information on running and using the UNICORE UFTP server 
+version 3.0 and higher, written in Python.
 
 .. important:: **IMPORTANT SECURITY NOTE**
 
@@ -66,9 +67,8 @@ avalable at `sourceforge.net
 
   These variables (`CONF`, `BIN` and `LOG`) are used throughout the rest of this manual.
 
-.. note::
-  Note that after installation UFTPD is **NOT** automatically enabled as a systemd service, since 
-  you will need to edit the configuration and provide a server certificate.
+Note that after installation UFTPD is **NOT** automatically enabled as a ``systemd`` service, 
+since you will need to edit the configuration and provide a server certificate.
 
 
 Starting and stopping the UFTPD server
@@ -209,6 +209,7 @@ The ``credential.password`` is only needed and used if the key is encrypted.
 	|:point_right:| If you already have a p12 keystore for UFTPD 2.x, you can use ``openssl`` 
 	to convert it to `PEM` format.
 
+
 .. _acl-setup:
 
 ACL setup
@@ -221,11 +222,13 @@ The ``ACL`` setting in ``CONF/uftpd.conf`` is used to specify the location of th
 
 	export ACL=conf/uftpd.acl
 
-The default ACL contains the certificate DN of the UNICORE/X server from the UNICORE 
-core server bundle. In production, you need to replace this by the actual DNs of 
-your UNICORE/X server(s) and UFTP Authentication server(s).
+The default ACL contains the certificate DN of the UNICORE/X server from the `UNICORE 
+core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`__. 
+In production, you need to replace this by the actual DNs of 
+your `UNICORE/X server(s) <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`_ 
+and :ref:`UFTP Authentication server(s) <authserver>`.
 
-The ACL entries are expected in **RFC2253** format. To get the name 
+The ACL entries are expected in RFC2253 format. To get the name 
 from a certificate in the correct format using ``openssl``, you can use the following OpenSSL 
 command:
 
@@ -300,7 +303,7 @@ UNICORE integration
 -------------------
 
 Please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#uftp-setup>`_ 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#uftp-setup>`__ 
 for detailed information on how to configure UFTP based data access and data transfer.
 
 

@@ -1,6 +1,5 @@
 .. _uftp-client-basic-usage:
 
-
 Basic Usage
 ===========
 
@@ -51,4 +50,5 @@ and assume that the bin directory of the UFTP client is on your path.
 
 .. seealso::
 
-	For detailed usage instructions and examples, refer to the :ref:`uftp-client-manual` available in the doc directory or online.
+	For detailed usage instructions and examples, refer to the :ref:`uftp-client-manual`.
+

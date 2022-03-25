@@ -38,7 +38,7 @@ To install, unzip the downloaded package into a directory of your choice.
 
 .. note::
 	You can run the service in an existing UNICORE/X server (8.0.0 or later). Please see 
-	`Running the Auth server behind a UNICORE Gateway`_ below for details.
+	:ref:`auth_uxdeploy` below for details.
 
 
 Basic server configuration (memory etc)
@@ -74,15 +74,16 @@ Configuration
 The following items need to be configured in the Auth 
 server's ``container.properties`` file:
 
- * :ref:`UFTPD server(s) <uftpd-conf>` to be accessed
+ * :ref:`UFTPD server(s) <auth-uftpd>` to be accessed
 
- * :ref:`User authentication <user-auth>`: configure the Auth server to authenticate
-   users using :ref:`username/password <user-pass-auth>`, :ref:`ssh key <ssh-key-auth>` 
-   or via :ref:`Unity <unity-auth>`
+ * :ref:`User authentication <auth-user>`: configure the Auth server to authenticate
+   users using :ref:`username/password <auth-user-pass>`, :ref:`ssh key <ssh-key-auth>` 
+   or via :ref:`Unity <auth-unity>`
    
  * :ref:`Attribute sources <attr-sources>` (XUUDB, map file, ...) for assigning 
    local attributes like UNIX user name to authenticated 
    users
+
 
 Features
 ~~~~~~~~
@@ -99,7 +100,8 @@ both are enabled by default. To disable data sharing, set
 
 There are no further configuration options for these features.
 
-.. _uftpd-conf:
+
+.. _auth-uftpd:
 
 UFTPD server(s) configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -158,6 +160,7 @@ To allow the Auth server access to the command port of UFTPD, you
 need to add an entry to UFTPD's ACL file. This is explained in the `UFTPD manual 
 <../uftpd/manual.html#acl-setup>`__.
 
+
 Round-robin use / grouping of UFTPD servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -194,7 +197,7 @@ Each block configures one physical server. For example::
 	authservice.server.CLUSTER.2.ssl=true
 
 
-.. _user-auth:
+.. _auth-user:
 
 User authentication
 ~~~~~~~~~~~~~~~~~~~
@@ -214,7 +217,7 @@ in ``container.properties``.
 
 The available options can be combined.
 
-.. _user-pass-auth:
+.. _auth-user-pass:
 
 Username-password file
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -249,7 +252,7 @@ which will output the salted and hashed password. Here we generate a
 random string as the salt. Enter these together with the username, and
 the DN of the user into the password file.
 
-.. _unity-auth: 
+.. _auth-unity: 
 
 Unity SAML authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -425,8 +428,8 @@ The following map file entry gives a full example.
    </entry>
 
 
-Here, the *CLUSTER* must match a configured UFTPD server, see also `UFTPD server(s) 
-configuration`_. Available attributes are
+Here, the *CLUSTER* must match a configured UFTPD server, see also :ref:`auth-uftpd`. 
+Available attributes are
 
 :role: the UNICORE role, usually this will be *user*.
 
@@ -480,6 +483,8 @@ configured UFTPD servers and their status, such as
 	If you do not get any output, try adding the ``-i`` option to the ``curl`` command, 
 	most probably the username/password is incorrect.
 
+
+.. _auth_uxdeploy:
 
 Installing the Auth server in an existing UNICORE/X server
 ----------------------------------------------------------

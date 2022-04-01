@@ -5,59 +5,39 @@ UFTPD Server
 
 The UFTPD server provides a high-performance data transfer based on passive FTP. 
 
-
-.. note::  
- A full UFTP server installation consists of two parts:
-
- #. The UFTPD server
-
- #. Either a `UNICORE/X <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex>`__ 
-    or the more lightweight :ref:`authserver` package.
-
-
 .. image:: ../../_static/uftpd-server.png
   :width: 400
   :alt: UFTPD Server
 
-
 The UFTP server listens on two ports (which may be on two different network interfaces):
 
-- the command port receives control commands
+* the command port receives control commands
 
-- the listen port accepts data connections from clients
+* the listen port accepts data connections from clients
 
 The UFTPD server is *controlled* by an :ref:`authserver` or `UNICORE/X
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ via the
 command port, and receives/sends data directly from/to a client
 machine (which can be an actual user client machine or another
-server). The client, e.g. :ref:`uftp-client`, connnects to the *listen* port, which has to
-be accessible from external machines. The client opens additional data commection(s) via the 
-passive FTP protocol.
+server). 
 
-  
-The sequence for a UFTP file transfer is as follows:
-  
-* the client (which can be an end-user client, or a service such as a UNICORE/X server) sends 
-  an authentication request to the Auth server (or another UNICORE/X server)
+.. topic:: Features
+
+ * FTP-compliant data server running on a POSIX file system
+
+ * Runs privileged on a server with access to the file systems to be served, 
+   fully drops privileges to current user for all operations
+
+ * Requires
    
-* the Auth server sends a request to the command port of UFTPD. This request notifies the UFTPD 
-  server about the upcoming transfer and contains the following information 
-  
-     - a *secret*, i.e. a one-time password which the client will use to authenticate itself
-     - the user and group id which uftpd should use to access files
-     - an optional key to encrypt/decrypt the data
-     - the client's IP address
-    
-* the UFTPD server will now  accept an incoming client connection, provided the supplied 
-  *secret* (one-time password) matches the expectation.
-  
-* if everything is OK, an FTP session is created, and the client can use the FTP protocol to 
-  open data connections, list files, transfer data etc. Data connections are opened via 
-  *passive FTP*, which allows the firewall to dynamically open the requested ports (which can 
-  by any port, see below if you want to a fixed port range).
-  
-* for each UFTP session, UFTPD will fork a process which runs as the requested user (with the 
-  requested primary group).
+   * Python 3.4 or later
+   * Server certificate
+
+ * Firewall requirements
+   
+   * Allow incoming connections to *listen* port (FTP port)
+   * Enable FTP connection tracking OR open port range
+   * Allow incoming connection to *control* port from :ref:`authserver`
 
 
 
@@ -74,7 +54,7 @@ The sequence for a UFTP file transfer is as follows:
 	:caption: UFTPD Server Documentation
 	:hidden:
 	
-	manual
+	manual.rst
 
 .. toctree::
 	:maxdepth: 1

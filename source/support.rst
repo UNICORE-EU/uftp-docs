@@ -3,7 +3,7 @@
 Support
 =======
 
-Please note also the following places for getting more information:
+For additional information and support, please visit:
 
 :UNICORE Website: https://www.unicore.eu
 

@@ -39,6 +39,7 @@ your path, in this case edit the script and setup the required directories.
 If you use the ``rpm`` or ``deb`` package, install it using the package 
 manager of your Linux distribution.
 
+.. _auth:
 
 Authentication
 --------------
@@ -109,6 +110,8 @@ at *localhost:9000/rest/auth/* and the user name is *username*.
 Replace these values by the correct ones for your installation.
 
 
+.. _ls-command:
+
 Listing a directory: the ``ls`` command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -118,6 +121,8 @@ Listing a directory: the ``ls`` command
 
 will list the */home/demo* directory.
 
+
+.. _cp-command:
 
 Copying data: the ``cp`` command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -214,6 +219,8 @@ Or use ``uftp`` to cat a remote file
 	$ uftp cp https://localhost:9000/rest/auth/TEST:/foo.txt -
 
 
+.. _multiple-connections:
+
 Using multiple FTP connections
 ++++++++++++++++++++++++++++++
 
@@ -275,6 +282,8 @@ This is handy for quick performance tests:
 	$ uftp cp -B 10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
+.. _encrypt-compress:
+
 Encryption and compression
 ++++++++++++++++++++++++++
 
@@ -330,6 +339,8 @@ transferring 5 gigabytes
 	$ uftp cp -B 0-10G -t 2 https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
+.. _checksum-command:
+
 Computing checksums for remote files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -346,6 +357,8 @@ using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 
 	$ uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
 
+
+.. _synch-command:
 
 Synchronizing a file: the ``sync`` command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -370,12 +383,18 @@ To synchronize a remote file with a local *master* file:
 	$ uftp sync master.file https://localhost:9000/rest/auth/TEST:/remote.file
 
 
+.. _data-sharing:
+
 Data sharing
 ~~~~~~~~~~~~
 
 Data sharing enables users to create access to their datasets for
 other users via UFTP, even if those users do not have Unix-level
 access to the data.
+
+.. image:: ../../_static/data-sharing.png
+  :width: 400
+  :alt: Data Sharing
 
 Data sharing works as follows:
 

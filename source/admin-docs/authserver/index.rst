@@ -12,13 +12,30 @@ provides REST services for data sharing and accessing shared data sets.
 
 .. image:: ../../_static/auth-server.png
   :width: 300
-  :alt: UFTP architecture
+  :alt: Auth Server
 
 The Auth server is based on the UNICORE Services Environment, and all usual UNICORE features and 
 security configuration options are available as well. For example, the Auth server can be 
 deployed behind a `UNICORE Gateway 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__, or it can be configured 
 to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
+
+.. topic:: Features
+
+ * RESTful service
+ * Authentication
+
+   * SSH keys
+   * Unity (OAuth token)
+   * PAM
+   * Username/password file
+   * … (extensible)
+
+ * Attribute mapping
+
+   * UNIX uid, gid
+   * QoS e.g. rate limit
+
 
 
 :doc:`manual`

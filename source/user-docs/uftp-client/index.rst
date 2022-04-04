@@ -6,14 +6,22 @@ UFTP client
 
 The UFTP commandline client enables to 
 
- * list remote directories
- * upload/download files
- * sync files
- * make remote directories
- * delete remote files or directories
- * manage shares and access shared data
- * perform authentication to help integrate
-   UFTP with other tools
+* `list remote directories <manual.html#ls-command>`__ (``ls``)
+ 
+* `upload\/download files <manual.html#cp-command>`__ (``cp``)
+
+* `compute checksums for remote files <manual.html#checksum-command>`__ (``checksum``)
+
+* `sync remote\/local files <manual.html#sync-command>`_ (``sync``)
+
+* make remote directories (``mkdir``)
+
+* delete remote files or directories (``rm``)
+
+* `manage shares and access shared data <manual.html#data-sharing>`__ (``share``, ``get-share``, 
+  ``put-share``)
+
+* `perform authentication <manual.html#auth>`__ to help integrate UFTP with other tools 
 
 The UFTP client will connect to an authentication server (either a `UNICORE/X server 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex>`_
@@ -29,6 +37,19 @@ token authentication and ssh-key authentication.
 
 The UFTP client supports multiple concurrent FTP connections for highly efficient 
 data transfers in high-performance environments.
+
+.. topic:: Features
+
+ * :ref:`Commands <uftp-client-basic-usage>` (UNIX-like semantics) 
+ 
+ * Supports `multi-threaded transfers <manual.html#multiple-connections>`__, 
+   `encryption and compression <manual.html#encrypt-compress>`__ of the data streams
+
+ * `Flexible authentication <manual.html#auth>`__
+
+   * sshkey incl. support for ssh-agent (on Linux only)
+   * OIDC via oidc-agent
+   * Username/password
 
 
 .. topic:: User Documentation

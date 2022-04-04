@@ -34,8 +34,11 @@ Prerequisites
 - a server certificate for the UFTPD server is a **MUST** for production use in a multi-user 
   environment (see the section on SSL below)
 
-A functional UFTP installation requires either an :ref:`authserver` or a full `UNICORE/X 
-server <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__.
+.. attention::
+
+ A functional UFTP installation requires in addition either a full `UNICORE/X 
+ server <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ or the more 
+ lightweight :ref:`authserver`.
 
 Installation
 ~~~~~~~~~~~~~
@@ -156,7 +159,7 @@ network interfaces.
 If possible, use an *internal* interface for the Command socket. If that
 is not possible, make sure the Command socket is protected by a firewall!
 
-.. important::
+.. attention::
  We **VERY STRONGLY** recommend enabling SSL for the Command socket.
  Please refer to the next section.
 

@@ -12,6 +12,7 @@ a UNICORE server to authenticate and initiate UFTP transfers.
 Installation
 ------------
 
+
 Prerequisites
 ~~~~~~~~~~~~~
 
@@ -56,7 +57,6 @@ on the server you want to access, you can choose from
  * user name with password
  * `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__
  * manual specification of the HTTP Authorization header value
-
 
 To explicitely specify the remote username, use the ``-u <username>`` option, e.g.
 
@@ -130,7 +130,7 @@ It has a number of features, which will be shown in the following.
 
 
 Basic usage
-+++++++++++
+^^^^^^^^^^^
 
 * Downloading a single file:
 
@@ -165,7 +165,7 @@ The recurse flag, ``-r``, tells uftp to also copy subdirectories.
 
 
 Piping data
-+++++++++++
+^^^^^^^^^^^
 
 The ``cp`` command can read/write from the console streams, which is great for integrating uftp 
 into Unix pipes. The ``-`` is used as a special *file name* to indicate that data should be 
@@ -173,7 +173,7 @@ read/written using the console.
 
 
 Transferring with tar and zip
-+++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For example to tar the contents of a directory and upload the tar file using uftp
 
@@ -199,7 +199,6 @@ or, using ``zip``
  Zip will compress data, so might be slower or faster than tar, depending on network bandwith 
  and processing speed.
 
-
 Similarly, ``-`` can be used to write data to standard output.
 As an example, consider this
 
@@ -215,7 +214,7 @@ Or use ``uftp`` to cat a remote file
 
 
 Using multiple FTP connections
-++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When transferring large files (or many files) over a high-performance network, performance
 can be vastly improved by using multiple FTP connections. (NOTE this is different from
@@ -239,7 +238,7 @@ different value using the ``-T`` option. For example, to split files larger than
 
 
 Byte ranges
-+++++++++++
+^^^^^^^^^^^
 
 To copy just part of a file, a byte range can be given with the ``-B``
 option. Counting starts at *zero*. For example to download only the
@@ -263,7 +262,7 @@ The same thing works for remote files!
 
 
 Number of bytes to transfer
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A simplified version of the byte range specification is to just give
 the amount of data to transfer (implying the start of the range is at byte **0**)
@@ -276,7 +275,7 @@ This is handy for quick performance tests:
 
 
 Encryption and compression
-++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The cp command supports the ``-E`` and ``-C`` options, which enable data
 encryption and compression (during transfer) respectively. 
@@ -290,7 +289,7 @@ Compression and encryption can be combined.
 
 
 Resuming a failed transfer
-++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a copy command was terminated prematurely, it can be resumed using
 the ``-R`` option.  If the ``-R`` option is present, the UFTP client will
@@ -311,7 +310,7 @@ did not finish correctly, you can resume it with
 
 
 Performance testing
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 For performance testing, you can use ``/dev/zero`` and ``/dev/null`` as data source ``/`` sink.
 
@@ -331,7 +330,7 @@ transferring 5 gigabytes
 
 
 Computing checksums for remote files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To compute a checksum for a remote file, use the ``checksum`` command:
 
@@ -348,7 +347,7 @@ using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 
 
 Synchronizing a file: the ``sync`` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Currently, ``sync`` only supports single files, i.e. no directories or wildcards!
 The syntax is
@@ -402,7 +401,7 @@ Shares can be deleted by their owner, i.e. the user who created them.
 
 
 Server URL
-++++++++++
+^^^^^^^^^^
 
 If not given via the ``--server`` argument, the URL of the :ref:`authserver` will 
 be taken from the environment variable ``UFTP_SHARE_URL``
@@ -414,7 +413,7 @@ be taken from the environment variable ``UFTP_SHARE_URL``
 
 
 Listing shares
-++++++++++++++
+^^^^^^^^^^^^^^
 
 .. code:: console
 
@@ -425,7 +424,7 @@ users have shared with you.
 
 
 Creating or updating a share
-++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A share consists of a server-side path, (optional) write permissions
 and (optional) target user.
@@ -450,9 +449,9 @@ will share the path */data/public/somefile.pdf*.
 
 You can use the following options to modify the defaults:
 
-  * `--access <user-identifier>` to limit access to the specified user(s)
-  * `--write` for write acces
-  * `--delete` to delete a share
+  * ``--access <user-identifier>`` to limit access to the specified user(s)
+  * ``--write`` for write acces
+  * ``--delete`` to delete a share
 
 For example to share */data/public/somefile.pdf* with the user *CN=User*
 
@@ -465,7 +464,7 @@ For example to share */data/public/somefile.pdf* with the user *CN=User*
 
 
 Deleting shares
-+++++++++++++++
+^^^^^^^^^^^^^^^
 
 To delete you need the path and the target user, which you can get via the 
 ``uftp share --list`` command.
@@ -480,7 +479,7 @@ To delete you need the path and the target user, which you can get via the
 
 
 Anonymous (http) access
-+++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^
 
 For anonymous access via HTTP you need to use the correct URL. If you create (or list) shares,
 the UFTP client will show the required links. You can download the file e.g. using `wget 
@@ -488,7 +487,7 @@ the UFTP client will show the required links. You can download the file e.g. usi
 
 
 Downloading/uploading using the UFTP protocol
-+++++++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To download a file that is shared with you, use the ``get-share`` command and the correct URL
 
@@ -497,7 +496,6 @@ To download a file that is shared with you, use the ``get-share`` command and th
 	$ uftp get-share https://localhost:9000/rest/share/TEST/auth:/data/public/somefile.pdf
 
 Currently this command does not support wildcards.
-
 
 To upload a file to a location (file or directory) that has been
 shared with you, use the ``put-share`` command
@@ -542,6 +540,7 @@ Troubleshooting
 
 	|:point_right:| In the client\'s **conf** directory you\'ll find a ``logging.properties`` 
 	file that allows you to increase the log levels.
+
 
 |:man_shrugging:| **I get "Invalid server response 500" and "Exception.... Authentication 
 failure"**

@@ -251,10 +251,10 @@ The data connections can either be openend dynamically using *FTP connection tra
 you can use a dedicated port range and permanently open those in the firewall.
 
 .. note::
-	Please consult the firewall documentation on how to enable an *FTP* service on your firewall 
+	Please refer to the firewall documentation on how to enable an *FTP* service on your firewall 
 	(or operating system).
 
-With Linux iptables, you may use rules similar to the following:
+With Linux ``iptables``, you may use rules similar to the following:
 
 .. code:: console
 
@@ -310,7 +310,7 @@ for detailed information on how to configure UFTP based data access and data tra
 Testing the UFTPD server
 ------------------------
 
-You should use the ``uftp`` client to run tests, which contains
+You should use the :ref:`uftp client <uftp-client>` to run tests, which contains
 many options such as the number of concurrent FTP connections, and can
 use ``/dev/null`` and ``/dev/zero`` as data source/sink.
 

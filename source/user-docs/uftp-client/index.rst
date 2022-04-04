@@ -52,7 +52,7 @@ data transfers in high-performance environments.
 
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 6
 	:caption: UFTP Client Documentation
 	:hidden:
       

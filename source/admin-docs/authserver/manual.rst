@@ -23,7 +23,8 @@ for communicating with the :ref:`uftpd`.
 
 Users must be able to access the Auth server's https port. It is
 possible to deploy the Auth server behind a `UNICORE Gateway
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__.
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__ 
+(please see :ref:`auth-behind-gateway` below).
 
 
 Installation
@@ -37,8 +38,9 @@ It comes with all required scripts and config files to be run as a standalone ap
 To install, unzip the downloaded package into a directory of your choice.
 
 .. note::
-	You can run the service in an existing UNICORE/X server (8.0.0 or later). Please see 
-	:ref:`auth_uxdeploy` below for details.
+ You can run the service in an existing `UNICORE/X server 
+ <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ 
+ (8.0.0 or later). Please see :ref:`auth-uxdeploy` below for details.
 
 
 Basic server configuration (memory etc)
@@ -106,7 +108,7 @@ There are no further configuration options for these features.
 UFTPD server(s) configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For each UFTPD server that should be accessed, you'll need
+For each :ref:`UFTPD server <uftpd>` that should be accessed, you'll need
 to configure the relevant properties in the Auth service's config file.
 
 The ``authservice.servers`` property is a list of server names. These
@@ -171,7 +173,7 @@ provide better performance.
 Also, this mode of operation will provide fail-over if one of the
 UFTPD servers is down for maintenance or upgrades (or because of some error).
 
-In this case the configuration for the logical server has multiple blocks numbered "1", "2", 
+In this case the configuration for the logical server has multiple blocks numbered *1*, *2*, 
 ...
 
 Each block configures one physical server. For example::
@@ -305,8 +307,8 @@ SSH key validation is configured as follows:
 	container.security.rest.authentication.SSHKEY.class=eu.unicore.uftp.authserver.authenticate.SSHKeyAuthenticator
 
 When used like this, the users get an automatically assigned DN. By
-default, the DN is `CN=<username>, OU=ssh-local-users`. Using the "PAM
-attribute source" (see below), authenticated users can be assigned the
+default, the DN is `CN=<username>, OU=ssh-local-users`. Using the *PAM
+attribute source* (see :ref:`below <attr-sources>`), authenticated users can be assigned the
 *user* role automatically without further configuration.
 
 The user DN can be modified by configuring the DN template like this::
@@ -346,6 +348,7 @@ SSH keys available. For example
 	demouser:ssh-dss <...omitted keydata...>:CN=Demo User, O=UNICORE, C=EU
 	otheruser:ssh-rsa <...omitted keydata...>:CN=Other User, O=UNICORE, C=DE
 
+
 .. _attr-sources:
 
 Attribute sources
@@ -353,7 +356,9 @@ Attribute sources
 
 Please refer to the `UNICORE/X manual 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#attribute-sources>`__ 
-on how to set up and configure attribute sources like map file or XUUDB.
+on how to set up and configure attribute sources like `map file 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#file-attr-source>`__ 
+or `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#xuudb-attr>`__.
 
 To use the automatic SSH key mapping, please use this config snippet
 ::
@@ -427,7 +432,6 @@ The following map file entry gives a full example.
      
    </entry>
 
-
 Here, the *CLUSTER* must match a configured UFTPD server, see also :ref:`auth-uftpd`. 
 Available attributes are
 
@@ -478,13 +482,12 @@ configured UFTPD servers and their status, such as
 	  "uid": "somebody",
 	}}
 
-
 .. note::
 	If you do not get any output, try adding the ``-i`` option to the ``curl`` command, 
 	most probably the username/password is incorrect.
 
 
-.. _auth_uxdeploy:
+.. _auth-uxdeploy:
 
 Installing the Auth server in an existing UNICORE/X server
 ----------------------------------------------------------
@@ -502,6 +505,8 @@ standalone :ref:`UFTP client <uftp-client>`. This requires `UNICORE/X
  * edit ``container.properties`` (or ``uas.config``) and setup UFTPD details and, if necessary, 
    RESTful user authentication as described above
 
+
+.. _auth-behind-gateway:
 
 Running the Auth server behind a UNICORE Gateway
 ------------------------------------------------

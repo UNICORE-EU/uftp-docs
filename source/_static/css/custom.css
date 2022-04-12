@@ -1,0 +1,17 @@
+.tight-table td {
+	white-space: normal !important;
+}
+
+.noborder-table td, th {
+   border: none!important;
+}
+
+.noborder-tight-table td, th {
+   white-space: normal !important;
+   border: none!important;
+}
+
+/* Hide "On GitHub" section from versions menu */
+div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(5) {
+    display: none;
+}

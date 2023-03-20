@@ -562,13 +562,25 @@ FTP proxying was tested with the DeleGate/9.9.13 and frox proxies
 and requires :ref:`UFTPD server <uftpd>` version 2.8.1 or later to work.
 
 If this does not work for you, or if you require support for a
-different type of proxy, please contact us via a |:ticket:| `support ticket 
-<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via |:e-mail:|
+different type of proxy, please contact us via a |ticket-img| `support ticket 
+<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via |email-img|
 `email <unicore-support@lists.sf.net>`_.
 
+.. |email-img| image:: ../../_static/email.png
+	:height: 16px
+	:align: middle
 
-|:hammer_and_wrench:| Troubleshooting 
+.. |ticket-img| image:: ../../_static/ticket.png
+	:height: 24px
+	:align: middle
+
+
+|support-img| Troubleshooting 
 -------------------------------------
+
+.. |support-img| image:: ../../_static/support.png
+	:height: 32px
+	:align: middle
 
 |:man_shrugging:| **How can I get more detailed logging?** 
 

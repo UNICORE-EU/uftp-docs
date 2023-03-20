@@ -28,8 +28,12 @@ into custom applications due to its FTP compliance.
 .. include:: admin-docs/index.rest
 
 
-Getting Support
-===============
+|support-img| Getting Support
+=============================
+
+.. |support-img| image:: _static/support.png
+	:height: 32px
+	:align: middle
 
 For more information, please see the :ref:`support` page.
 
@@ -40,8 +44,12 @@ For more information, please see the :ref:`support` page.
 	support
 
 
-License
-=======
+|bsd-img| License
+=================
+
+.. |bsd-img| image:: _static/bsd-license.png
+	:height: 32px
+	:align: middle
 
 UFTP is available under the :ref:`BSD 2-Clause License <license>`.
 

@@ -1,7 +1,11 @@
 .. _support:
 
-Support
-=======
+|support_img| Support
+=====================
+
+.. |support_img| image:: _static/support.png
+	:height: 32px
+	:align: middle
 
 For additional information and support, please visit:
 

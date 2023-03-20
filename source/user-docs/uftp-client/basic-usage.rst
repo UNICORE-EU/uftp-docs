@@ -1,7 +1,11 @@
 .. _uftp-client-basic-usage:
 
-Basic Usage
-===========
+|usage-img| Basic Usage
+=======================
+
+.. |usage-img| image:: ../../_static/usage.png
+	:height: 22px
+	:align: middle
 
 In this manual, we use the following format to indicate commands
 that you can type on the command line:

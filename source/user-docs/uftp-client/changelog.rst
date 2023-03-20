@@ -1,11 +1,15 @@
 .. _uftp-client-changelog:
 
-Changelog
-=========
+|logbook-img| Changelog
+=======================
 
-Change log for the UFTP standalone client
+.. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
+
+Change log for the UFTP standalone client.
 The issue tracker is at
-https://sourceforge.net/p/unicore/uftp-issues/
+https://sourceforge.net/p/unicore/uftp-issues/.
 
 UFTP Client 1.4.4 (released Feb 03, 2022)
 -----------------------------------------

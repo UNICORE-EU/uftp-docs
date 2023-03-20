@@ -1,7 +1,11 @@
 .. _uftp-client-manual:
 
-User Manual
-===========
+|user-guide-img| User Manual
+============================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The UFTP standalone Client is a Java-based commandline client for UFTP. It allows to list 
 remote directories, copy files (with many options such as wildcards or multiple threads), 
@@ -9,9 +13,12 @@ and more. It can be used with either a :ref:`UFTP Authentication Server <authser
 a UNICORE server to authenticate and initiate UFTP transfers. 
 
 
-Installation
-------------
+|settings-img| Installation
+---------------------------
 
+.. |settings-img| image:: ../../_static/settings.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -42,8 +49,12 @@ manager of your Linux distribution.
 
 .. _auth:
 
-Authentication
---------------
+|auth-img| Authentication
+-------------------------
+
+.. |auth-img| image:: ../../_static/authentication.png
+	:height: 32px
+	:align: middle
 
 By default, the UFTP client will use the current username (``$USER``) with SSH key 
 authentication to authenticate to the :ref:`authserver`.
@@ -102,8 +113,12 @@ The credentials can be given in multiple ways.
     $ uftp ls -A "Bearer <oidc_token>" ...
 
 
-Usage
------
+|usage-img| Usage
+-----------------
+
+.. |usage-img| image:: ../../_static/usage.png
+	:height: 32px
+	:align: middle
 
 In the following usage examples, the authentication service is located
 at *localhost:9000/rest/auth/* and the user name is *username*.
@@ -547,13 +562,13 @@ FTP proxying was tested with the DeleGate/9.9.13 and frox proxies
 and requires :ref:`UFTPD server <uftpd>` version 2.8.1 or later to work.
 
 If this does not work for you, or if you require support for a
-different type of proxy, please contact us via a `support ticket 
-<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via
+different type of proxy, please contact us via a |:ticket:| `support ticket 
+<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via |:e-mail:|
 `email <unicore-support@lists.sf.net>`_.
 
 
-Troubleshooting
----------------
+|:hammer_and_wrench:| Troubleshooting 
+-------------------------------------
 
 |:man_shrugging:| **How can I get more detailed logging?** 
 

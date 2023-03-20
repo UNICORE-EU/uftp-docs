@@ -1,14 +1,23 @@
 .. _authserver-manual:
 
-User Manual
-===========
+|user-guide-img| User Manual
+============================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 This manual focuses on the configuration items specific to the Auth server. If you need more 
 in-depth information on general configuration issues, please refer to the `UNICORE/X manual 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html>`__.
 
-Installation
-------------
+
+|settings-img| Installation
+---------------------------
+
+.. |settings-img| image:: ../../_static/settings.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -70,8 +79,12 @@ Starting and stopping the service
 Use the shell scripts in the ``bin`` folder to start or stop the service.
 
 
-Configuration
--------------
+|configuration-img| Configuration
+---------------------------------
+
+.. |configuration-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
 
 The following items need to be configured in the Auth 
 server's ``container.properties`` file:
@@ -449,8 +462,12 @@ Available attributes are
  are explicitely excluded.
 
 
-Checking the installation
--------------------------
+|testing-img| Checking the installation
+---------------------------------------
+
+.. |testing-img| image:: ../../_static/testing.png
+	:height: 32px
+	:align: middle
 
 You can check that the server works using a simple HTTP client such as ``curl`` to access the 
 Auth server's base URL, provided you have configured username/password authentication.
@@ -489,8 +506,12 @@ configured UFTPD servers and their status, such as
 
 .. _auth-uxdeploy:
 
-Installing the Auth server in an existing UNICORE/X server
-----------------------------------------------------------
+|integration-img| Installing the Auth server in an existing UNICORE/X server
+----------------------------------------------------------------------------
+
+.. |integration-img| image:: ../../_static/integration.png
+	:height: 32px
+	:align: middle
 
 This option is interesting if you are already running a UNICORE
 installation and want to allow your users the option of using the

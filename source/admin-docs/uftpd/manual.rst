@@ -1,8 +1,12 @@
 .. _uftpd-manual:
 
 
-User Manual
-===========
+|user-guide-img| User Manual
+============================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 This is the user manual providing information on running and using the UNICORE UFTP server 
 version 3.0 and higher, written in Python.
@@ -15,8 +19,12 @@ version 3.0 and higher, written in Python.
    Otherwise, users logged on to the UFTPD machine can possibly read and write other user's files.
 
 
-Installation and operation
---------------------------
+|settings-img| Installation and operation
+-----------------------------------------
+
+.. |settings-img| image:: ../../_static/settings.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -302,16 +310,24 @@ By default, UFTPD writes to syslog, and you can use ``journalctl`` to read log m
 To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftpd.conf`` file.
 
 
-UNICORE integration
--------------------
+|integration-img| UNICORE integration
+-------------------------------------
+
+.. |integration-img| image:: ../../_static/integration.png
+	:height: 32px
+	:align: middle
 
 Please refer to the `UNICORE/X manual 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#uftp-setup>`__ 
 for detailed information on how to configure UFTP based data access and data transfer.
 
 
-Testing the UFTPD server
-------------------------
+|testing-img| Testing the UFTPD server
+--------------------------------------
+
+.. |testing-img| image:: ../../_static/testing.png
+	:height: 32px
+	:align: middle
 
 You should use the :ref:`uftp client <uftp-client>` to run tests, which contains
 many options such as the number of concurrent FTP connections, and can

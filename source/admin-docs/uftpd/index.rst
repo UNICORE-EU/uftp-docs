@@ -41,13 +41,19 @@ server).
 
 
 
-:doc:`manual`
+|user-guide-img| :doc:`manual`
   Installation and Operating the UFTPD server.
 
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 22px
+	:align: middle
 
-:doc:`changelog`
+|logbook-img| :doc:`changelog`
     The Auth server changelog.
-    
+
+  .. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
 
 .. toctree::
 	:maxdepth: 5

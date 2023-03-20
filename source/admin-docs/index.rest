@@ -1,8 +1,12 @@
 .. _admin-docs:
 
 
-Admin Documentation
-===================
+|admin-img| Admin Documentation
+===============================
+
+.. |admin-img| image:: _static/admin.png
+	:height: 32px
+	:align: middle
 
 * :ref:`uftpd` - the UFTP file server 
 * :ref:`authserver` - a set of services providing authentication for UFTP as well as data 

@@ -38,17 +38,33 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 
 
 
-:doc:`manual`
+|user-guide-img| :doc:`manual`
   Installation and Operating the Auth server.
 
-:doc:`upgrade`
+  .. |user-guide-img| image:: ../../_static/user-guide.png
+  	:height: 22px
+  	:align: middle
+
+|update-img| :doc:`upgrade`
   Upgrade the Auth server to this version.
 
-:doc:`building`
+.. |update-img| image:: ../../_static/update.png
+	:height: 22px
+	:align: middle
+
+|app-package-img| :doc:`building`
   Creating the Auth server distribution packages.
 
-:doc:`changelog`
+  .. |app-package-img| image:: ../../_static/app-package.png
+  	:height: 22px
+  	:align: middle
+
+|logbook-img| :doc:`changelog`
     The Auth server changelog.
+
+  .. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
 
 
 .. toctree::

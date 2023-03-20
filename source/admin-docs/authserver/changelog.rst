@@ -1,11 +1,15 @@
 .. _auth-server-changelog:
 
 
-Changelog
-=========
+|logbook-img| Changelog
+=======================
+
+.. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
 
 The UFTP issue tracker is at
-https://sourceforge.net/p/unicore/uftp-issues
+https://sourceforge.net/p/unicore/uftp-issues.
 
 .. note::
  See :ref:`auth-server-update` for how to update.

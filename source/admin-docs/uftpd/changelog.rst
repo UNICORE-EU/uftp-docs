@@ -1,10 +1,14 @@
 .. _uftpd-changelog:
 
-Changelog
-=========
+|logbook-img| Changelog
+=======================
+
+.. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
 
 The UFTP issue tracker is at
-https://sourceforge.net/p/unicore/uftp-issues
+https://sourceforge.net/p/unicore/uftp-issues.
 
 UFTPD 3.1.2 (released Dec 16, 2021)
 -----------------------------------

@@ -52,24 +52,33 @@ data transfers in high-performance environments.
    * Username/password
 
 
-.. topic:: User Documentation
+|usage-img| :doc:`basic-usage`
+    Basic usage of the UFTP Client.
 
-  :doc:`basic-usage`
-      Basic usage of the UNICORE Client.
+.. |usage-img| image:: ../../_static/usage.png
+	:height: 22px
+	:align: middle
 
-  :doc:`manual`
-      User Manual with detailed instructions and examples for using the UNICORE Client.
+|user-guide-img| :doc:`manual`
+    User Manual with detailed instructions and examples for using the UFTP Client.
 
-  :doc:`changelog`
-    The UNICORE Client changelog.
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 22px
+	:align: middle
 
+|app-package-img| :doc:`building`
+    Building the UFTP Client distribution packages.
 
+.. |app-package-img| image:: ../../_static/app-package.png
+	:height: 22px
+	:align: middle
 
-.. topic:: Administrator Documentation
+|logbook-img| :doc:`changelog`
+  The UFTP Client changelog.
 
-  :doc:`building`
-      Building the UNICORE Client distribution packages.
-
+.. |logbook-img| image:: ../../_static/logbook.png
+  	:height: 22px
+  	:align: middle
 
 
 .. toctree::

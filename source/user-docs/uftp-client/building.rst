@@ -1,7 +1,11 @@
 .. _uftp-client-building:
 
-Building 
-========
+|app-package-img| Building 
+==========================
+
+.. |app-package-img| image:: ../../_static/app-package.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 -------------

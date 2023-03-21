@@ -43,7 +43,7 @@ The UFTPD server is *controlled* by an :ref:`authserver` or `UNICORE/X
 command port, and receives/sends data directly from/to a client
 machine (which can be an actual user client machine or another
 server). The client, e.g. :ref:`uftp-client`, connnects to the *listen* port, which has to
-be accessible from external machines. The client opens additional data commection(s) via the 
+be accessible from external machines. The client opens additional data connection(s) via the
 passive FTP protocol.
 
 How does UFTP work

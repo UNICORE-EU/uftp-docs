@@ -43,7 +43,7 @@ The UFTPD server is *controlled* by an :ref:`authserver` or `UNICORE/X
 command port, and receives/sends data directly from/to a client
 machine (which can be an actual user client machine or another
 server). The client, e.g. :ref:`uftp-client`, connnects to the *listen* port, which has to
-be accessible from external machines. The client opens additional data commection(s) via the 
+be accessible from external machines. The client opens additional data connection(s) via the
 passive FTP protocol.
 
 How does UFTP work
@@ -52,7 +52,7 @@ How does UFTP work
 The sequence for a UFTP file transfer is as follows:
   
 * the client (which can be an end-user client, or a service such as a `UNICORE/X server  
-  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ sends 
+  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__) sends
   an authentication request to the :ref:`Auth server <authserver>` (or another UNICORE/X server)
    
 * the Auth server sends a request to the command port of UFTPD. This request notifies the UFTPD 

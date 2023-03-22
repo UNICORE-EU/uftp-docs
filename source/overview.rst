@@ -52,7 +52,7 @@ How does UFTP work
 The sequence for a UFTP file transfer is as follows:
   
 * the client (which can be an end-user client, or a service such as a `UNICORE/X server  
-  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ sends 
+  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__) sends
   an authentication request to the :ref:`Auth server <authserver>` (or another UNICORE/X server)
    
 * the Auth server sends a request to the command port of UFTPD. This request notifies the UFTPD 

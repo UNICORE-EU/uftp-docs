@@ -497,6 +497,12 @@ For example to share */data/public/somefile.pdf* with the user *CN=User*
 		/data/public/somefile.pdf
 
 
+Shares can have a limited lifetime via the ``--lifetime <seconds>`` option.
+
+Shares can also be limited to a single access via the ``--one-time`` option.
+
+
+
 Deleting shares
 ^^^^^^^^^^^^^^^
 
@@ -512,31 +518,55 @@ To delete you need the path and the target user, which you can get via the
 		/data/public/somefile.pdf
 
 
-Anonymous (http) access
-^^^^^^^^^^^^^^^^^^^^^^^
+Anonymous (https) access
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 For anonymous access via HTTP you need to use the correct URL. If you create (or list) shares,
 the UFTP client will show the required links. You can download the file e.g. using `wget 
 <https://www.gnu.org/software/wget/>`_.
 
+In case the share is a directory, wget will return a directory listing.
 
-Downloading/uploading using the UFTP protocol
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To download a file that is shared with you, use the ``get-share`` command and the correct URL
+Downloading shared data using the UFTP protocol
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It's possible to use the UFTP protocol to access shared data.
+
+This can be also done anonymously by specifying "-u anonymous" un the uftp commandline.
+
+The correct URLs for accessing shares via UFTP can see in the 'uftp' field
+of the output of the ``--list`` command.
+
+To download a single shared file, use the ``get-share`` command 
 
 .. code:: console
 
-	$ uftp get-share https://localhost:9000/rest/share/TEST/auth:/data/public/somefile.pdf
+	$ uftp get-share https://localhost:9000/rest/access/TEST:/data/public/somefile.pdf
 
-Currently this command does not support wildcards.
+
+
+In case the share is a directory, the standard ``uftp ls`` and ``uftp cp`` commands
+will work, too.
+
+.. code:: console
+
+	$ uftp ls https://localhost:9000/rest/access/TEST:/data/public/
+
+	$ uftp cp https://localhost:9000/rest/access/TEST:/data/public/somefile.pdf ./downloaded.pdf
+
+
+
+Uploading to a share using the UFTP protocol
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To upload a file to a location (file or directory) that has been
 shared with you, use the ``put-share`` command
 
 .. code:: console
 
-	$ uftp put-share data/*.pdf https://localhost:9000/rest/share/TEST/auth:/data/public/
+	$ uftp put-share data/*.pdf https://localhost:9000/rest/access/TEST:/data/public/
+
 
 
 Using a proxy server (EXPERIMENTAL)

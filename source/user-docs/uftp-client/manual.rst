@@ -533,7 +533,7 @@ Downloading shared data using the UFTP protocol
 
 It's possible to use the UFTP protocol to access shared data.
 
-This can be also done anonymously by specifying "-u anonymous" un the uftp commandline.
+This can be also done anonymously by specifying "-u anonymous" on the uftp commandline.
 
 The correct URLs for accessing shares via UFTP can see in the 'uftp' field
 of the output of the ``--list`` command.

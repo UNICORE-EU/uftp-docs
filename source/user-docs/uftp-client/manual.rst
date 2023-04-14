@@ -372,12 +372,12 @@ using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 	$ uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
 
 
-.. _synch-command:
+.. _sync-command:
 
 Synchronizing a file: the ``sync`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently, ``sync`` only supports single files, i.e. no directories or wildcards!
+Note that ``sync`` only supports single files, i.e. no directories or wildcards!
 The syntax is
 
 .. code:: console
@@ -568,6 +568,70 @@ shared with you, use the ``put-share`` command
 	$ uftp put-share data/*.pdf https://localhost:9000/rest/access/TEST:/data/public/
 
 
+.. _rcp-command:
+
+Server-to-server copy: the ``rcp`` command (EXPERIMENTAL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+REQUIRES UFTPD 3.2.0 or later (at least on one side)
+
+The ``rcp`` command is used to instruct a remote UFTPD server
+to copy data from another UFTPD server. The client authenticates to both sides.
+
+Basic usage
+^^^^^^^^^^^
+
+The basic syntax is similar to the normal ``uftp cp`` command:
+
+.. code:: console
+
+	$ uftp rcp <options> <source1> ... <sourceN> <target>
+
+If the same means of authentication can be used for both source and target sides,
+both source and target are normal UFTP URLs. If source and target require different
+authentication, you need to use the ``uftp auth`` command first to authenticate to
+the one side (usually the source)
+
+.. code:: console
+
+	$ uftp auth <options> <source1>
+
+and give the resulting host:port and one-time password to the rcp command via
+commandline options:
+
+.. code:: console
+
+	$ uftp rcp --server <host:port> --one-time-password <pwd> <source1> <target>
+
+Other supported features
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``rcp`` command supports byte ranges via the ``-B`` option.
+
+
+Reversing the copy direction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the target side is instructed to download data from the source side.
+This can be reversed, if necessary, for example if only the source supports
+server-to-server copy. To do this, an environment variable can be set:
+
+.. code:: console
+
+	$ export UFTP_RCP_USE_SEND_FILE=true
+	$ uftp rcp ...
+
+This will result in the source side uploading the file to the target side, and
+the ``--server`` and ``--one-time-password`` options will refer to the target side.
+
+
+Known issues
+^^^^^^^^^^^^
+
+There is no way to monitor or abort a running server-to-server transfer
+from the client.
+
+Wildcards are not supported.
 
 Using a proxy server (EXPERIMENTAL)
 -------------------------------------

@@ -4,13 +4,13 @@
 UFTP client
 ***********
 
-The UFTP commandline client enables to 
+The UFTP commandline client enables users to 
 
 * `list remote directories <manual.html#ls-command>`__ (``ls``)
  
-* `upload\/download files <manual.html#cp-command>`__ (``cp``)
+* `upload\/download files <manual.html#cp-command>`_ (``cp``)
 
-* `compute checksums for remote files <manual.html#checksum-command>`__ (``checksum``)
+* `compute checksums for remote files <manual.html#checksum-command>`_ (``checksum``)
 
 * `sync remote\/local files <manual.html#sync-command>`_ (``sync``)
 
@@ -18,10 +18,13 @@ The UFTP commandline client enables to
 
 * delete remote files or directories (``rm``)
 
-* `manage shares and access shared data <manual.html#data-sharing>`__ (``share``, ``get-share``, 
+* `manage shares and access shared data <manual.html#data-sharing>`_ (``share``, ``get-share``, 
   ``put-share``)
 
-* `perform authentication <manual.html#auth>`__ to help integrate UFTP with other tools 
+* `perform authentication <manual.html#auth>`_ to help integrate UFTP with other tools 
+
+* `launch server-to-server copy operations <manual.html#rcp-command>`_ (``rcp``)
+
 
 The UFTP client will connect to an authentication server (either a `UNICORE/X server 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex>`_
@@ -73,13 +76,6 @@ data transfers in high-performance environments.
 	:height: 22px
 	:align: middle
 
-|logbook-img| :doc:`changelog`
-  The UFTP Client changelog.
-
-.. |logbook-img| image:: ../../_static/logbook.png
-  	:height: 22px
-  	:align: middle
-
 
 .. toctree::
 	:maxdepth: 6
@@ -89,11 +85,4 @@ data transfers in high-performance environments.
 	basic-usage
 	manual
 	building
-	
-	
-.. toctree::
-	:maxdepth: 1
-	:hidden:
-
-	changelog   
 

@@ -12,7 +12,7 @@ share their data even with users who do not have Unix-level access to the data.
 UFTP Features
 ~~~~~~~~~~~~~
 
-- Based on FTP protocol with separate authentication via RESTful APIs 
+- Based on the FTP protocol with separate authentication via RESTful APIs 
 
 - Powerful :ref:`UFTP standalone client <uftp-client>` available
 
@@ -21,7 +21,7 @@ UFTP Features
 
 - Flexible integration options (authentication, user mapping), firewall-friendly
 
-- System requirements: client: Java 8+, server: Python3
+- System requirements: client: Java 11+, server: Python3
 
 
 UFTP Architecture
@@ -34,7 +34,7 @@ UFTP Architecture
 The UFTP file server, called :ref:`UFTPD <uftpd>`, listens on two ports (which may be on two 
 different network interfaces):
 
-- the command port receives control commands
+- the command port receives control commands from the authentication server(s)
 
 - the listen port accepts data connections from clients.
 

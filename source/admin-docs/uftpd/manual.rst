@@ -29,7 +29,7 @@ version 3.0 and higher, written in Python.
 Prerequisites
 ~~~~~~~~~~~~~
 
-- Python 3.4.0 or later
+- Python 3.6.0 or later
 
 - the server's *listen* port needs to be accessible through your firewalls, declaring it 
   an *FTP* port (FTP connection tracking). Alternatively a fixed range of open ports can be 
@@ -44,9 +44,9 @@ Prerequisites
 
 .. attention::
 
- A functional UFTP installation requires in addition either a full `UNICORE/X 
- server <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ or the more 
- lightweight :ref:`authserver`.
+ A functional UFTP installation requires also the :ref:`authserver`
+ or a full `UNICORE/X server
+ <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`_ .
 
 Installation
 ~~~~~~~~~~~~~

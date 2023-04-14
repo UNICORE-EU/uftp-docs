@@ -28,6 +28,18 @@ following, this location will be denoted as *$NEW*:
 
    $ rm -rf LIB/*
    $ cp $NEW/lib/*.jar LIB
+   
+* Check for other changes
+
+While rarely changed, sometimes the XACML policy files are updated for new releases.
+These can be found in *$NEW/conf/xacml2Policies/*
+If necessary, copy these to your installation:
+
+  .. code:: console
+
+   $ rm -rf conf/xacml2Policies/*
+   $ cp $NEW/conf/xacml2Policies/* conf/xacml2Policies/
+
 
 * Start the server.
 

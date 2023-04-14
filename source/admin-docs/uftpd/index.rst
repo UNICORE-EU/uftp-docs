@@ -23,14 +23,14 @@ server).
 
 .. topic:: Features
 
- * FTP-compliant data server running on a POSIX file system
+ * FTP-compliant data server running on a POSIX file system
 
  * Runs privileged on a server with access to the file systems to be served, 
    fully drops privileges to current user for all operations
 
  * Requires
    
-   * Python 3.4 or later
+   * Python 3.6 or later
    * Server certificate
 
  * Firewall requirements
@@ -48,24 +48,11 @@ server).
 	:height: 22px
 	:align: middle
 
-|logbook-img| :doc:`changelog`
-    The Auth server changelog.
-
-  .. |logbook-img| image:: ../../_static/logbook.png
-  	:height: 22px
-  	:align: middle
-
 .. toctree::
 	:maxdepth: 5
 	:caption: UFTPD Server Documentation
 	:hidden:
 	
 	manual.rst
-
-.. toctree::
-	:maxdepth: 1
-	:hidden:
-	
-	changelog
 
 

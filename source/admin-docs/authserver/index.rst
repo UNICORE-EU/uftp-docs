@@ -52,21 +52,6 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 	:height: 22px
 	:align: middle
 
-|app-package-img| :doc:`building`
-  Creating the Auth server distribution packages.
-
-  .. |app-package-img| image:: ../../_static/app-package.png
-  	:height: 22px
-  	:align: middle
-
-|logbook-img| :doc:`changelog`
-    The Auth server changelog.
-
-  .. |logbook-img| image:: ../../_static/logbook.png
-  	:height: 22px
-  	:align: middle
-
-
 .. toctree::
 	:maxdepth: 2
 	:caption: Auth Server Documentation
@@ -74,14 +59,5 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 
 	manual
    	upgrade
-	building
-	
-
-.. toctree::
-	:maxdepth: 1
-	:hidden:
-
-	changelog
-	
 
 

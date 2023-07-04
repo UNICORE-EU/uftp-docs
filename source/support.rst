@@ -19,12 +19,12 @@ For additional information and support, please visit:
 
 :|source-code-img| Source code: https://github.com/UNICORE-EU/uftp
 
+
 .. |unicore-img| image:: _static/logo-unicore.png
-	:height: 16px
-	:align: middle
+	:height: 24px
 	
 .. |email-img| image:: _static/email.png
-	:height: 16px
+	:height: 24px
 	:align: middle
 
 .. |ticket-img| image:: _static/ticket.png
@@ -32,5 +32,5 @@ For additional information and support, please visit:
 	:align: middle
 
 .. |source-code-img| image:: _static/source-code.png
-	:height: 16px
+	:height: 24px
 	:align: middle

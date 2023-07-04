@@ -1,7 +1,11 @@
 .. _uftp-overview:
 
-UFTP Overview
-*************
+|overview-img| UFTP Overview
+****************************
+
+.. |overview-img| image:: _static/overview.png
+	:height: 32px
+	:align: middle
 
 UFTP (**U**\ NICORE **FTP**) is a file transfer tool similar to Unix FTP. Its main features 
 include high-performance file transfers from client to server (and vice versa), list directories,  
@@ -90,7 +94,7 @@ UFTP Applications and Use Cases
 
   * Authenticated or anonymous access
 
-* UNICORE integration
+* `UNICORE integration <admin-docs/uftpd/manual.html#integration-img-unicore-integration>`__
 
   * Server-server file transfer and data staging for HPC applications and workflows
   * Integrated into UNICORE clients for fast file upload and download

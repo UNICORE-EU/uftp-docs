@@ -15,7 +15,7 @@ in-depth information on general configuration issues, please refer to the `UNICO
 |settings-img| Installation
 ---------------------------
 
-.. |settings-img| image:: ../../_static/settings.png
+.. |settings-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
 
@@ -368,7 +368,7 @@ Attribute sources
 ~~~~~~~~~~~~~~~~~
 
 Please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#attr-services-img-attribute-sources>`__ 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#use-aip>`__ 
 on how to set up and configure attribute sources like `map file 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#file-attr-source>`__ 
 or `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#xuudb-attr>`__.
@@ -529,8 +529,12 @@ standalone :ref:`UFTP client <uftp-client>`. This requires `UNICORE/X
 
 .. _auth-behind-gateway:
 
-Running the Auth server behind a UNICORE Gateway
-------------------------------------------------
+|gateway-img| Running the Auth server behind a UNICORE Gateway
+--------------------------------------------------------------
+
+.. |gateway-img| image:: ../../_static/gateway.png
+	:height: 32px
+	:align: middle
 
 If you want to place the Auth server behind a `UNICORE gateway 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__

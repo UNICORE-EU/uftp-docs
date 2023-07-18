@@ -13,10 +13,10 @@ and more. It can be used with either a :ref:`UFTP Authentication Server <authser
 a UNICORE server to authenticate and initiate UFTP transfers. 
 
 
-|settings-img| Installation
----------------------------
+|installer-img| Installation
+----------------------------
 
-.. |settings-img| image:: ../../_static/settings.png
+.. |installer-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
 
@@ -633,8 +633,12 @@ from the client.
 
 Wildcards are not supported.
 
-Using a proxy server (EXPERIMENTAL)
--------------------------------------
+|gateway-img| Using a proxy server (EXPERIMENTAL)
+-------------------------------------------------
+
+.. |gateway-img| image:: ../../_static/gateway.png
+	:height: 32px
+	:align: middle
 
 The uftp client has support for some types of FTP and HTTPs proxies. 
 

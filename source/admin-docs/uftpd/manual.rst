@@ -22,7 +22,7 @@ version 3.0 and higher, written in Python.
 |settings-img| Installation and operation
 -----------------------------------------
 
-.. |settings-img| image:: ../../_static/settings.png
+.. |settings-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
 
@@ -318,7 +318,7 @@ To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftp
 	:align: middle
 
 Please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#uftp-img-uftp-setup>`__ 
+<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#ux-uftp>`__ 
 for detailed information on how to configure UFTP based data access and data transfer.
 
 

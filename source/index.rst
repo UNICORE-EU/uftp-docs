@@ -12,8 +12,11 @@ UFTP-enabled UNICORE sites.
 UFTP is best used using the client-side application (:ref:`uftp-client`), but is easily integrated 
 into custom applications due to its FTP compliance.
 
-  
-* :ref:`uftp-overview` gives an overview of the UFTP architecture and features.
+|overview-img| :ref:`uftp-overview` gives an overview of the UFTP architecture and features
+
+.. |overview-img| image:: _static/overview.png
+	:height: 32px
+	:align: middle
 
 .. toctree::
 	:maxdepth: 5
@@ -59,10 +62,4 @@ UFTP is available under the :ref:`BSD 2-Clause License <license>`.
 	
 	license
 
-
-Indices and tables
-******************
-
-* :ref:`genindex`
-* :ref:`search`
 

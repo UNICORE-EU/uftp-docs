@@ -23,14 +23,14 @@ a UNICORE server to authenticate and initiate UFTP transfers.
 Prerequisites
 ~~~~~~~~~~~~~
 
-* Java 8 or later (OpenJDK preferred)
+* Java 11 or later (OpenJDK preferred)
 
-* Access to a UFTP authentication service (either a `UNICORE/X
-  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ server or the 
-  :ref:`authserver`) and to the corresponding :ref:`uftpd`. 
+* Access to a UFTP authentication service (either an :ref:`authserver` or a
+  `UNICORE/X <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_
+  server) and to the corresponding :ref:`uftpd`.
 
-To use the client, you need to know the address of the UFTP authentication service. You need also 
-to have the valid credentials for the UFTP authentication.
+To use the client, you need to know the address of the UFTP authentication service.
+You also need to have the valid credentials for the UFTP authentication.
 
 
 Installation and Configuration
@@ -104,7 +104,7 @@ The credentials can be given in multiple ways.
 
     $ uftp ls -O hbp ...
 
-* Last not least you can directly specify a value for the HTTP *Authorization* header with
+* You can directly specify a value for the HTTP *Authorization* header with
   the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
   ``-A "Bearer <oidc_token>``. In this case no username is required.
 
@@ -112,6 +112,7 @@ The credentials can be given in multiple ways.
   
     $ uftp ls -A "Bearer <oidc_token>" ...
 
+* If you explicitely DON'T want to send any authentication info, use ``-u anonymous``.
 
 |usage-img| Usage
 -----------------
@@ -570,8 +571,8 @@ shared with you, use the ``put-share`` command
 
 .. _rcp-command:
 
-Server-to-server copy: the ``rcp`` command (EXPERIMENTAL)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Server-to-server copy
+~~~~~~~~~~~~~~~~~~~~~
 
 REQUIRES UFTPD 3.2.0 or later (at least on one side)
 
@@ -594,14 +595,14 @@ the one side (usually the source)
 
 .. code:: console
 
-	$ uftp auth <options> <source1>
+	$ uftp auth <options> <source_URL>
 
 and give the resulting host:port and one-time password to the rcp command via
 commandline options:
 
 .. code:: console
 
-	$ uftp rcp --server <host:port> --one-time-password <pwd> <source1> <target>
+	$ uftp rcp --server <host:port> --one-time-password <pwd> <source_file> <target>
 
 Other supported features
 ^^^^^^^^^^^^^^^^^^^^^^^^

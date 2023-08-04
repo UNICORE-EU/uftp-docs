@@ -251,13 +251,16 @@ administrator.
 
 	$ uftp cp -t 2 https://localhost:9000/rest/auth/TEST:/home/demo/* .
 
-Files larger than a certain size will be transferred concurrently
-using more than one stream. This threshold size is 512MB, but you can set it to a
-different value using the ``-T`` option. For example, to split files larger than 1MB
+To split up files larger than a certain size and transfer them in chunks,
+you need to specify a "split size" using the ``-T`` option. For example,
+to split up files larger than 1MB
 
 .. code:: console
 
 	$ uftp cp -t 2 -T 1M https://localhost:9000/rest/auth/TEST:/home/demo/* .
+
+.. important:: NOTE: uftp client versions before 1.7.0 have an automatic split size set to 512MB,
+  with 1.7.0 and later you MUST use "-T ..." to enable file splitting.
 
 
 Byte ranges

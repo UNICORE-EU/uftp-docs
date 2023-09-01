@@ -22,7 +22,8 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 
 .. topic:: Features
 
- * RESTful service
+ * RESTful service
+
  * Authentication
 
    * SSH keys
@@ -34,8 +35,9 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
  * Attribute mapping
 
    * UNIX uid, gid
-   * QoS e.g. rate limit
+   * QoS e.g. rate limit
 
+ * Reservations
 
 
 |user-guide-img| :doc:`manual`

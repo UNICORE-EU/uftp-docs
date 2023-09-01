@@ -24,8 +24,8 @@ Prerequisites
 
 The Auth server should be run as a non-root user (e.g. *unicore*). It requires
 
- * Java 1.8
- * an installed :ref:`uftpd` (2.6.0 or later)
+ * Java 11
+ * an installed :ref:`uftpd`
 
 The Auth server needs an X.509 certificate and truststore
 for communicating with the :ref:`uftpd`.
@@ -128,7 +128,9 @@ The ``authservice.servers`` property is a list of server names. These
 should be meaningful, since users will need to use them, too.  The
 other properties are used to configure the UFTPD command address and
 the UFTPD listen address. Please refer to the `UFTPD manual 
-<../uftpd/manual.html#config-parameters>`__ for details.
+<../uftpd/manual.html#config-parameters>`__ for more information about these ports.
+
+ :description: human-readable description of the UFTPD server
 
  :host: the IP address of the UFTPD *listen* socket
 
@@ -141,7 +143,9 @@ the UFTPD listen address. Please refer to the `UFTPD manual
  :ssl: whether SSL is used to connect to the command socket. This MUST be set to its default 
   of ``true`` in a production environment!
 
- :description: human-readable description of the UFTPD server
+ :reservations.enable: whether to enable the :ref:`reservations <auth-reservations>` feature 
+
+ :reservations.file: JSON file containing reservations definitions
 
 .. note::
 	The listen socket address will be communicated to clients, who will
@@ -155,21 +159,20 @@ For example, we want to configure two UFTPD servers named *CLUSTER* and *TEST*::
 	authservice.servers=CLUSTER TEST
 	
 	# configuration for 'CLUSTER' server
+	authservice.server.CLUSTER.description=Production UFTPD server
 	authservice.server.CLUSTER.host=cluster.your.org
 	authservice.server.CLUSTER.port=64433
 	authservice.server.CLUSTER.commandHost=cluster-	internal.your.org
 	authservice.server.CLUSTER.commandPort=64434
 	authservice.server.CLUSTER.ssl=true
-	authservice.server.CLUSTER.description=Production UFTPD
-	server on CLUSTER
 	  
 	# configuration for 'TEST' server
+	authservice.server.TEST.description=Test UFTPD server
 	authservice.server.TEST.host=localhost
 	authservice.server.TEST.port=64433
 	authservice.server.TEST.commandHost=localhost
 	authservice.server.TEST.commandPort=64434
 	authservice.server.TEST.ssl=false
-	authservice.server.TEST.description=Test UFTPD server
 
 To allow the Auth server access to the command port of UFTPD, you
 need to add an entry to UFTPD's ACL file. This is explained in the `UFTPD manual 
@@ -200,14 +203,14 @@ Each block configures one physical server. For example::
 	
 	authservice.server.CLUSTER.1.host=cluster1.your.org
 	authservice.server.CLUSTER.1.port=64433
-	authservice.server.CLUSTER.1.commandHost=cluster-	internal-1.your.org
+	authservice.server.CLUSTER.1.commandHost=cluster-internal-1.your.org
 	authservice.server.CLUSTER.1.commandPort=64434
 	authservice.server.CLUSTER.1.ssl=true
 	
 	
 	authservice.server.CLUSTER.2.host=cluster2.your.org
 	authservice.server.CLUSTER.2.port=64433
-	authservice.server.CLUSTER.2.commandHost=cluster-	internal-2.your.org
+	authservice.server.CLUSTER.2.commandHost=cluster-internal-2.your.org
 	authservice.server.CLUSTER.2.commandPort=64434
 	authservice.server.CLUSTER.2.ssl=true
 
@@ -461,6 +464,61 @@ Available attributes are
 :excludes: file path patterns (separated by ``:``) that are forbidden. If not given, no files 
  are explicitely excluded.
 
+Reservations
+~~~~~~~~~~~~
+.. _auth-reservations:
+
+It is possible (v2.8.2 and later) to define reservations, i.e. time slots where 
+certain users can get more of the available bandwidth for UFTP transfers.
+During such a reservation, other users are rate-limited. The Auth server reads
+reservations from a local JSON file, which can be edited at runtime by an admin. 
+
+To enable, define the following two settings in the 
+:ref:`UFTP configuration section <auth-uftpd>`::
+
+
+	# configured UFTPD server(s)
+	authservice.servers=CLUSTER
+	
+	# enable reservations feature for 'CLUSTER' server
+	authservice.server.CLUSTER.reservations.enable=true
+	authservice.server.CLUSTER.reservations.file=/path/to/reservations.json
+
+The ``reservations.json`` file can be added / edited at runtime, and updates
+will be read from it. 
+
+The format of the JSON file is the following::
+
+    {
+      "reservations": [
+
+         {
+         	"name": "reservation1",
+         	"from": "2023-08-31 16:00",
+         	"to":   "2023-08-31 18:00",
+         	"uids": [ "user1", "user2" ],
+         	"rateLimit": "10m" 
+         },
+
+         {
+         	"name": "reservation2",
+         	"from": "2023-09-22 08:00",
+         	"to":   "2023-09-22 09:00",
+         	"uids": [ "user3" ],
+         	"rateLimit": "100k" 
+         }
+
+      ]
+    }
+    
+and should be self-explanatory. The ``from`` and ``to`` fields give the start/end time
+of the reservation in ``yyyy-MM-DD hh:mm`` format, while the ``uids`` lists the Unix
+logins of the users that should NOT be limited to the transfer rate given by ``rateLimit``.
+
+The rate limit is optional, and defaults to "10m" i.e. 10MB/sec.
+
+Note that the rate limit can only be applied to new connections, all FTP sessions already
+existing at the start time of the reservation will not be affected.
 
 |testing-img| Checking the installation
 ---------------------------------------
@@ -503,6 +561,7 @@ configured UFTPD servers and their status, such as
 	If you do not get any output, try adding the ``-i`` option to the ``curl`` command, 
 	most probably the username/password is incorrect.
 
+ 
 
 .. _auth-uxdeploy:
 

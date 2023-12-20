@@ -8,8 +8,7 @@
 	:height: 32px
 	:align: middle
 
-This is the user manual providing information on running and using the UNICORE UFTP server 
-version 3.0 and higher, written in Python.
+This is the user manual providing information on running and using the UNICORE UFTPD server.
 
 .. important:: **IMPORTANT SECURITY NOTE**
 

@@ -42,6 +42,10 @@ Prerequisites
 - a server certificate for the UFTPD server is a **MUST** for production use in a multi-user 
   environment (see the section on SSL below)
 
+- the data encryption feature requires the Python "Crypto" module, which can be installed via
+  ``python3 -m pip install pycryptodome``
+
+
 .. attention::
 
  A functional UFTP installation requires also the :ref:`authserver`

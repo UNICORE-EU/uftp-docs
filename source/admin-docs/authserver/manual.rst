@@ -468,7 +468,7 @@ Reservations
 ~~~~~~~~~~~~
 .. _auth-reservations:
 
-It is possible (v2.8.2 and later) to define reservations, i.e. time slots where 
+The Auth server allows to define reservations, i.e. time slots where 
 certain users can get more of the available bandwidth for UFTP transfers.
 During such a reservation, other users are rate-limited. The Auth server reads
 reservations from a local JSON file, which can be edited at runtime by an admin. 

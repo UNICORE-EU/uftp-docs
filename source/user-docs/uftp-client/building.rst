@@ -18,29 +18,22 @@ You need a git client, Java (11 or later) and Apache Maven.
 Cloning the GitHub repository
 -----------------------------
 
-The UFTP client is maintained as part of the 
-`UFTP repository <https://github.com/UNICORE-EU/uftp>`_
+The UFTP client is maintained on
+`GitHub <https://github.com/UNICORE-EU/uftp-javaclient>`_.
 
 Clone this repository:
 
 .. code:: console
 
-    $ git clone https://github.com/UNICORE-EU/uftp.git
-    $ cd uftp
+    $ git clone https://github.com/UNICORE-EU/uftp-javaclient.git
+    $ cd uftp-javaclient
 
 Creating distribution packages
 ------------------------------
 
-The client code is in the ``uftp-client`` directory.
-
-.. code:: console
-
-    $ cd uftp-client
-
-
 The following commands create the distribution packages
 in ``tgz``, ``deb`` and ``rpm`` formats. The versions are taken from the `pom.xml 
-<https://github.com/UNICORE-EU/uftp/blob/master/pom.xml>`__.
+<https://github.com/UNICORE-EU/uftp-javaclient/blob/master/pom.xml>`__.
 
 
 tgz

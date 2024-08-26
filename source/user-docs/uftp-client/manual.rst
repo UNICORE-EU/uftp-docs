@@ -36,12 +36,12 @@ You also need to have the valid credentials for the UFTP authentication.
 Installation and Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The UFTP client distribution packages are available at `sourceforge.net  
-<https://sourceforge.net/projects/unicore/files/Clients/UFTP-Client>`__. 
+The UFTP client distribution packages are available from `GitHub  
+<https://github.com/UNICORE-EU/uftp-javaclient/releases>`__. 
 
-If using the ``zip`` or ``tar archive``, unpack it in a location of your choice. Add the ``bin`` 
+If using the ``zip`` archive, unpack it in a location of your choice. Add the ``bin`` 
 directory to your path. Alternatively, you can
-link or copy the ``bin/uft`` script to a directory that is already on
+link or copy the ``bin/uftp`` script to a directory that is already on
 your path, in this case edit the script and setup the required directories.
 
 If you use the ``rpm`` or ``deb`` package, install it using the package 
@@ -104,13 +104,12 @@ The credentials can be given in multiple ways.
 
     $ uftp ls -O hbp ...
 
-* You can directly specify a value for the HTTP *Authorization* header with
-  the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
-  ``-A "Bearer <oidc_token>``. In this case no username is required.
+* You can directly specify a value for Bearer token with
+  the ``-A`` option. In this case no username is required.
 
   .. code:: console
   
-    $ uftp ls -A "Bearer <oidc_token>" ...
+    $ uftp ls -A "<oidc_token>" ...
 
 * If you explicitely DON'T want to send any authentication info, use ``-u anonymous``.
 
@@ -258,10 +257,6 @@ to split up files larger than 1MB
 .. code:: console
 
 	$ uftp cp -t 2 -T 1M https://localhost:9000/rest/auth/TEST:/home/demo/* .
-
-.. important:: NOTE: uftp client versions before 1.7.0 have an automatic split size set to 512MB,
-  with 1.7.0 and later you MUST use "-T ..." to enable file splitting.
-
 
 Byte ranges
 ^^^^^^^^^^^

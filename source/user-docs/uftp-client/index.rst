@@ -18,8 +18,7 @@ The UFTP commandline client enables users to
 
 * delete remote files or directories (``rm``)
 
-* `manage shares and access shared data <manual.html#data-sharing>`_ (``share``, ``get-share``, 
-  ``put-share``)
+* `manage shares and access shared data <manual.html#data-sharing>`_ (``share``)
 
 * `perform authentication <manual.html#auth>`_ to help integrate UFTP with other tools 
 

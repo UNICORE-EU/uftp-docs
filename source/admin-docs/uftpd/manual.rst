@@ -56,8 +56,8 @@ Installation
 
 The UNICORE UFTPD server is distributed either as a platform independent and portable 
 ``tar.gz`` or ``zip`` bundle or as an installable, platform dependent package such as ``RPM``
-avalable at `sourceforge.net 
-<https://sourceforge.net/projects/unicore/files/Servers/UFTPD>`__.
+avalable at `GitHub 
+<https://github.com/UNICORE-EU/uftpd/releases>`__.
 
 .. important:: 
   **IMPORTANT NOTE ON PATHS**
@@ -237,7 +237,7 @@ The ``ACL`` setting in ``CONF/uftpd.conf`` is used to specify the location of th
 	export ACL=conf/uftpd.acl
 
 The default ACL contains the certificate DN of the UNICORE/X server from the `UNICORE 
-core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`__. 
+core server bundle <https://github.com/UNICORE-EU/server-bundle/releases/>`__. 
 In production, you need to replace this by the actual DNs of 
 your `UNICORE/X server(s) <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`_ 
 and :ref:`UFTP Authentication server(s) <authserver>`.

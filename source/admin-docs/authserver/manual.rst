@@ -41,15 +41,14 @@ Installation
 
 The UFTP Auth service is distributed either 
 as a platform independent and portable ``tar.gz`` or ``zip`` bundle available at
-`sourceforge.net 
-<https://sourceforge.net/projects/unicore/files/Servers/UFTP-AuthServer>`__. 
+`GitHub <https://github.com/UNICORE-EU/uftp/releases>`__.
 It comes with all required scripts and config files to be run as a standalone application. 
 To install, unzip the downloaded package into a directory of your choice.
 
 .. note::
  You can run the service in an existing `UNICORE/X server 
- <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ 
- (8.0.0 or later). Please see :ref:`auth-uxdeploy` below for details.
+ <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__.  Please see
+ :ref:`auth-uxdeploy` below for details.
 
 
 Basic server configuration (memory etc)

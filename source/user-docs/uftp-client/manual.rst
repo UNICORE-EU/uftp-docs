@@ -660,7 +660,7 @@ and requires :ref:`UFTPD server <uftpd>` version 2.8.1 or later to work.
 
 If this does not work for you, or if you require support for a
 different type of proxy, please contact us via a |ticket-img| `support ticket 
-<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via |email-img|
+<https://github.com/UNICORE-EU/uftp-javaclient/issues>`_ or via |email-img|
 `email <unicore-support@lists.sf.net>`_.
 
 .. |email-img| image:: ../../_static/email.png

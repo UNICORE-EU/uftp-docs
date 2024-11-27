@@ -23,25 +23,25 @@ a UNICORE server to authenticate and initiate UFTP transfers.
 Prerequisites
 ~~~~~~~~~~~~~
 
-* Java 8 or later (OpenJDK preferred)
+* Java 11 or later (OpenJDK preferred)
 
 * Access to a UFTP authentication service (either a :ref:`UNICORE/X
   <unicore-docs:unicorex>` server or the 
   :ref:`authserver`) and to the corresponding :ref:`uftpd`. 
 
-To use the client, you need to know the address of the UFTP authentication service. You need also 
-to have the valid credentials for the UFTP authentication.
+To use the client, you need to know the address of the UFTP authentication service.
+You also need to have the valid credentials for the UFTP authentication.
 
 
 Installation and Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The UFTP client distribution packages are available at `sourceforge.net  
-<https://sourceforge.net/projects/unicore/files/Clients/UFTP-Client>`__. 
+The UFTP client distribution packages are available from `GitHub  
+<https://github.com/UNICORE-EU/uftp-javaclient/releases>`__. 
 
-If using the ``zip`` or ``tar archive``, unpack it in a location of your choice. Add the ``bin`` 
+If using the ``zip`` archive, unpack it in a location of your choice. Add the ``bin`` 
 directory to your path. Alternatively, you can
-link or copy the ``bin/uft`` script to a directory that is already on
+link or copy the ``bin/uftp`` script to a directory that is already on
 your path, in this case edit the script and setup the required directories.
 
 If you use the ``rpm`` or ``deb`` package, install it using the package 
@@ -104,14 +104,14 @@ The credentials can be given in multiple ways.
 
     $ uftp ls -O hbp ...
 
-* Last not least you can directly specify a value for the HTTP *Authorization* header with
-  the ``-A`` option. This allows to use an OIDC bearer token for authorization, e.g.
-  ``-A "Bearer <oidc_token>``. In this case no username is required.
+* You can directly specify a value for Bearer token with
+  the ``-A`` option. In this case no username is required.
 
   .. code:: console
   
-    $ uftp ls -A "Bearer <oidc_token>" ...
+    $ uftp ls -A "<oidc_token>" ...
 
+* If you explicitely DON'T want to send any authentication info, use ``-u anonymous``.
 
 |usage-img| Usage
 -----------------
@@ -250,14 +250,13 @@ administrator.
 
 	$ uftp cp -t 2 https://localhost:9000/rest/auth/TEST:/home/demo/* .
 
-Files larger than a certain size will be transferred concurrently
-using more than one stream. This threshold size is 512MB, but you can set it to a
-different value using the ``-T`` option. For example, to split files larger than 1MB
+To split up files larger than a certain size and transfer them in chunks,
+you need to specify a "split size" using the ``-T`` option. For example,
+to split up files larger than 1MB
 
 .. code:: console
 
 	$ uftp cp -t 2 -T 1M https://localhost:9000/rest/auth/TEST:/home/demo/* .
-
 
 Byte ranges
 ^^^^^^^^^^^
@@ -570,8 +569,8 @@ shared with you, use the ``put-share`` command
 
 .. _rcp-command:
 
-Server-to-server copy: the ``rcp`` command (EXPERIMENTAL)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Server-to-server copy
+~~~~~~~~~~~~~~~~~~~~~
 
 REQUIRES UFTPD 3.2.0 or later (at least on one side)
 
@@ -594,14 +593,14 @@ the one side (usually the source)
 
 .. code:: console
 
-	$ uftp auth <options> <source1>
+	$ uftp auth <options> <source_URL>
 
 and give the resulting host:port and one-time password to the rcp command via
 commandline options:
 
 .. code:: console
 
-	$ uftp rcp --server <host:port> --one-time-password <pwd> <source1> <target>
+	$ uftp rcp --server <host:port> --one-time-password <pwd> <source_file> <target>
 
 Other supported features
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -661,7 +660,7 @@ and requires :ref:`UFTPD server <uftpd>` version 2.8.1 or later to work.
 
 If this does not work for you, or if you require support for a
 different type of proxy, please contact us via a |ticket-img| `support ticket 
-<https://sourceforge.net/p/unicore/uftp-issues/>`_ or via |email-img|
+<https://github.com/UNICORE-EU/uftp-javaclient/issues>`_ or via |email-img|
 `email <unicore-support@lists.sf.net>`_.
 
 .. |email-img| image:: ../../_static/email.png

@@ -8,8 +8,7 @@
 	:height: 32px
 	:align: middle
 
-This is the user manual providing information on running and using the UNICORE UFTP server 
-version 3.0 and higher, written in Python.
+This is the user manual providing information on running and using the UNICORE UFTPD server.
 
 .. important:: **IMPORTANT SECURITY NOTE**
 
@@ -42,6 +41,10 @@ Prerequisites
 - a server certificate for the UFTPD server is a **MUST** for production use in a multi-user 
   environment (see the section on SSL below)
 
+- the data encryption feature requires the Python "Crypto" module, which can be installed via
+  ``python3 -m pip install pycryptodome``
+
+
 .. attention::
 
  A functional UFTP installation requires also the :ref:`authserver`
@@ -53,8 +56,8 @@ Installation
 
 The UNICORE UFTPD server is distributed either as a platform independent and portable 
 ``tar.gz`` or ``zip`` bundle or as an installable, platform dependent package such as ``RPM``
-avalable at `sourceforge.net 
-<https://sourceforge.net/projects/unicore/files/Servers/UFTPD>`__.
+avalable at `GitHub 
+<https://github.com/UNICORE-EU/uftpd/releases>`__.
 
 .. important:: 
   **IMPORTANT NOTE ON PATHS**
@@ -234,7 +237,7 @@ The ``ACL`` setting in ``CONF/uftpd.conf`` is used to specify the location of th
 	export ACL=conf/uftpd.acl
 
 The default ACL contains the certificate DN of the UNICORE/X server from the `UNICORE 
-core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`__. 
+core server bundle <https://github.com/UNICORE-EU/server-bundle/releases/>`__. 
 In production, you need to replace this by the actual DNs of 
 your :ref:`UNICORE/X server(s) <unicore-docs:unicorex>` 
 and :ref:`UFTP Authentication server(s) <authserver>`.

@@ -13,9 +13,7 @@ For additional information and support, please visit:
 
 :|email-img| Support list: unicore-support@lists.sf.net
 
-:|email-img| Developer's list: unicore-devel@lists.sf.net
-
-:|ticket-img| Issue Tracker: https://sourceforge.net/p/unicore/uftp-issues
+:|ticket-img| Issue Tracker: https://github.com/UNICORE-EU/uftp/issues
 
 :|source-code-img| Source code: https://github.com/UNICORE-EU/uftp
 

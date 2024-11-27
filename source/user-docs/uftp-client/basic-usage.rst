@@ -43,13 +43,18 @@ and assume that the bin directory of the UFTP client is on your path.
 
   will show version information.
 
-* For password authentication, use the ``-P`` option. The password can be written into the URL, for example
+* For password authentication, the password can be given on the commandline, for example
 
   .. code:: console
 
 	$ uftp ls -u demo:password https://localhost:9000/rest/auth/TEST:/home/demo/
 
-  If not given on the command line, the password will be queried interactively.
+* When you specify the ``-P`` option, the password/passphrase will be queried interactively
+
+  .. code:: console
+
+	$ uftp ls -u demo -P https://localhost:9000/rest/auth/TEST:/home/demo/
+
 
 
 .. seealso::

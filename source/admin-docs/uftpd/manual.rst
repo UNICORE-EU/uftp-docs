@@ -45,8 +45,8 @@ Prerequisites
 .. attention::
 
  A functional UFTP installation requires also the :ref:`authserver`
- or a full `UNICORE/X server
- <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`_ .
+ or a full :ref:`UNICORE/X server
+ <unicore-docs:unicorex>` .
 
 Installation
 ~~~~~~~~~~~~~
@@ -236,7 +236,7 @@ The ``ACL`` setting in ``CONF/uftpd.conf`` is used to specify the location of th
 The default ACL contains the certificate DN of the UNICORE/X server from the `UNICORE 
 core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`__. 
 In production, you need to replace this by the actual DNs of 
-your `UNICORE/X server(s) <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`_ 
+your :ref:`UNICORE/X server(s) <unicore-docs:unicorex>` 
 and :ref:`UFTP Authentication server(s) <authserver>`.
 
 The ACL entries are expected in RFC2253 format. To get the name 

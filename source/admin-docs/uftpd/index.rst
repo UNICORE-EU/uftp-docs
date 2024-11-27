@@ -15,8 +15,8 @@ The UFTP server listens on two ports (which may be on two different network inte
 
 * the listen port accepts data connections from clients
 
-The UFTPD server is *controlled* by an :ref:`authserver` or `UNICORE/X
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ via the
+The UFTPD server is *controlled* by an :ref:`authserver` or :ref:`UNICORE/X
+<unicore-docs:unicorex>` via the
 command port, and receives/sends data directly from/to a client
 machine (which can be an actual user client machine or another
 server). 

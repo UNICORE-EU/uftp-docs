@@ -16,8 +16,7 @@ provides REST services for data sharing and accessing shared data sets.
 
 The Auth server is based on the UNICORE Services Environment, and all usual UNICORE features and 
 security configuration options are available as well. For example, the Auth server can be 
-deployed behind a `UNICORE Gateway 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__, or it can be configured 
+deployed behind a :ref:`UNICORE Gateway <unicore-docs:gateway>`, or it can be configured 
 to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 
 .. topic:: Features

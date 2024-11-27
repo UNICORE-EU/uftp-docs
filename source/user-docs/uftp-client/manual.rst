@@ -25,8 +25,8 @@ Prerequisites
 
 * Java 8 or later (OpenJDK preferred)
 
-* Access to a UFTP authentication service (either a `UNICORE/X
-  <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/index.html>`_ server or the 
+* Access to a UFTP authentication service (either a :ref:`UNICORE/X
+  <unicore-docs:unicorex>` server or the 
   :ref:`authserver`) and to the corresponding :ref:`uftpd`. 
 
 To use the client, you need to know the address of the UFTP authentication service. You need also 

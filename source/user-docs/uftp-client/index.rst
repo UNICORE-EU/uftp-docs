@@ -26,8 +26,8 @@ The UFTP commandline client enables users to
 * `launch server-to-server copy operations <manual.html#rcp-command>`_ (``rcp``)
 
 
-The UFTP client will connect to an authentication server (either a `UNICORE/X server 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex>`_
+The UFTP client will connect to an authentication server (either a :ref:`UNICORE/X server 
+<unicore-docs:unicorex>`
 or the :ref:`authserver`) to authenticate and then to
 the :ref:`uftpd` for transferring data or making a file operation.
 

@@ -21,7 +21,7 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'UFTP Docs'
-author = '2023 UNICORE'
+author = '2024 UNICORE'
 copyright = author
 version = 'stable'
 language = 'en'
@@ -117,3 +117,16 @@ html_context = {
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
 html_last_updated_fmt = '%b %d, %Y'
+
+# link uftp-docs project with intersphinx
+intersphinx_mapping = {
+    "unicore-docs": ("https://unicore-docs.readthedocs.io/en/latest/", None),
+}
+
+# We recommend adding the following config value.
+# Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
+# This behavior has unintended side-effects, namely that documentations local references can
+# suddenly resolve to an external location.
+# See also:
+# https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
+intersphinx_disabled_reftypes = ["*"]

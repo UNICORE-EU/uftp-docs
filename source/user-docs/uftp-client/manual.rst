@@ -68,6 +68,7 @@ on the server you want to access, you can choose from
  * user name with SSH key (default)
  * user name with password
  * `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__
+ * OIDC token retrieved from an OIDC server
  * manual specification of the HTTP Authorization header value
 
 To explicitely specify the remote username, use the ``-u <username>`` option, e.g.
@@ -90,22 +91,33 @@ The credentials can be given in multiple ways.
 
   .. code:: console
 
-	 $ uftp ls -u username -P ...
+	$ uftp ls -u username -P ...
 
 * If no password is given, the client will attempt to use an SSH key for authentication, this has 
   to be configured on the authentication server accordingly. If you have multiple keys, use the 
   ``-i`` option to select one. Otherwise, the client will check ``~/.uftp/`` and ``~/.ssh/`` for 
   useable keys. The SSH agent is supported, too.
 
-* The very useful `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__ tool is also directly 
+* The very useful `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__ tool is directly 
   supported via ``-O <account_name>``. In this case no username is required.
 
   .. code:: console
 
-    $ uftp ls -O hbp ...
+	$ uftp ls -O hbp ...
 
-* You can directly specify a value for Bearer token with
-  the ``-A`` option. In this case no username is required.
+* The UFTP client supports getting an OAuth token from an OIDC server (e.g. Keycloak). The required parameters
+  needed for this to work are read from a file, which is given on the commandline via the ``-o filename`` option: 
+
+  .. code:: console
+
+	$ uftp ls -o oidc-settings
+
+
+  The required / supported parameters listed in the corresponding
+  `section of the UCC manual <https://unicore-docs.readthedocs.io/en/latest/user-docs/ucc/manual.html#oidc-server>`__ 
+
+* You can directly specify a value for the Bearer token with the ``-A`` option.
+  In this case no username is required.
 
   .. code:: console
   

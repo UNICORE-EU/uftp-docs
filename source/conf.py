@@ -21,7 +21,7 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'UFTP Docs'
-author = '2024 UNICORE'
+author = '2025 UNICORE'
 copyright = author
 version = 'stable'
 language = 'en'
@@ -118,7 +118,7 @@ html_context = {
 # using the given strftime format.
 html_last_updated_fmt = '%b %d, %Y'
 
-# link uftp-docs project with intersphinx
+# link uncore-docs project through intersphinx
 intersphinx_mapping = {
     "unicore-docs": ("https://unicore-docs.readthedocs.io/en/latest/", None),
 }

@@ -8,8 +8,8 @@
 	:align: middle
 
 This manual focuses on the configuration items specific to the Auth server. If you need more 
-in-depth information on general configuration issues, please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html>`__.
+in-depth information on general configuration issues, please refer to the :ref:`UNICORE/X manual 
+<unicore-docs:unicorex>`.
 
 
 |settings-img| Installation
@@ -31,8 +31,8 @@ The Auth server needs an X.509 certificate and truststore
 for communicating with the :ref:`uftpd`.
 
 Users must be able to access the Auth server's https port. It is
-possible to deploy the Auth server behind a `UNICORE Gateway
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__ 
+possible to deploy the Auth server behind a :ref:`UNICORE Gateway
+<unicore-docs:gateway>` 
 (please see :ref:`auth-behind-gateway` below).
 
 
@@ -46,8 +46,8 @@ It comes with all required scripts and config files to be run as a standalone ap
 To install, unzip the downloaded package into a directory of your choice.
 
 .. note::
- You can run the service in an existing `UNICORE/X server 
- <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__.  Please see
+ You can run the service in an existing :ref:`UNICORE/X server 
+ <unicore-docs:unicorex>`.  Please see
  :ref:`auth-uxdeploy` below for details.
 
 
@@ -395,7 +395,7 @@ After successful authentication, the user is assigned attributes
 such as the Unix account and group which is used for file access.
 
 The Unix account and group are taken from the configured attribute
-sources (e.g. `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/xuudb/>`_). 
+sources (e.g. :ref:`XUUDB <unicore-docs:xuudb>`). 
 Since it is possible to access multiple UFTPD
 servers using a single Auth server, it may be required to configure
 different attributes for different UFTPD servers. This is easily
@@ -573,8 +573,8 @@ configured UFTPD servers and their status, such as
 
 This option is interesting if you are already running a UNICORE
 installation and want to allow your users the option of using the
-standalone :ref:`UFTP client <uftp-client>`. This requires `UNICORE/X 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/>`__ version 8.0 or later!
+standalone :ref:`UFTP client <uftp-client>`. This requires :ref:`UNICORE/X 
+<unicore-docs:unicorex>` version 8.0 or later!
 
  * copy the ``authserver-*.jar`` file to the ``lib`` directory of UNICORE/X
 
@@ -594,8 +594,8 @@ standalone :ref:`UFTP client <uftp-client>`. This requires `UNICORE/X
 	:height: 32px
 	:align: middle
 
-If you want to place the Auth server behind a `UNICORE gateway 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/>`__
+If you want to place the Auth server behind a :ref:`UNICORE gateway 
+<unicore-docs:gateway>`
 for easy firewall transversal, you need to configure an entry in the `Gateway
 connections 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/manual.html#configuring-sites-connections-properties>`_ 

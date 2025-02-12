@@ -26,9 +26,9 @@ into custom applications due to its FTP compliance.
 	overview
 
 
-.. include:: user-docs/user-docs-index.rest
+.. include:: user-docs/index.rest
 
-.. include:: admin-docs/admin-docs-index.rest
+.. include:: admin-docs/index.rest
 
 
 |support-img| Getting Support

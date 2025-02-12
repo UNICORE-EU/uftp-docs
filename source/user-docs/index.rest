@@ -15,7 +15,7 @@
 	:caption: User Documentation
 	:hidden:
 
-	user-docs/uftp-client/uftpc-index
+	user-docs/uftp-client/index
 
 
 

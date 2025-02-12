@@ -39,14 +39,14 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
  * Reservations
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`authserver-manual`
   Installation and Operating the Auth server.
 
   .. |user-guide-img| image:: ../../_static/user-guide.png
   	:height: 22px
   	:align: middle
 
-|update-img| :doc:`upgrade`
+|update-img| :doc:`authserver-upgrade`
   Upgrade the Auth server to this version.
 
 .. |update-img| image:: ../../_static/update.png
@@ -58,7 +58,7 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 	:caption: Auth Server Documentation
 	:hidden:
 
-	manual
-   	upgrade
+	authserver-manual
+   	authserver-upgrade
 
 

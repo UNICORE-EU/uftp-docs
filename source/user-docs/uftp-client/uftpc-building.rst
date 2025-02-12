@@ -10,6 +10,8 @@
 This page shows how to build the latest version of the UFTP client directly from the sources.
 
 
+.. _uftpc-prerequisites:
+
 Prerequisites
 -------------
 
@@ -33,7 +35,7 @@ Creating distribution packages
 
 The following commands create the distribution packages
 in ``tgz``, ``deb`` and ``rpm`` formats. The versions are taken from the `pom.xml 
-<https://github.com/UNICORE-EU/uftp-javaclient/blob/master/pom.xml>`__.
+<https://github.com/UNICORE-EU/uftp-javaclient/blob/main/pom.xml>`__.
 
 
 tgz

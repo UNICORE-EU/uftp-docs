@@ -1,10 +1,10 @@
 .. _uftpd-manual:
 
 
-|user-guide-img| User Manual
-============================
+|uftpd-user-guide-img| User Manual
+==================================
 
-.. |user-guide-img| image:: ../../_static/user-guide.png
+.. |uftpd-user-guide-img| image:: ../../_static/user-guide.png
 	:height: 32px
 	:align: middle
 
@@ -24,6 +24,8 @@ This is the user manual providing information on running and using the UNICORE U
 .. |settings-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
+
+.. _uftpd-prerequsites:
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -312,6 +314,8 @@ Logging
 By default, UFTPD writes to syslog, and you can use ``journalctl`` to read log messages. 
 To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftpd.conf`` file.
 
+
+.. _unicore-integration:
 
 |integration-img| UNICORE integration
 -------------------------------------

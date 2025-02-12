@@ -94,7 +94,7 @@ UFTP Applications and Use Cases
 
   * Authenticated or anonymous access
 
-* `UNICORE integration <admin-docs/uftpd/manual.html#integration-img-unicore-integration>`__
+* :ref:`UNICORE integration <unicore-integration>`
 
   * Server-server file transfer and data staging for HPC applications and workflows
   * Integrated into UNICORE clients for fast file upload and download

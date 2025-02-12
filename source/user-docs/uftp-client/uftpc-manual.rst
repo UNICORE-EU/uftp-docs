@@ -13,12 +13,17 @@ and more. It can be used with either a :ref:`UFTP Authentication Server <authser
 a UNICORE server to authenticate and initiate UFTP transfers. 
 
 
+.. _uftpc-installation:
+
 |installer-img| Installation
 ----------------------------
 
 .. |installer-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
+
+
+.. _uftpc-prereq:
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -32,6 +37,8 @@ Prerequisites
 To use the client, you need to know the address of the UFTP authentication service.
 You also need to have the valid credentials for the UFTP authentication.
 
+
+.. _uftpc-config:
 
 Installation and Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +54,7 @@ your path, in this case edit the script and setup the required directories.
 If you use the ``rpm`` or ``deb`` package, install it using the package 
 manager of your Linux distribution.
 
-.. _auth:
+.. _uftpc-auth:
 
 |auth-img| Authentication
 -------------------------
@@ -125,6 +132,7 @@ The credentials can be given in multiple ways.
 
 * If you explicitely DON'T want to send any authentication info, use ``-u anonymous``.
 
+
 |usage-img| Usage
 -----------------
 
@@ -137,7 +145,7 @@ at *localhost:9000/rest/auth/* and the user name is *username*.
 Replace these values by the correct ones for your installation.
 
 
-.. _ls-command:
+.. _uftpc-ls-command:
 
 Listing a directory: the ``ls`` command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,7 +157,7 @@ Listing a directory: the ``ls`` command
 will list the */home/demo* directory.
 
 
-.. _cp-command:
+.. _uftpc-cp-command:
 
 Copying data: the ``cp`` command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +253,7 @@ Or use ``uftp`` to cat a remote file
 	$ uftp cp https://localhost:9000/rest/auth/TEST:/foo.txt -
 
 
-.. _multiple-connections:
+.. _uftpc-multiple-connections:
 
 Using multiple FTP connections
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -307,7 +315,7 @@ This is handy for quick performance tests:
 	$ uftp cp -B 10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
-.. _encrypt-compress:
+.. _uftpc-encrypt-compress:
 
 Encryption and compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -364,7 +372,7 @@ transferring 5 gigabytes
 	$ uftp cp -B 0-10G -t 2 https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
-.. _checksum-command:
+.. _uftpc-checksum-command:
 
 Computing checksums for remote files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -383,7 +391,7 @@ using the ``-a`` option (MD5, SHA-1, SHA-256, SHA-256). For example
 	$ uftp checksum -a SHA-256 https://localhost:9000/rest/auth/TEST:/data/*.dat
 
 
-.. _sync-command:
+.. _uftpc-sync-command:
 
 Synchronizing a file: the ``sync`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -408,7 +416,7 @@ To synchronize a remote file with a local *master* file:
 	$ uftp sync master.file https://localhost:9000/rest/auth/TEST:/remote.file
 
 
-.. _data-sharing:
+.. _uftpc-data-sharing:
 
 Data sharing
 ~~~~~~~~~~~~
@@ -579,7 +587,7 @@ shared with you, use the ``put-share`` command
 	$ uftp put-share data/*.pdf https://localhost:9000/rest/access/TEST:/data/public/
 
 
-.. _rcp-command:
+.. _uftpc-rcp-command:
 
 Server-to-server copy
 ~~~~~~~~~~~~~~~~~~~~~
@@ -614,6 +622,7 @@ commandline options:
 
 	$ uftp rcp --server <host:port> --one-time-password <pwd> <source_file> <target>
 
+
 Other supported features
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -643,6 +652,7 @@ There is no way to monitor or abort a running server-to-server transfer
 from the client.
 
 Wildcards are not supported.
+
 
 |gateway-img| Using a proxy server (EXPERIMENTAL)
 -------------------------------------------------
@@ -685,7 +695,7 @@ different type of proxy, please contact us via a |ticket-img| `support ticket
 
 
 |support-img| Troubleshooting 
--------------------------------------
+-----------------------------
 
 .. |support-img| image:: ../../_static/support.png
 	:height: 32px

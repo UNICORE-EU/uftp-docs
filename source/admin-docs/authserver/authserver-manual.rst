@@ -1,9 +1,9 @@
 .. _authserver-manual:
 
-|user-guide-img| User Manual
+|auth-guide-img| User Manual
 ============================
 
-.. |user-guide-img| image:: ../../_static/user-guide.png
+.. |auth-guide-img| image:: ../../_static/user-guide.png
 	:height: 32px
 	:align: middle
 
@@ -18,6 +18,8 @@ in-depth information on general configuration issues, please refer to the :ref:`
 .. |settings-img| image:: ../../_static/installer.png
 	:height: 32px
 	:align: middle
+
+.. _auth-prerequsites:
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -126,8 +128,8 @@ to configure the relevant properties in the Auth service's config file.
 The ``authservice.servers`` property is a list of server names. These
 should be meaningful, since users will need to use them, too.  The
 other properties are used to configure the UFTPD command address and
-the UFTPD listen address. Please refer to the `UFTPD manual 
-<../uftpd/manual.html#config-parameters>`__ for more information about these ports.
+the UFTPD listen address. Please refer to the :ref:`UFTPD manual 
+<config-parameters>` for more information about these ports.
 
  :description: human-readable description of the UFTPD server
 
@@ -174,8 +176,8 @@ For example, we want to configure two UFTPD servers named *CLUSTER* and *TEST*::
 	authservice.server.TEST.ssl=false
 
 To allow the Auth server access to the command port of UFTPD, you
-need to add an entry to UFTPD's ACL file. This is explained in the `UFTPD manual 
-<../uftpd/manual.html#acl-setup>`__.
+need to add an entry to UFTPD's ACL file. This is explained in the :ref:`UFTPD manual 
+<acl-setup>`.
 
 
 Round-robin use / grouping of UFTPD servers
@@ -369,8 +371,8 @@ SSH keys available. For example
 Attribute sources
 ~~~~~~~~~~~~~~~~~
 
-Please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#use-aip>`__ 
+Please refer to the :ref:`UNICORE/X manual 
+<unicore-docs:unicorex-manual>` 
 on how to set up and configure attribute sources like `map file 
 <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#file-attr-source>`__ 
 or `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#xuudb-attr>`__.

@@ -41,7 +41,7 @@ server).
 
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`uftpd-manual`
   Installation and Operating the UFTPD server.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
@@ -53,6 +53,6 @@ server).
 	:caption: UFTPD Server Documentation
 	:hidden:
 	
-	manual.rst
+	uftpd-manual.rst
 
 

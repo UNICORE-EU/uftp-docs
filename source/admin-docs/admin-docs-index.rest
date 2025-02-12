@@ -18,5 +18,5 @@
 	:caption: Admin Documentation
 	:hidden:
 
-	admin-docs/uftpd/index
-	admin-docs/authserver/index
+	admin-docs/uftpd/uftpd-index
+	admin-docs/authserver/authserver-index

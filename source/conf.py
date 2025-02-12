@@ -43,8 +43,12 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinxemoji.sphinxemoji',
-    'm2r2'
+    'm2r2',
+    'sphinx.ext.autosectionlabel',
 ]
+
+# supress warning for dublicate labels (e.g. section titles  "Installation", "Prerequisites", etc)
+suppress_warnings = ['autosectionlabel.*']
 
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -107,7 +111,6 @@ html_static_path = ['_static']
 """
  Tells the project to use sphinx pygments for color coding code examples.
 """
-
 pygments_style = 'sphinx'
 
 html_context = {

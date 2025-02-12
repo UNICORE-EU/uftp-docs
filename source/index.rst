@@ -26,9 +26,9 @@ into custom applications due to its FTP compliance.
 	overview
 
 
-.. include:: user-docs/index.rest
+.. include:: user-docs/user-docs-index.rest
 
-.. include:: admin-docs/index.rest
+.. include:: admin-docs/admin-docs-index.rest
 
 
 |support-img| Getting Support
@@ -47,10 +47,10 @@ For more information, please see the :ref:`support` page.
 	support
 
 
-|bsd-img| License
-=================
+|bsd-license| License
+=====================
 
-.. |bsd-img| image:: _static/bsd-license.png
+.. |bsd-license| image:: _static/bsd-license.png
 	:height: 32px
 	:align: middle
 

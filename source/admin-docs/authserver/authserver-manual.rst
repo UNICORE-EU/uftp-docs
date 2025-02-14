@@ -225,8 +225,7 @@ The Auth service is a RESTful UNICORE service, and as such all the
 configuration details for a UNICORE/X server apply here as well.
 
 We summarise the most important details, please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#auth-img-authentication>`_ 
-if you want to learn about further options.
+:ref:<unicore-docs:auth-img-authentication>` if you want to learn about further options.
 
 The enabled authentication options and their order are configured 
 in ``container.properties``.
@@ -373,9 +372,8 @@ Attribute sources
 
 Please refer to the :ref:`UNICORE/X manual 
 <unicore-docs:unicorex-manual>` 
-on how to set up and configure attribute sources like `map file 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#file-attr-source>`__ 
-or `XUUDB <https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#xuudb-attr>`__.
+on how to set up and configure attribute sources like :ref:`map file 
+<unicore-docs:file-attr-source>` or :ref:`XUUDB <unicore-docs:xuudb-attr>`.
 
 To use the automatic SSH key mapping, please use this config snippet
 ::
@@ -599,8 +597,7 @@ standalone :ref:`UFTP client <uftp-client>`. This requires :ref:`UNICORE/X
 If you want to place the Auth server behind a :ref:`UNICORE gateway 
 <unicore-docs:gateway>`
 for easy firewall transversal, you need to configure an entry in the `Gateway
-connections 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/gateway/manual.html#configuring-sites-connections-properties>`_ 
+connections :ref:<unicore-docs:configuring-sites-connections-properties>` 
 config file, and set the container base URL property
 (``container.baseurl``) in the Auth server's ``container.properties``. 
 This option is also useful when the server's listen address differs from the 

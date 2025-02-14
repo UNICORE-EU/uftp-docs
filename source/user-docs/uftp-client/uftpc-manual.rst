@@ -121,7 +121,7 @@ The credentials can be given in multiple ways.
 
 
   The required / supported parameters listed in the corresponding
-  `section of the UCC manual <https://unicore-docs.readthedocs.io/en/latest/user-docs/ucc/manual.html#oidc-server>`__ 
+  :ref:`section of the UCC manual <unicore-docs:oidc-server>`. 
 
 * You can directly specify a value for the Bearer token with the ``-A`` option.
   In this case no username is required.

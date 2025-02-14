@@ -324,8 +324,7 @@ To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftp
 	:height: 32px
 	:align: middle
 
-Please refer to the `UNICORE/X manual 
-<https://unicore-docs.readthedocs.io/en/latest/admin-docs/unicorex/manual.html#ux-uftp>`__ 
+Please refer to the :ref:`UNICORE/X manual <unicore-docs:ux_uftp>` 
 for detailed information on how to configure UFTP based data access and data transfer.
 
 

@@ -9,6 +9,10 @@ into `UNICORE <https://www.unicore.eu>`_, allowing to transfer data from client 
 (and vice versa), as well as providing data staging and third-party transfer between 
 UFTP-enabled UNICORE sites.
 
+.. image:: _static/uftp-overview.png
+  :width: 400
+  :alt: UNICORE File Transfer Protocol (UFTP)
+  
 UFTP is best used using the client-side application (:ref:`uftp-client`), but is easily integrated 
 into custom applications due to its FTP compliance.
 

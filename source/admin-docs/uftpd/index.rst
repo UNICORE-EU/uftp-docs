@@ -56,3 +56,6 @@ server).
 	uftpd-manual.rst
 
 
+.. raw:: html
+
+   <hr>

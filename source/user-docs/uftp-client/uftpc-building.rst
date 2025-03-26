@@ -60,3 +60,7 @@ rpm redhat
 .. code:: console
 
 	$ mvn package -DskipTests -Ppackman -Dpackage.type=rpm -Ddistribution=RedHat
+
+.. raw:: html
+
+   <hr>

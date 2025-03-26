@@ -32,3 +32,7 @@ For additional information and support, please visit:
 .. |source-code-img| image:: _static/source-code.png
 	:height: 24px
 	:align: middle
+
+.. raw:: html
+
+   <hr>

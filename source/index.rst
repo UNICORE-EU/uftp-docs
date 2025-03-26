@@ -67,3 +67,6 @@ UFTP is available under the :ref:`BSD 2-Clause License <license>`.
 	license
 
 
+.. raw:: html
+
+   <hr>

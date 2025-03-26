@@ -47,9 +47,6 @@ extensions = [
     'sphinx.ext.autosectionlabel',
 ]
 
-# supress warning for dublicate labels (e.g. section titles  "Installation", "Prerequisites", etc)
-suppress_warnings = ['autosectionlabel.*']
-
 source_suffix = {
     '.rst': 'restructuredtext',
     '.txt': 'restructuredtext',
@@ -133,3 +130,6 @@ intersphinx_mapping = {
 # See also:
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
 intersphinx_disabled_reftypes = ["*"]
+
+# supress warning for dublicate labels (e.g. section titles  "Installation", "Prerequisites", etc)
+suppress_warnings = ['autosectionlabel.*']

@@ -61,3 +61,6 @@ and assume that the bin directory of the UFTP client is on your path.
 
 	For detailed usage instructions and examples, refer to the :ref:`uftp-client-manual`.
 
+.. raw:: html
+
+   <hr>

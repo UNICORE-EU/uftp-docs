@@ -339,5 +339,7 @@ You should use the :ref:`uftp client <uftp-client>` to run tests, which contains
 many options such as the number of concurrent FTP connections, and can
 use ``/dev/null`` and ``/dev/zero`` as data source/sink.
 
+.. raw:: html
 
+   <hr>
 

@@ -8,3 +8,7 @@
 	:align: middle
 
 .. literalinclude:: ../LICENSE
+
+.. raw:: html
+
+   <hr>

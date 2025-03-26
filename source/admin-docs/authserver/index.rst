@@ -61,4 +61,6 @@ to use `Unity <https://unity-idm.eu/>`__ for authenticating users.
 	authserver-manual
    	authserver-upgrade
 
+.. raw:: html
 
+   <hr>

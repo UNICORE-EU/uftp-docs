@@ -84,3 +84,6 @@ data transfers in high-performance environments.
 	uftpc-manual
 	uftpc-building
 
+.. raw:: html
+
+   <hr>

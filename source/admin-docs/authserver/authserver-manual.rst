@@ -604,3 +604,6 @@ This option is also useful when the server's listen address differs from the
 publicly accessible server address, such as when running the Auth server behind a NAT firewall.
 
 
+.. raw:: html
+
+   <hr>

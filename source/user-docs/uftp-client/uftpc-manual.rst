@@ -718,3 +718,7 @@ failure"**
 
 	|:point_right:| Check the remote URL that you use. Maybe you have a typo in the 
 	``/rest/auth/<servername>`` part.
+
+.. raw:: html
+
+   <hr>

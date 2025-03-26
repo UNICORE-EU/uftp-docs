@@ -98,3 +98,7 @@ UFTP Applications and Use Cases
 
   * Server-server file transfer and data staging for HPC applications and workflows
   * Integrated into UNICORE clients for fast file upload and download
+  
+.. raw:: html
+
+   <hr>

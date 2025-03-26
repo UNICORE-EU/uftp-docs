@@ -44,3 +44,7 @@ If necessary, copy these to your installation:
 * Start the server.
 
 * Check the logs for any **ERROR** or **WARN** messages and if necessary correct them.
+
+.. raw:: html
+
+   <hr>

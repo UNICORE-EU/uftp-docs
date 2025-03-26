@@ -8,9 +8,12 @@
 	:height: 32px
 	:align: middle
 
-* :ref:`uftpd` - the UFTP file server 
-* :ref:`authserver` - a set of services providing authentication for UFTP as well as data 
-  sharing features
+:ref:`uftpd`
+	The UFTP file server.
+	
+:ref:`authserver`
+	A set of services providing authentication for UFTP as well as data 
+	sharing features.
  
 
 .. toctree::

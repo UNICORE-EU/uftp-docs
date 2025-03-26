@@ -8,7 +8,8 @@
 	:height: 32px
 	:align: middle
 	
-* :ref:`uftp-client` - the standalone UFTP client application 
+:ref:`uftp-client`
+	The standalone UFTP client application. 
 
 .. toctree::
 	:maxdepth: 5

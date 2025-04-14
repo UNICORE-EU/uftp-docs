@@ -66,9 +66,9 @@ configuration file::
 	container.port=9000
 
 	# if running behind a UNICORE Gateway or a NAT router, 
-	# set the baseurl
+	# set the external url:
 	container.sitename=AUTH
-	container.baseurl=gateway.yoursite.com:2222/AUTH/services
+	container.externalurl=https://gateway.yoursite.com:8080/AUTH
 
 Also in the ``container.properties`` configuration file, the server's X.509
 private key and the truststore settings need to be configured.
@@ -93,8 +93,8 @@ server's ``container.properties`` file:
  * :ref:`UFTPD server(s) <auth-uftpd>` to be accessed
 
  * :ref:`User authentication <auth-user>`: configure the Auth server to authenticate
-   users using :ref:`username/password <auth-user-pass>`, :ref:`ssh key <ssh-key-auth>` 
-   or via :ref:`Unity <auth-unity>`
+   users using :ref:`username/password <auth-user-pass>`, :ref:`ssh key <ssh-key-auth>`,
+   :ref:`OIDC server <auth-oidc>`, or via :ref:`Unity <auth-unity>`
    
  * :ref:`Attribute sources <attr-sources>` (XUUDB, map file, ...) for assigning 
    local attributes like UNIX user name to authenticated 
@@ -231,7 +231,7 @@ The enabled authentication options and their order are configured
 in ``container.properties``.
 ::
 
-	container.security.rest.authentication.order=PASSWORD | SSHKEY | UNITY
+	container.security.rest.authentication.order=PASSWORD | SSHKEY | UNITY | OAUTH
 
 The available options can be combined.
 
@@ -296,6 +296,74 @@ To have Unity check the client's OAuth token::
 	container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp.oidc/saml2unicoreidp-soap/AuthenticationService
 	container.security.rest.authentication.UNITY-OAUTH.validate=true
 
+
+
+
+.. _auth-oidc:
+
+OAuth token authentication with an OIDC server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This mechanism checks the OAuth token issued by an OIDC server such as Keycloak
+directly with the issuing server.
+::
+
+ container.security.rest.authentication.OAUTH.class=eu.unicore.services.rest.security.OAuthAuthenticator
+ container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/userinfo
+
+UNICORE will use the user's OAuth token to make a call to the ``userinfo`` endpoint,
+effectively checking if that token is (still) valid.
+
+You can alternatively use the ``introspect`` endpoint, where UNICORE acts as an
+OAuth client with client ID and secret to check the token's validity and get user info.
+In this case you need to set ``validate=true`` and provide client ID and secret
+
+::
+
+ container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/token/introspect
+ container.security.rest.authentication.OAUTH.validate=true
+ container.security.rest.authentication.OAUTH.clientID=your-client-id
+ container.security.rest.authentication.OAUTH.clientSecret=your-client-secret
+
+.. _assigning-attributes:
+
+Assigning attributes based on authentication response
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Based on the response from the Identity Provider (e.g., the OIDC server) in the case of a
+successful authentication, UNICORE/X can assign common user attributes, which can be overriden
+later by the configured :ref:`attribute sources <use_aip>`. 
+
+To make use of this, you need to know what attributes are sent by the IdP. For OAuth, a simple
+way to find out is to query the "userinfo" endpoint of the server using a valid access token.
+
+UNICORE/X can assign the following attributes
+
+User identity:
+
+::
+
+ container.security.rest.authentication.OAUTH.identityAssign="UID="+email
+
+Unix login (UID):
+
+::
+
+ container.security.rest.authentication.OAUTH.uidAssign=preferred_username
+
+Groups:
+
+::
+
+ container.security.rest.authentication.OAUTH.groupsAssign=["hpc", "users"]
+
+Role:
+
+(Note: the role will default to "user" in case of successful authentication and non-zero UID)
+
+::
+
+ container.security.rest.authentication.OAUTH.roleAssign="user"
 
 .. _ssh-key-auth:
 

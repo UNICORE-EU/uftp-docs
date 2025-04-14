@@ -117,7 +117,7 @@ The credentials can be given in multiple ways.
 
   .. code:: console
 
-	$ uftp ls -o oidc-settings
+	$ uftp ls -o oidc-settings ...
 
 
   The required / supported parameters listed in the corresponding

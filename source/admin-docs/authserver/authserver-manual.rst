@@ -377,11 +377,6 @@ name for later authorisation.
 SSH keys are read from the user's ``~/.ssh/authorized_keys`` file, but can also be managed 
 manually in a dedicated ssh keys file.
 
-.. note::
-	SSH key validation will not work for users on Windows, since the UFTP stand-alone client 
-	does not yet support SSH keys on Windows.
-	We recommend adding a username/password option for Windows users.
-
 SSH key validation is configured as follows:
 ::
 

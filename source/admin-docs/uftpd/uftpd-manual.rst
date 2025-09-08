@@ -57,8 +57,8 @@ Installation
 ~~~~~~~~~~~~~
 
 The UNICORE UFTPD server is distributed either as a platform independent and portable 
-``tar.gz`` or ``zip`` bundle or as an installable, platform dependent package such as ``RPM``
-avalable at `GitHub 
+``tar.gz`` bundle or as an installable, platform dependent package such as RPM (``.rpm``) 
+or Debian (``.deb``) avalable at `GitHub 
 <https://github.com/UNICORE-EU/uftpd/releases>`__.
 
 .. important:: 
@@ -85,36 +85,6 @@ avalable at `GitHub
 
 Note that after installation UFTPD is **NOT** automatically enabled as a ``systemd`` service, 
 since you will need to edit the configuration and provide a server certificate.
-
-
-Starting and stopping the UFTPD server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-If using the Linux packages, uftpd is integrated as a service via systemd, and
-you can stop/start it via ``systemctl``. Also, logging is (by default) done via 
-systemd, and you can look at the logs via ``journalctl``.
-
-To do things manually, you can use the start/stop and status scripts that are
-provided in the BIN directory.
-
- - ``unicore-uftpd-start.sh`` starts the server
- - ``unicore-uftpd-stop.sh`` stops the server
- - ``unicore-uftpd-status.sh`` checks the server status
-
-The parameters such as server host/port, control host/port, and others are
-configured in the ``CONF/uftpd.conf`` file.
-
-In a production scenario with multiple users, the uftpd server
-needs to be started as *root*. This is necessary to be able to
-access files as the correct user/group and set correct file permissions.
-
-
-To enable UFTPD as a systemd service (after configuring and adding a server 
-certificate), you can use ``systemctl``:
-
-.. code:: console
-
-  $ sudo systemctl add-wants multi-user.target unicore-uftpd
 
 
 .. _config-parameters:
@@ -308,6 +278,36 @@ would allow incoming data connections on ports 21000 to 21010.
 A fairly small range (e.g. 10 ports) is usually enough, since these are server ports.
 
 
+Starting and stopping the UFTPD server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+If using the Linux packages, uftpd is integrated as a service via systemd, and
+you can stop/start it via ``systemctl``. Also, logging is (by default) done via 
+systemd, and you can look at the logs via ``journalctl``.
+
+To do things manually, you can use the start/stop and status scripts that are
+provided in the BIN directory.
+
+ - ``unicore-uftpd-start.sh`` starts the server
+ - ``unicore-uftpd-stop.sh`` stops the server
+ - ``unicore-uftpd-status.sh`` checks the server status
+
+The parameters such as server host/port, control host/port, and others are
+configured in the ``CONF/uftpd.conf`` file.
+
+In a production scenario with multiple users, the uftpd server
+needs to be started as *root*. This is necessary to be able to
+access files as the correct user/group and set correct file permissions.
+
+
+To enable UFTPD as a systemd service (after configuring and adding a server 
+certificate), you can use ``systemctl``:
+
+.. code:: console
+
+  $ sudo systemctl add-wants multi-user.target unicore-uftpd
+  
+
 Logging
 ~~~~~~~
 
@@ -327,6 +327,67 @@ To print logging output to stdout, set ``export LOG_SYSLOG=false`` in the ``uftp
 Please refer to the :ref:`UNICORE/X manual <unicore-docs:ux_uftp>` 
 for detailed information on how to configure UFTP based data access and data transfer.
 
+
+Quick Installation using Test Certificates
+------------------------------------------
+
+This is a short guide on how to install the UFTP server in a few steps,  
+using the test certificates provided in the distribution package. 
+
+.. warning::
+   This setup is intended **for testing only**.  
+   For production deployments, you must use proper CA-signed certificates.
+
+1. Download the ``.tar.gz`` file from  
+   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__.
+
+2. Unpack the package in your installation directory:
+
+   .. code:: console
+
+      tar -xvf unicore-uftpd-<release>.tar.gz
+
+3. Check file permissions. All files should be readable by the user  
+   specified as ``USER_NAME`` in ``conf/uftpd.conf``. For example:
+
+   .. code:: text
+
+      export USER_NAME=unicore
+
+   Please ensure that the user ``unicore`` exists, or change it to your  
+   current user if you prefer to run the UFTPD server under your own  
+   account. The start/stop and status scripts in the ``bin`` directory 
+   as well as all subdirectories should also be executable for this user.
+
+4. Edit ``conf/uftpd-ssl.conf`` to use the test keystore and truststore:
+
+   .. code:: text
+
+      credential.path=conf/uftpd.pem
+      credential.password=the!uftpd
+      truststore=conf/cacert.pem
+
+5. Start the UFTP server as root:
+
+   .. code:: console
+
+      sudo bin/unicore-uftpd-start.sh
+
+6. Check the UFTP server status:
+
+   .. code:: console
+
+      sudo bin/unicore-uftpd-status.sh
+
+   It should print something like:  
+   ``UNICORE UFTPD running with PID xxxxxxx``.
+
+7. Optionally, check the syslog:
+
+   .. code:: console
+
+      sudo journalctl -f
+	  
 
 |testing-img| Testing the UFTPD server
 --------------------------------------

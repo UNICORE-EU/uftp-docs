@@ -379,14 +379,20 @@ using the test certificates provided in the distribution package.
 
       sudo bin/unicore-uftpd-status.sh
 
-   It should print something like:  
+   The output should look like:  
    ``UNICORE UFTPD running with PID xxxxxxx``.
 
-7. Optionally, check the syslog:
+   For more detailed logging, set ``export LOG_VERBOSE=true`` in :file:`conf/uftpd.conf`.
+
+7. Optionally, check the system log:
 
    .. code:: console
 
       sudo journalctl -f
+
+   To print logs to standard output instead of syslog, set  
+   ``export LOG_SYSLOG=false`` in :file:`conf/uftpd.conf` and restart the server.
+   
 	  
 
 |testing-img| Testing the UFTPD server

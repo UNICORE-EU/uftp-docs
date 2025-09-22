@@ -56,10 +56,14 @@ Prerequisites
 Installation
 ~~~~~~~~~~~~~
 
-The UNICORE UFTPD server is distributed either as a platform independent and portable 
-``tar.gz`` bundle or as an installable, platform dependent package such as RPM (``.rpm``) 
-or Debian (``.deb``) avalable at `GitHub 
-<https://github.com/UNICORE-EU/uftpd/releases>`__.
+The UNICORE UFTPD server is distributed either as a platform-independent,  
+portable ``tar.gz`` bundle, or as an installable, platform-dependent  
+package such as RPM (``.rpm``) or Debian (``.deb``), available at  
+`GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__.
+
+For a quick installation in just a few steps using the provided test  
+certificates, see :ref:`uftpd-test-installation`.
+
 
 .. important:: 
   **IMPORTANT NOTE ON PATHS**
@@ -85,6 +89,7 @@ or Debian (``.deb``) avalable at `GitHub
 
 Note that after installation UFTPD is **NOT** automatically enabled as a ``systemd`` service, 
 since you will need to edit the configuration and provide a server certificate.
+
 
 
 .. _config-parameters:
@@ -328,11 +333,13 @@ Please refer to the :ref:`UNICORE/X manual <unicore-docs:ux_uftp>`
 for detailed information on how to configure UFTP based data access and data transfer.
 
 
+.. _uftpd-test-installation:
+
 Quick Installation using Test Certificates
 ------------------------------------------
 
-This is a short guide on how to install the UFTP server in a few steps,  
-using the test certificates provided in the distribution package. 
+This is a short guide on how to install the UFTPD server in a few steps,  
+using the **test certificates** provided in the distribution package. 
 
 .. warning::
    This setup is intended **for testing only**.  
@@ -348,18 +355,19 @@ using the test certificates provided in the distribution package.
       tar -xvf unicore-uftpd-<release>.tar.gz
 
 3. Check file permissions. All files should be readable by the user  
-   specified as ``USER_NAME`` in ``conf/uftpd.conf``. For example:
+   specified as ``USER_NAME`` in :file:`conf/uftpd.conf`. For example:
 
    .. code:: text
 
       export USER_NAME=unicore
 
-   Please ensure that the user ``unicore`` exists, or change it to your  
-   current user if you prefer to run the UFTPD server under your own  
-   account. The start/stop and status scripts in the ``bin`` directory 
-   as well as all subdirectories should also be executable for this user.
+   Ensure that the user ``unicore`` exists, or change it to your  
+   current user if you prefer to run the UFTPD server under your  
+   own account. The scripts in ``bin`` and all subdirectories  
+   should also be executable for this user.
 
-4. Edit ``conf/uftpd-ssl.conf`` to use the test keystore and truststore:
+4. Edit :file:`conf/uftpd-ssl.conf` to use the provided test keystore  
+   and truststore:
 
    .. code:: text
 
@@ -367,13 +375,31 @@ using the test certificates provided in the distribution package.
       credential.password=the!uftpd
       truststore=conf/cacert.pem
 
-5. Start the UFTP server as root:
+   These ``.pem`` files are the **test certificates** included in the  
+   distribution.
+
+5. Verify that the test ``.pem`` files are available in the ``conf``  
+   directory. If they are missing, download the source package  
+   (``.tar.gz`` or ``.zip``) from  
+   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__,  
+   unpack it using:
+
+   .. code:: console
+
+      tar -xvf <source>.tar.gz
+      unzip <source>.zip
+
+   Then copy ``uftpd.pem`` and ``cacert.pem`` from the ``test``  
+   subdirectory of the unpacked source into the ``conf`` directory  
+   of your UFTPD installation.
+
+6. Start the UFTPD server as root:
 
    .. code:: console
 
       sudo bin/unicore-uftpd-start.sh
 
-6. Check the UFTP server status:
+7. Check the server status:
 
    .. code:: console
 
@@ -382,18 +408,19 @@ using the test certificates provided in the distribution package.
    The output should look like:  
    ``UNICORE UFTPD running with PID xxxxxxx``.
 
-   For more detailed logging, set ``export LOG_VERBOSE=true`` in :file:`conf/uftpd.conf`.
-
-7. Optionally, check the system log:
+8. Optionally, check the system log:
 
    .. code:: console
 
       sudo journalctl -f
 
    To print logs to standard output instead of syslog, set  
-   ``export LOG_SYSLOG=false`` in :file:`conf/uftpd.conf` and restart the server.
+   ``export LOG_SYSLOG=false`` in :file:`conf/uftpd.conf` and restart  
+   the server.
    
-	  
+   For more detailed logging, set ``export LOG_VERBOSE=true`` in 
+   :file:`conf/uftpd.conf`.
+
 
 |testing-img| Testing the UFTPD server
 --------------------------------------

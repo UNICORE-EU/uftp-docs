@@ -47,6 +47,9 @@ as a platform independent and portable ``tar.gz`` or ``zip`` bundle available at
 It comes with all required scripts and config files to be run as a standalone application. 
 To install, unzip the downloaded package into a directory of your choice.
 
+For a quick installation in just a few steps using the provided test  
+certificates, see :ref:`authserver-test-installation`.
+
 .. note::
  You can run the service in an existing :ref:`UNICORE/X server 
  <unicore-docs:unicorex>`.  Please see
@@ -332,7 +335,7 @@ Assigning attributes based on authentication response
 
 Based on the response from the Identity Provider (e.g., the OIDC server) in the case of a
 successful authentication, UNICORE/X can assign common user attributes, which can be overriden
-later by the configured :ref:`attribute sources <use_aip>`. 
+later by the configured :ref:`attribute sources <attr-sources>`. 
 
 To make use of this, you need to know what attributes are sent by the IdP. For OAuth, a simple
 way to find out is to query the "userinfo" endpoint of the server using a valid access token.
@@ -666,6 +669,110 @@ config file, and set the container base URL property
 This option is also useful when the server's listen address differs from the 
 publicly accessible server address, such as when running the Auth server behind a NAT firewall.
 
+
+.. _authserver-test-installation:
+
+Auth Server Installation using Test Certificates
+------------------------------------------------
+
+This is a short guide on how to install the Auth server in a few steps,  
+using the **test certificates** provided in the distribution package. 
+
+.. warning::
+   This setup is intended **for testing only**.  
+   For production deployments, you must use proper CA-signed certificates.
+
+1. Download the ``unicore-authserver-<release>.tar.gz`` file from  
+   `GitHub <https://github.com/UNICORE-EU/authserver/releases>`__.
+
+2. Unpack the package in your installation directory:
+
+   .. code:: console
+
+      tar -xvf unicore-authserver-<release>.tar.gz
+
+3. Check file permissions. All files should be readable, and all  
+   subdirectories as well as the scripts in the ``bin`` directory  
+   should be executable by the user that will run the Auth server,  
+   e.g. the ``unicore`` user or your current user account.
+
+4. Edit :file:`conf/container.properties` to use the provided test keystore  
+   and truststore:
+
+   .. code:: text
+
+      container.security.credential.path=conf/auth.p12
+      container.security.credential.password=the!auth
+      container.security.truststore.directoryLocations.1=conf/*.pem
+      container.security.truststore.keystorePath=conf/cacert.pem
+
+   These ``.pem`` files are **demo certificates** for testing only.
+
+5. If you want to access UFTPD using a UFTP client installed on another  
+   computer, adjust the following settings in :file:`conf/container.properties`:
+
+   .. code:: text
+
+      container.host=0.0.0.0 
+      authservice.server.TEST.host=<your-server-ip-address>
+
+6. Verify that the test certificates (``auth.p12`` and ``cacert.pem``)  
+   are available in the ``conf`` directory. If they are missing, download  
+   them (``.tar.gz`` or ``.zip``) from  
+   `GitHub <https://github.com/UNICORE-EU/authserver/releases>`__ and copy  
+   them into the ``conf`` directory of your Auth server installation.
+
+7. Edit the ``simpleuudb`` file to map the demo certificate to the ``unicore``  
+   user or your current user account:
+
+.. code:: xml
+
+   <fileAttributeSource>
+      <entry key="CN=Demo User,O=UNICORE,C=EU">
+         <attribute name="role">
+            <value>user</value>
+         </attribute>
+         <attribute name="xlogin">
+            <value>unicore</value>   <!-- CHANGE "unicore" if you want to use another user -->
+         </attribute>
+         <attribute name="group">
+         </attribute>
+      </entry>
+   </fileAttributeSource>
+
+8. Start the Auth server as the ``unicore`` user or under your current user ID:
+
+   .. code:: console
+
+      bin/unicore-authserver-start.sh
+
+9. Check the server status:
+
+   .. code:: console
+
+      bin/unicore-authserver-status.sh
+
+   The output should look like:  
+   ``UNICORE service AUTHSERVER running with PID xxxxxx``.
+
+10. Optionally, check the log files :file:`authserver-startup.log` and  
+    :file:`authserver.log` in the ``logs`` directory.
+	
+11. You can verify that the server is running by using a simple HTTP client  
+    such as ``curl`` to access the Auth server's base URL, provided you have  
+    configured username/password authentication.
+
+    For example, if the Auth server is installed on the local machine and  
+    running on port 9000, execute:
+
+    .. code:: console
+
+       curl -k https://localhost:9000/rest/auth \
+            -H "Accept: application/json" \
+            -u demouser:test123
+
+    This should return a JSON document containing information about the  
+    configured UFTPD servers and their status.
 
 .. raw:: html
 

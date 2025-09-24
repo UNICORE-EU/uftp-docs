@@ -335,7 +335,7 @@ for detailed information on how to configure UFTP based data access and data tra
 
 .. _uftpd-test-installation:
 
-Quick Installation using Test Certificates
+UFTPD Installation using Test Certificates
 ------------------------------------------
 
 This is a short guide on how to install the UFTPD server in a few steps,  

@@ -675,15 +675,15 @@ publicly accessible server address, such as when running the Auth server behind 
 Auth Server Installation using Test Certificates
 ------------------------------------------------
 
-This is a short guide on how to install the Auth server in a few steps,  
+This is a short guide on how to install the Auth server in a few steps, 
 using the **test certificates** provided in the distribution package. 
 
 .. warning::
-   This setup is intended **for testing only**.  
-   For production deployments, you must use proper CA-signed certificates.
+   This setup is intended **for testing only**. 
+   For production deployments, you must use proper **CA-signed certificates**.
 
-1. Download the ``unicore-authserver-<release>.tar.gz`` file from  
-   `GitHub <https://github.com/UNICORE-EU/authserver/releases>`__.
+1. Download the ``unicore-authserver-<release>.tar.gz`` file from 
+   `GitHub <https://github.com/UNICORE-EU/uftp/releases>`__.
 
 2. Unpack the package in your installation directory:
 
@@ -691,13 +691,13 @@ using the **test certificates** provided in the distribution package.
 
       tar -xvf unicore-authserver-<release>.tar.gz
 
-3. Check file permissions. All files should be readable, and all  
-   subdirectories as well as the scripts in the ``bin`` directory  
-   should be executable by the user that will run the Auth server,  
-   e.g. the ``unicore`` user or your current user account.
+3. **Check file permissions.** All files must be **readable**, and all 
+   subdirectories as well as scripts in the ``bin`` directory must be 
+   **executable** by the user running the Auth server (e.g., the 
+   ``unicore`` user or your current account).
 
-4. Edit :file:`conf/container.properties` to use the provided test keystore  
-   and truststore:
+4. Configure :file:`conf/container.properties` to use the provided **test 
+   keystore and truststore**:
 
    .. code:: text
 
@@ -706,64 +706,60 @@ using the **test certificates** provided in the distribution package.
       container.security.truststore.directoryLocations.1=conf/*.pem
       container.security.truststore.keystorePath=conf/cacert.pem
 
-   These ``.pem`` files are **demo certificates** for testing only.
-
-5. If you want to access UFTPD using a UFTP client installed on another  
-   computer, adjust the following settings in :file:`conf/container.properties`:
+5. To access UFTPD from another computer, adjust these settings in 
+   :file:`conf/container.properties`:
 
    .. code:: text
 
       container.host=0.0.0.0 
       authservice.server.TEST.host=<your-server-ip-address>
 
-6. Verify that the test certificates (``auth.p12`` and ``cacert.pem``)  
-   are available in the ``conf`` directory. If they are missing, download  
-   them (``.tar.gz`` or ``.zip``) from  
-   `GitHub <https://github.com/UNICORE-EU/authserver/releases>`__ and copy  
-   them into the ``conf`` directory of your Auth server installation.
+6. **Verify test certificates.** Ensure ``auth.p12`` and ``cacert.pem`` 
+   are in the ``conf`` directory. If they are missing, download and 
+   unpack the source package (``.tar.gz`` or ``.zip``) from 
+   `GitHub <https://github.com/UNICORE-EU/uftp/releases>`__, then 
+   **copy** them from the ``./authserver/src/test/resources/certs/`` 
+   subdirectory into your installation's ``conf`` directory.
 
-7. Edit the ``simpleuudb`` file to map the demo certificate to the ``unicore``  
-   user or your current user account:
+7. Edit the ``simpleuudb`` file to map the demo certificate to a local 
+   system account. Ensure that the ``xlogin`` value matches an existing 
+   **username** on your machine (e.g., ``unicore`` or your current 
+   username):
 
-.. code:: xml
+   .. code:: xml
 
-   <fileAttributeSource>
-      <entry key="CN=Demo User,O=UNICORE,C=EU">
-         <attribute name="role">
-            <value>user</value>
-         </attribute>
-         <attribute name="xlogin">
-            <value>unicore</value>   <!-- CHANGE "unicore" if you want to use another user -->
-         </attribute>
-         <attribute name="group">
-         </attribute>
-      </entry>
-   </fileAttributeSource>
+      <fileAttributeSource>
+         <entry key="CN=Demo User,O=UNICORE,C=EU">
+            <attribute name="role">
+               <value>user</value>
+            </attribute>
+            <attribute name="xlogin">
+               <value>unicore</value> 
+            </attribute>
+         </entry>
+      </fileAttributeSource>
 
-8. Start the Auth server as the ``unicore`` user or under your current user ID:
+8. Start the Auth server:
 
    .. code:: console
 
-      bin/unicore-authserver-start.sh
+      ./bin/unicore-authserver-start.sh
 
 9. Check the server status:
 
    .. code:: console
 
-      bin/unicore-authserver-status.sh
+      ./bin/unicore-authserver-status.sh
 
-   The output should look like:  
+   The output should show: 
    ``UNICORE service AUTHSERVER running with PID xxxxxx``.
 
-10. Optionally, check the log files :file:`authserver-startup.log` and  
-    :file:`authserver.log` in the ``logs`` directory.
-	
-11. You can verify that the server is running by using a simple HTTP client  
-    such as ``curl`` to access the Auth server's base URL, provided you have  
-    configured username/password authentication.
+10. **Review logs.** Check :file:`authserver-startup.log` and 
+    :file:`authserver.log` in the ``logs`` directory for details.
 
-    For example, if the Auth server is installed on the local machine and  
-    running on port 9000, execute:
+11. **Verify via curl.** By default, the Auth server listens on 
+    **port 9000** (defined by ``container.port`` in 
+    ``container.properties``). If running locally, execute:
 
     .. code:: console
 
@@ -771,9 +767,9 @@ using the **test certificates** provided in the distribution package.
             -H "Accept: application/json" \
             -u demouser:test123
 
-    This should return a JSON document containing information about the  
-    configured UFTPD servers and their status.
-
+    This should return a **JSON document** containing the status of the 
+    configured UFTPD servers.
+	
 .. raw:: html
 
    <hr>

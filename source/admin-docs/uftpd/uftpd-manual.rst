@@ -338,14 +338,14 @@ for detailed information on how to configure UFTP based data access and data tra
 UFTPD Installation using Test Certificates
 ------------------------------------------
 
-This is a short guide on how to install the UFTPD server in a few steps,  
-using the **test certificates** provided in the distribution package. 
+This guide describes how to install the UFTPD server using the **test 
+certificates** included in the distribution package. 
 
 .. warning::
-   This setup is intended **for testing only**.  
-   For production deployments, you must use proper CA-signed certificates.
+   This setup is intended **for testing only**. 
+   For production deployments, you must use proper **CA-signed certificates**.
 
-1. Download the ``.tar.gz`` file from  
+1. Download the ``.tar.gz`` distribution from 
    `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__.
 
 2. Unpack the package in your installation directory:
@@ -354,20 +354,17 @@ using the **test certificates** provided in the distribution package.
 
       tar -xvf unicore-uftpd-<release>.tar.gz
 
-3. Check file permissions. All files should be readable by the user  
-   specified as ``USER_NAME`` in :file:`conf/uftpd.conf`. For example:
+3. **Check file permissions.** All files in the ``conf`` and ``lib`` 
+   directories must be **readable** by the user specified as ``USER_NAME`` 
+   in :file:`conf/uftpd.conf`. The scripts in ``bin`` and all 
+   subdirectories must also be **executable** by this user. 
 
-   .. code:: text
+   Ensure that a system user exists that matches the ``USER_NAME`` 
+   configured in the file (e.g., ``unicore``). If necessary, edit 
+   the configuration to match your current system username.
 
-      export USER_NAME=unicore
-
-   Ensure that the user ``unicore`` exists, or change it to your  
-   current user if you prefer to run the UFTPD server under your  
-   own account. The scripts in ``bin`` and all subdirectories  
-   should also be executable for this user.
-
-4. Edit :file:`conf/uftpd-ssl.conf` to use the provided test keystore  
-   and truststore:
+4. Configure :file:`conf/uftpd-ssl.conf` to use the provided **test 
+   keystore and truststore**:
 
    .. code:: text
 
@@ -375,53 +372,60 @@ using the **test certificates** provided in the distribution package.
       credential.password=the!uftpd
       truststore=conf/cacert.pem
 
-   These ``.pem`` files are the **test certificates** included in the  
-   distribution.
+5. **Verify test certificates.** Ensure the ``.pem`` files are in the 
+   ``conf`` directory. If they are missing, download and unpack the 
+   source package (``.tar.gz`` or ``.zip``) from 
+   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__, then 
+   **copy** ``uftpd.pem`` and ``cacert.pem`` from the ``tests`` 
+   subdirectory into your installation's ``conf`` directory.
 
-5. Verify that the test ``.pem`` files are available in the ``conf``  
-   directory. If they are missing, download the source package  
-   (``.tar.gz`` or ``.zip``) from  
-   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__,  
-   unpack it using:
 
-   .. code:: console
+6. Start UFTPD as **root**:
 
-      tar -xvf <source>.tar.gz
-      unzip <source>.zip
-
-   Then copy ``uftpd.pem`` and ``cacert.pem`` from the ``test``  
-   subdirectory of the unpacked source into the ``conf`` directory  
-   of your UFTPD installation.
-
-6. Start the UFTPD server as root:
+   **Option 1: Run directly with sudo**
 
    .. code:: console
 
-      sudo bin/unicore-uftpd-start.sh
+      sudo <uftpd-installation-dir>/bin/unicore-uftpd-start.sh
 
-7. Check the server status:
+   **Option 2: Switch to root shell (Recommended if logging to stdout)**
 
    .. code:: console
 
-      sudo bin/unicore-uftpd-status.sh
+      sudo su -
+      cd <uftpd-installation-dir>
+      ./bin/unicore-uftpd-start.sh
 
-   The output should look like:  
+7. **Verify server status.** You can check if the server is running by 
+   invoking the stop script, which will display the current status and PID:
+
+   .. code:: console
+
+      ./bin/unicore-uftpd-stop.sh
+      
+   If successful, the output will show:  
    ``UNICORE UFTPD running with PID xxxxxxx``.
 
-8. Optionally, check the system log:
+8. **Logging (Optional).** Monitor the system logs to verify operation:
 
    .. code:: console
 
       sudo journalctl -f
 
-   To print logs to standard output instead of syslog, set  
-   ``export LOG_SYSLOG=false`` in :file:`conf/uftpd.conf` and restart  
-   the server.
+   * **For detailed debugging:** Set ``export LOG_VERBOSE=true`` in 
+     :file:`conf/uftpd.conf`.
+
+   * **To print logs to stdout:** Set ``export LOG_SYSLOG=false`` in 
+     :file:`conf/uftpd.conf`. 
    
-   For more detailed logging, set ``export LOG_VERBOSE=true`` in 
-   :file:`conf/uftpd.conf`.
-
-
+   .. important::
+      If you disable syslog, the server might **fail to start** when 
+      using ``sudo``. This is because the process switches to the 
+      configured **USER_NAME** and may lose permission to write to 
+      the root terminal's stdout. To fix this, you must **start 
+      the server from a real root shell** (Option 2 in step 6).
+	  
+	  
 |testing-img| Testing the UFTPD server
 --------------------------------------
 

@@ -21,7 +21,7 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'UFTP Docs'
-author = '2025 UNICORE'
+author = '2026 UNICORE'
 copyright = author
 version = 'stable'
 language = 'en'

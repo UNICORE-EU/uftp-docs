@@ -426,16 +426,37 @@ certificates** included in the distribution package.
       the server from a real root shell** (Option 2 in step 6).
 	  
 	  
-|testing-img| Testing the UFTPD server
+|testing-img| Testing the UFTPD Server
 --------------------------------------
 
 .. |testing-img| image:: ../../_static/testing.png
-	:height: 32px
-	:align: middle
+   :height: 32px
+   :align: middle
 
-You should use the :ref:`uftp client <uftp-client>` to run tests, which contains
-many options such as the number of concurrent FTP connections, and can
-use ``/dev/null`` and ``/dev/zero`` as data source/sink.
+To test a running UFTPD server, you must install the
+:ref:`UFTP client <uftpc-installation>`.
+
+Use the UFTP client to run functional tests against the UFTPD server
+with various command-line options to verify correct operation. 
+For example, if the UFTPD server is running on the local host
+(port 9000 by default), you can use the UFTP client to list the home
+directory using username/password, if that type of authentication is
+enabled (see :ref:`authentication <uftpc-auth>`):
+
+.. code:: console
+
+	$ uftp ls -u username:password https://localhost:9000/rest/auth/TEST:/home
+
+All performance tests are also performed using the UFTP client.
+For performance measurements, use ``/dev/null`` as the data sink and
+``/dev/zero`` as the data source, as described in
+:ref:`performance testing <uftpc-performance>`.
+For example to transfer 10 gigabytes of zeros from the remote server:
+
+.. code:: console
+
+	$ uftp cp -u username:password -B 0-10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
+
 
 .. raw:: html
 

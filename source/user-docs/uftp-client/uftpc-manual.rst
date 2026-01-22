@@ -352,6 +352,8 @@ did not finish correctly, you can resume it with
 	$ uftp cp -R https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 
+.. _uftpc-performance:
+
 Performance testing
 ^^^^^^^^^^^^^^^^^^^
 

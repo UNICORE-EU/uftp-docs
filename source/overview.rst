@@ -25,7 +25,7 @@ UFTP Features
 
 - Flexible integration options (authentication, user mapping), firewall-friendly
 
-- System requirements: client: Java 11+, server: Python3
+- System requirements: client: Java 17+, server: Python3
 
 
 UFTP Architecture

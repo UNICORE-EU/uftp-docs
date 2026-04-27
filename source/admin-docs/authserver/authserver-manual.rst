@@ -26,7 +26,7 @@ Prerequisites
 
 The Auth server should be run as a non-root user (e.g. *unicore*). It requires
 
- * Java 11
+ * Java 17
  * an installed :ref:`uftpd`
 
 The Auth server needs an X.509 certificate and truststore
@@ -286,7 +286,6 @@ retrieving an authentication assertion.
 	
 	container.security.rest.authentication.UNITY.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
 	container.security.rest.authentication.UNITY.address=https://localhost:2443/unicore-soapidp/saml2unicoreidp-soap/AuthenticationService
-	container.security.rest.authentication.UNITY.validate=true
 
 
 Unity OAuth bearer token authentication
@@ -297,8 +296,6 @@ To have Unity check the client's OAuth token::
 	container.security.rest.authentication.order=UNITY-OAUTH
 	container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
 	container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp.oidc/saml2unicoreidp-soap/AuthenticationService
-	container.security.rest.authentication.UNITY-OAUTH.validate=true
-
 
 
 
@@ -386,16 +383,17 @@ SSH key validation is configured as follows:
 	# authN
 	container.security.rest.authentication.order=SSHKEY
 	
-	container.security.rest.authentication.SSHKEY.class=eu.unicore.uftp.authserver.authenticate.SSHKeyAuthenticator
+	container.security.rest.authentication.SSHKEY.class=eu.unicore.services.rest.security.SSHKeyAuthenticator
 
 When used like this, the users get an automatically assigned DN. By
-default, the DN is `CN=<username>, OU=ssh-local-users`. Using the *PAM
-attribute source* (see :ref:`below <attr-sources>`), authenticated users can be assigned the
-*user* role automatically without further configuration.
+default, the DN is `CN=<username>, OU=ssh-local-users`. 
+
+Users that successfully authenticate with their SSH key, get the *user*
+role automatically.
 
 The user DN can be modified by configuring the DN template like this::
 
-	#DN template used for SSH key mapping. The %s is replaced by the username 
+	# DN template used for SSH key mapping. The %s is replaced by the username 
 	container.security.rest.authentication.SSHKEY.dnTemplate=CN=%s, OU=ssh-local-users
 
 
@@ -436,22 +434,12 @@ SSH keys available. For example
 Attribute sources
 ~~~~~~~~~~~~~~~~~
 
-Please refer to the :ref:`UNICORE/X manual 
+Users that successfully authenticate with their SSH key, get the *user*
+role automatically. If you need more elaborate user mapping, please refer to the :ref:`UNICORE/X manual 
 <unicore-docs:unicorex-manual>` 
 on how to set up and configure attribute sources like :ref:`map file 
 <unicore-docs:file-attr-source>` or :ref:`XUUDB <unicore-docs:xuudb-attr>`.
 
-To use the automatic SSH key mapping, please use this config snippet
-::
-
-	# attribute source(s)
-	container.security.attributes.order=PAM
-	container.security.attributes.combiningPolicy=MERGE_LAST_OVERRIDES
-	
-	container.security.attributes.PAM.class=eu.unicore.services.rest.security.PAMAttributeSource
-
-In this way users that successfully authenticate with their SSH key get the *user*
-role automatically.
 
 
 Attribute mapping
@@ -460,8 +448,8 @@ Attribute mapping
 After successful authentication, the user is assigned attributes
 such as the Unix account and group which is used for file access.
 
-The Unix account and group are taken from the configured attribute
-sources (e.g. :ref:`XUUDB <unicore-docs:xuudb>`). 
+Attributes can come from successful authentication as well as the
+configured attribute sources (e.g. :ref:`XUUDB <unicore-docs:xuudb>`). 
 Since it is possible to access multiple UFTPD
 servers using a single Auth server, it may be required to configure
 different attributes for different UFTPD servers. This is easily
@@ -473,45 +461,28 @@ forbidden file path patterns.
 
 The following map file entry gives a full example.
 
-.. code:: xml
+.. code:: 
 
-  <entry key="CN=Demo User,O=UNICORE,C=EU">
-     <attribute name="role">
-        <value>user</value>
-     </attribute>
+  "CN=Demo User,O=UNICORE,C=EU":
+  {
+     "role": "user",
 
-     <!-- default Unix account and group -->
-     <attribute name="xlogin">
-        <value>somebody</value>
-     </attribute>
-     <attribute name="group">
-        <value>users</value>
-     </attribute>
+     "xlogin": "somebody",
+
+     "group": "users"
+	 
+	 "uftpd.CLUSTER.xlogin": "user1",
      
-      <!-- UFTP specific attributes -->
+	 "uftpd.CLUSTER.group": "hpc",
+ 
+	 "uftpd.CLUSTER.rateLimit": "10M",
 
-      <attribute name="uftpd.CLUSTER.xlogin">
-         <value>user1</value>
-      </attribute>
-      <attribute name="uftpd.CLUSTER.group">
-         <value>hpc</value>
-      </attribute>     
-
-      <!-- optional rate limit (bytes per second) -->
-      <attribute name="uftpd.CLUSTER.rateLimit">
-         <value>10M</value>
-      </attribute>     
-
-      <!-- optional includes -->
-      <attribute name="uftpd.CLUSTER.includes">
-         <value>/tmp/*:/work/*</value>
-      </attribute>     
-      <!-- optional excludes -->
-      <attribute name="uftpd.CLUSTER.excludes">
-         <value>/home/*:/etc/*</value>
-      </attribute>     
+     "uftpd.CLUSTER.includes": "/tmp/*:/work/*",
      
-   </entry>
+     "uftpd.CLUSTER.excludes": "/home/*:/etc/*"
+
+   }
+
 
 Here, the *CLUSTER* must match a configured UFTPD server, see also :ref:`auth-uftpd`. 
 Available attributes are

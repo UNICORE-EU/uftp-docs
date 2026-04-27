@@ -28,7 +28,7 @@ a UNICORE server to authenticate and initiate UFTP transfers.
 Prerequisites
 ~~~~~~~~~~~~~
 
-* Java 11 or later (OpenJDK preferred)
+* Java 17 or later (OpenJDK preferred)
 
 * Access to a UFTP authentication service (either a :ref:`UNICORE/X
   <unicore-docs:unicorex>` server or the 

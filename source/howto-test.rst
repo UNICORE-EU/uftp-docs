@@ -122,6 +122,51 @@ These tests use the UFTP client to connect to the Auth server and the
 UFTPD server and verify authentication, file transfers, and performance.
 
 
+Troubleshooting
+---------------
+
+
+Authentication failures
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Check:
+
+* username/password
+* ``userdb.txt``
+* Auth Server logs
+
+
+ACL errors
+~~~~~~~~~~
+
+Check:
+
+* ``conf/uftpd.acl``
+* certificate DNs
+* TLS trust configuration
+
+
+Certificate trust problems
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Verify:
+
+* ``conf/cacert.pem``
+* certificate validity
+* certificate subjects
+* matching CA certificates
+
+
+Permission denied errors
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Verify:
+
+* Unix user exists
+* directory permissions
+* configured ``USER_NAME``
+
+
 .. raw:: html
 
    <hr>

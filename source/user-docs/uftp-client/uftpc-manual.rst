@@ -78,7 +78,7 @@ on the server you want to access, you can choose from
  * OIDC token retrieved from an OIDC server
  * manual specification of the HTTP Authorization header value
 
-To explicitely specify the remote username, use the ``-u <username>`` option, e.g.
+To explicitly specify the remote username, use the ``-u <username>`` option, e.g.
 
 .. code:: console
 
@@ -130,7 +130,7 @@ The credentials can be given in multiple ways.
   
     $ uftp ls -A "<oidc_token>" ...
 
-* If you explicitely DON'T want to send any authentication info, use ``-u anonymous``.
+* If you explicitly DON'T want to send any authentication info, use ``-u anonymous``.
 
 
 |usage-img| Usage
@@ -186,7 +186,7 @@ Basic usage
 
     $ uftp cp https://localhost:9000/rest/auth/TEST:/home/demo/data/* .
 
-  will download all files in the `/home/demo/test` directory to the current directory
+  will download all files in the `/home/demo/data` directory to the current directory
 
 Similar commands work for upload.
 
@@ -236,7 +236,7 @@ or, using ``zip``
 	$ zip -r - dir/* | uftp cp -a - https://localhost:9000/rest/auth/TEST:/target_location/
 
 .. note::
- Zip will compress data, so might be slower or faster than tar, depending on network bandwith 
+ Zip will compress data, so might be slower or faster than tar, depending on network bandwidth 
  and processing speed.
 
 Similarly, ``-`` can be used to write data to standard output.
@@ -294,7 +294,7 @@ will write also only the given range. For example
 
 .. code:: console
 
-	$ uftp cp -B 1024-2047-p https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
+	$ uftp cp -B 1024-2047 -p https://localhost:9000/rest/auth/TEST:/home/demo/test.data .
 
 will write bytes 1024-2047 of the remote file to the local file,
 starting at offset 1024. The local file will have length 2048.
@@ -505,7 +505,7 @@ will share the path */data/public/somefile.pdf*.
 You can use the following options to modify the defaults:
 
   * ``--access <user-identifier>`` to limit access to the specified user(s)
-  * ``--write`` for write acces
+  * ``--write`` for write access
   * ``--delete`` to delete a share
 
 For example to share */data/public/somefile.pdf* with the user *CN=User*

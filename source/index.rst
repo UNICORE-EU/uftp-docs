@@ -9,10 +9,16 @@ into `UNICORE <https://www.unicore.eu>`_, allowing to transfer data from client 
 (and vice versa), as well as providing data staging and third-party transfer between 
 UFTP-enabled UNICORE sites.
   
-UFTP is best used using the client-side application (:ref:`uftp-client`), but is easily integrated 
+UFTP is best used using the client-side application (
+:ref:`uftp-client`), but is easily integrated 
 into custom applications due to its FTP compliance.
 
-|overview-img| :ref:`uftp-overview` gives an overview of the UFTP architecture and features.
+|overview-img| :ref:`uftp-overview` gives an overview of 
+the UFTP architecture and features.
+
+|user-guide-img| :ref:`uftp-howto-test`
+a complete UFTP environment using test certificates on 
+a single test machine or even on your laptop.
 
 .. image:: _static/uftp-overview.png
   :width: 400
@@ -22,6 +28,12 @@ into custom applications due to its FTP compliance.
 	:height: 32px
 	:align: middle
 
+.. |user-guide-img| image:: _static/user-guide.png
+	:height: 24px
+	:align: middle
+
+
+
 .. toctree::
 	:maxdepth: 5
 	:caption: UFTP Documentation
@@ -29,6 +41,7 @@ into custom applications due to its FTP compliance.
 
 	overview
 
+	howto-test
 
 .. include:: user-docs/index.rest
 

@@ -25,7 +25,7 @@ This is the user manual providing information on running and using the UNICORE U
 	:height: 32px
 	:align: middle
 
-.. _uftpd-prerequsites:
+.. _uftpd-prerequisites:
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -426,6 +426,9 @@ certificates** included in the distribution package.
       the server from a real root shell** (Option 2 in step 6).
 	  
 	  
+	  
+.. _uftpd_test:
+
 |testing-img| Testing the UFTPD Server
 --------------------------------------
 

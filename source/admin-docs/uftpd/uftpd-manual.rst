@@ -30,7 +30,7 @@ This is the user manual providing information on running and using the UNICORE U
 Prerequisites
 ~~~~~~~~~~~~~
 
-- Python 3.6.0 or later
+- Python 3.9.0 or later
 
 - the server's *listen* port needs to be accessible through your firewalls, declaring it 
   an *FTP* port (FTP connection tracking). Alternatively a fixed range of open ports can be 
@@ -270,17 +270,17 @@ UFTPD accordingly.
 For example, in ``uftpd.conf``
 ::
 
-	export PORT_RANGE=21000:21010
+	export PORT_RANGE=21000:21050
 
 and the iptables rule
 
 .. code:: console
 
-	$ iptables -A INPUT -p tcp -m tcp --dport 21000:21010 -j ACCEPT
+	$ iptables -A INPUT -p tcp -m tcp --dport 21000:21050 -j ACCEPT
 
-would allow incoming data connections on ports 21000 to 21010. 
+would allow incoming data connections on ports 21000 to 21050.
 
-A fairly small range (e.g. 10 ports) is usually enough, since these are server ports.
+A fairly small range (e.g. 50 ports) is usually enough, since these are server ports.
 
 
 Starting and stopping the UFTPD server
@@ -437,11 +437,12 @@ certificates** included in the distribution package.
    :align: middle
 
 To test a running UFTPD server, you must install the
+:ref:`Auth Server <authserver-test-installation>` and a
 :ref:`UFTP client <uftpc-installation>`.
 
 Use the UFTP client to run functional tests against the UFTPD server
-with various command-line options to verify correct operation. 
-For example, if the UFTPD server is running on the local host
+with various command-line options to verify correct operation.
+For example, if the Auth server is running on the local host
 (port 9000 by default), you can use the UFTP client to list the home
 directory using username/password, if that type of authentication is
 enabled (see :ref:`authentication <uftpc-auth>`):
@@ -450,18 +451,17 @@ enabled (see :ref:`authentication <uftpc-auth>`):
 
 	$ uftp ls -u username:password https://localhost:9000/rest/auth/TEST:/home
 
-All performance tests are also performed using the UFTP client.
-For performance measurements, use ``/dev/null`` as the data sink and
+Performance tests can also be performed using the UFTP client.
+For performance measurements, it is simplest to use ``/dev/null`` as the data sink and
 ``/dev/zero`` as the data source, as described in
 :ref:`performance testing <uftpc-performance>`.
-For example to transfer 10 gigabytes of zeros from the remote server:
+For example, to transfer 10 gigabytes of zeros from the remote server:
 
 .. code:: console
 
-	$ uftp cp -u username:password -B 0-10G https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
+	$ uftp cp -u username:password -B 0-10G -D https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
 
 
 .. raw:: html
 
    <hr>
-

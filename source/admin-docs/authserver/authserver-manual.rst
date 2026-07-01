@@ -285,7 +285,7 @@ retrieving an authentication assertion.
 	container.security.rest.authentication.order=UNITY
 	
 	container.security.rest.authentication.UNITY.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
-	container.security.rest.authentication.UNITY.address=https://localhost:2443/unicore-soapidp/saml2unicoreidp-soap/AuthenticationService
+	container.security.rest.authentication.UNITY.address=https://localhost:2443/soapidp/saml2idp-soap/AuthenticationService
 
 
 Unity OAuth bearer token authentication
@@ -295,7 +295,7 @@ To have Unity check the client's OAuth token::
 
 	container.security.rest.authentication.order=UNITY-OAUTH
 	container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
-	container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp.oidc/saml2unicoreidp-soap/AuthenticationService
+	container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/soapidp.oidc/saml2idp-soap/AuthenticationService
 
 
 
@@ -309,7 +309,7 @@ directly with the issuing server.
 ::
 
  container.security.rest.authentication.OAUTH.class=eu.unicore.services.rest.security.OAuthAuthenticator
- container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/userinfo
+ container.security.rest.authentication.OAUTH.address=https://your-keycloak-server/auth/realms/your_realm/protocol/openid-connect/userinfo
 
 UNICORE will use the user's OAuth token to make a call to the ``userinfo`` endpoint,
 effectively checking if that token is (still) valid.
@@ -320,7 +320,7 @@ In this case you need to set ``validate=true`` and provide client ID and secret
 
 ::
 
- container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/token/introspect
+ container.security.rest.authentication.OAUTH.address=https://your-keycloak-server/auth/realms/your_realm/protocol/openid-connect/token/introspect
  container.security.rest.authentication.OAUTH.validate=true
  container.security.rest.authentication.OAUTH.clientID=your-client-id
  container.security.rest.authentication.OAUTH.clientSecret=your-client-secret
@@ -672,51 +672,44 @@ using the **test certificates** provided in the distribution package.
 
    .. code:: text
 
-      container.security.credential.path=conf/auth.p12
+      container.security.credential.path=certs/auth.p12
       container.security.credential.password=the!auth
       container.security.truststore.directoryLocations.1=conf/*.pem
-      container.security.truststore.keystorePath=conf/cacert.pem
+      container.security.truststore.keystorePath=certs/trusted-certs/cacert.pem
 
-5. To access UFTPD from another computer, adjust these settings in 
+5. If your uftpd server is running on another host, adjust this setting in
    :file:`conf/container.properties`:
 
    .. code:: text
 
-      container.host=0.0.0.0 
       authservice.server.TEST.host=<your-server-ip-address>
 
-6. **Verify test certificates.** Ensure ``auth.p12`` and ``cacert.pem`` 
-   are in the ``conf`` directory. If they are missing, download and 
-   unpack the source package (``.tar.gz`` or ``.zip``) from 
-   `GitHub <https://github.com/UNICORE-EU/uftp/releases>`__, then 
-   **copy** them from the ``./authserver/src/test/resources/certs/`` 
-   subdirectory into your installation's ``conf`` directory.
-
-7. Edit the ``simpleuudb`` file to map the demo certificate to a local 
+6. Edit the ``user-mapfile.json`` file to map the demo certificate to a local
    system account. Ensure that the ``xlogin`` value matches an existing 
    **username** on your machine (e.g., ``unicore`` or your current 
    username):
 
-   .. code:: xml
+   .. code:: json
 
-      <fileAttributeSource>
-         <entry key="CN=Demo User,O=UNICORE,C=EU">
-            <attribute name="role">
-               <value>user</value>
-            </attribute>
-            <attribute name="xlogin">
-               <value>unicore</value> 
-            </attribute>
-         </entry>
-      </fileAttributeSource>
+    {
 
-8. Start the Auth server:
+      "CN=Demo User,O=UNICORE,C=EU": {
+
+        "role":   "user",
+
+        "xlogin": [ "unicore" ]
+      }
+
+    }
+
+
+7. Start the Auth server:
 
    .. code:: console
 
       ./bin/unicore-authserver-start.sh
 
-9. Check the server status:
+8. Check the server status:
 
    .. code:: console
 
@@ -725,10 +718,10 @@ using the **test certificates** provided in the distribution package.
    The output should show: 
    ``UNICORE service AUTHSERVER running with PID xxxxxx``.
 
-10. **Review logs.** Check :file:`authserver-startup.log` and 
+9. **Review logs.** Check :file:`authserver-startup.log` and
     :file:`authserver.log` in the ``logs`` directory for details.
 
-11. **Verify via curl.** By default, the Auth server listens on 
+10. **Verify via curl.** By default, the Auth server listens on
     **port 9000** (defined by ``container.port`` in 
     ``container.properties``). If running locally, execute:
 

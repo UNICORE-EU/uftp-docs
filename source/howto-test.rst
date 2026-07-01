@@ -35,9 +35,9 @@ testing.
    :height: 32px
    :align: middle
 
-- Java 11 or later (OpenJDK or Oracle Java recommended)
+- Java 17 or later (OpenJDK recommended)
 
-- Python 3.6 or later
+- Python 3.9 or later
 
 - The UFTPD server *listening* port must be reachable through your firewall.
   If stateful firewall inspection is enabled, configure the port for FTP
@@ -90,15 +90,11 @@ The authentication and data transfer process works as follows:
    (``userdb.txt``) and maps the authenticated user to a local account using
    ``simpleuudb``.
 
-3. If authentication succeeds, the Auth server issues a transfer ticket.
+3. If authentication succeeds, the Auth server replies with "OK" and a one-time password.
 
-4. The UFTP client uses this ticket to connect to the UFTPD server.
+4. The UFTP client uses the one-time password to connect to the UFTPD server with the normal FTP protocol.
 
-5. The UFTPD server validates the transfer ticket using its configured
-   truststore (``cacert.pem``), which contains the CA certificate used to
-   verify the Auth server.
-
-6. If the ticket is valid, the file transfer is started.
+5. If the login is successful, the FTP session is started, allowing file transfers and other FTP operations.
 
 Only the Auth server and the UFTPD server require certificates
 (``auth.p12`` and ``uftpd.pem``).  

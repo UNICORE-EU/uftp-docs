@@ -672,10 +672,9 @@ using the **test certificates** provided in the distribution package.
 
    .. code:: text
 
-      container.security.credential.path=conf/auth.p12
+      container.security.credential.path=certs/auth.p12
       container.security.credential.password=the!auth
-      container.security.truststore.directoryLocations.1=conf/*.pem
-      container.security.truststore.keystorePath=conf/cacert.pem
+      container.security.truststore.directoryLocations.1=certs/trusted-certs/*.pem
 
 5. To access UFTPD from another computer, adjust these settings in 
    :file:`conf/container.properties`:
@@ -685,12 +684,12 @@ using the **test certificates** provided in the distribution package.
       container.host=0.0.0.0 
       authservice.server.TEST.host=<your-server-ip-address>
 
-6. **Verify test certificates.** Ensure ``auth.p12`` and ``cacert.pem`` 
-   are in the ``conf`` directory. If they are missing, download and 
+6. **Verify test certificates.** Ensure ``auth.p12`` is in the ``certs`` directory 
+   and ``cacert.pem`` in the ``certs/trusted-certs`` directory. If they are missing, download and 
    unpack the source package (``.tar.gz`` or ``.zip``) from 
    `GitHub <https://github.com/UNICORE-EU/uftp/releases>`__, then 
    **copy** them from the ``./authserver/src/test/resources/certs/`` 
-   subdirectory into your installation's ``conf`` directory.
+   subdirectory into your installation's directories.
 
 7. Edit the ``simpleuudb`` file to map the demo certificate to a local 
    system account. Ensure that the ``xlogin`` value matches an existing 

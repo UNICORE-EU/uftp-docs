@@ -83,31 +83,33 @@ password. No client certificate is required.
 
 The authentication and data transfer process works as follows:
 
-1. The UFTP client sends the username and password to the Auth server
-   via HTTPS.
+1. The client sends an authentication request containing the username and
+   password to the Auth server. The Auth server validates the credentials
+   using the password file (``user-authfile.txt``) and maps the authenticated
+   user to a local account using ``user-mapfile.json``.
 
-2. The Auth server validates the credentials using the password file
-   (``userdb.txt``) and maps the authenticated user to a local account using
-   ``simpleuudb``.
+2. If authentication is successful, the Auth server sends a request to the
+   UFTPD command port. This request notifies the UFTPD server about the
+   upcoming transfer and includes the following information:
 
-3. If authentication succeeds, the Auth server issues a transfer ticket.
+   - a secret (a one-time password) that the client will use as the FTP
+     password for authentication
 
-4. The UFTP client uses this ticket to connect to the UFTPD server.
+   - the user ID and group ID that UFTPD should use when accessing files
 
-5. The UFTPD server validates the transfer ticket using its configured
-   truststore (``cacert.pem``), which contains the CA certificate used to
-   verify the Auth server.
+   - the client's IP address
 
-6. If the ticket is valid, the file transfer is started.
+   The UFTPD server will then accept an incoming client connection, provided
+   that the supplied one-time password matches the expected value.
 
-Only the Auth server and the UFTPD server require certificates
-(``auth.p12`` and ``uftpd.pem``).  
-The client does not require a certificate. Authentication is performed
-using only a username and password.
+3. The UFTP client connects to the UFTPD server and performs an FTP login
+   using the provided one-time password as the password credential. After
+   successful authentication, the client can open data connections, list
+   files, transfer data, and perform other FTP operations.
 
 
 .. figure:: _static/test-uftp-setup.png
-   :alt: UFTP Test Configuration
+   :alt: UFTP Test Installation Authentication
    :width: 700px
    :align: center
 
@@ -132,7 +134,7 @@ Authentication failures
 Check:
 
 * username/password
-* ``userdb.txt``
+* ``conf/userdb.txt`` und ``conf/simpleuudb``
 * Auth Server logs
 
 
@@ -162,10 +164,10 @@ Permission denied errors
 
 Verify:
 
-* Unix user exists
+* ``conf/uftpd.conf``
 * directory permissions
 * configured ``USER_NAME``
-
+* Unix user exists
 
 .. raw:: html
 

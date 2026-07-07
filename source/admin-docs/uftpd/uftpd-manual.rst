@@ -372,12 +372,12 @@ certificates** included in the distribution package.
       credential.password=the!uftpd
       truststore=conf/cacert.pem
 
-5. **Verify test certificates.** Ensure the ``.pem`` files are in the 
-   ``conf`` directory. If they are missing, download and unpack the 
-   source package (``.tar.gz`` or ``.zip``) from 
+5. **Verify test certificates.** Ensure the ``uftpd.pem`` and ``cacert.pem`` 
+   files are in the ``conf`` directory. If they are missing, download and 
+   unpack the source package (``.tar.gz`` or ``.zip``) from 
    `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__, then 
-   **copy** ``uftpd.pem`` and ``cacert.pem`` from the ``tests`` 
-   subdirectory into your installation's ``conf`` directory.
+   **copy**  ``.pem`` from the ``tests`` subdirectory into your installation's 
+   ``conf`` directory.
 
 
 6. Start UFTPD as **root**:
@@ -388,7 +388,7 @@ certificates** included in the distribution package.
 
       sudo <uftpd-installation-dir>/bin/unicore-uftpd-start.sh
 
-   **Option 2: Switch to root shell (Recommended if logging to stdout)**
+   **Option 2: Switch to a root shell (Recommended if logging to stdout; see :ref:`logging`)**
 
    .. code:: console
 
@@ -401,10 +401,12 @@ certificates** included in the distribution package.
 
    .. code:: console
 
-      ./bin/unicore-uftpd-stop.sh
+      ./bin/unicore-uftpd-status.sh
       
    If successful, the output will show:  
    ``UNICORE UFTPD running with PID xxxxxxx``.
+
+.. _logging:
 
 8. **Logging (Optional).** Monitor the system logs to verify operation:
 

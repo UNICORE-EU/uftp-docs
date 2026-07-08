@@ -35,9 +35,9 @@ testing.
    :height: 32px
    :align: middle
 
-- Java 11 or later (OpenJDK or Oracle Java recommended)
+- Java 17 or later (OpenJDK recommended)
 
-- Python 3.6 or later
+- Python 3.9 or later
 
 - The UFTPD server *listening* port must be reachable through your firewall.
   If stateful firewall inspection is enabled, configure the port for FTP
@@ -81,37 +81,42 @@ Authentication and File Transfer Flow
 In this setup, the UFTP client authenticates using only a username and
 password. No client certificate is required.
 
-The authentication and data transfer process works as follows:
-
-1. The client sends an authentication request containing the username and
-   password to the Auth server. The Auth server validates the credentials
-   using the password file (``user-authfile.txt``) and maps the authenticated
-   user to a local account using ``user-mapfile.json``.
-
-2. If authentication is successful, the Auth server sends a request to the
-   UFTPD command port. This request notifies the UFTPD server about the
-   upcoming transfer and includes the following information:
-
-   - a secret (a one-time password) that the client will use as the FTP
-     password for authentication
-
-   - the user ID and group ID that UFTPD should use when accessing files
-
-   - the client's IP address
-
-   The UFTPD server will then accept an incoming client connection, provided
-   that the supplied one-time password matches the expected value.
-
-3. The UFTP client connects to the UFTPD server and performs an FTP login
-   using the provided one-time password as the password credential. After
-   successful authentication, the client can open data connections, list
-   files, transfer data, and perform other FTP operations.
-
 
 .. figure:: _static/test-uftp-setup.png
    :alt: UFTP Test Installation Authentication
    :width: 700px
    :align: center
+
+
+The authentication and file transfer process works as follows:
+
+1. The client sends an authentication request containing its username and
+   password to the Auth server. The Auth server validates the credentials
+   using ``user-authfile.txt`` and maps the authenticated user to a local
+   account using ``user-mapfile.json``.
+
+2. If authentication is successful, the Auth server sends a request to the
+   UFTPD command port. This request configures the upcoming file transfer and
+   includes the following information:
+
+   - a generated one-time password 
+
+   - the local user ID and group ID 
+
+   - the client's IP address
+
+   The UFTPD server stores this information and accepts an incoming client
+   connection only if the supplied one-time password matches the expected
+   value. The Auth server then replies with ``OK`` and returns the generated
+   one-time password to the client.
+
+3. The UFTP client connects to the UFTPD server using the standard FTP
+   protocol. It authenticates with the one-time password received from the 
+   Auth server. Once authentication succeeds, the client 
+   can open data connections, list files, transfer data, and perform other 
+   FTP operations.
+
+
 
 
 Testing the Installation
@@ -134,7 +139,7 @@ Authentication failures
 Check:
 
 * username/password
-* ``conf/userdb.txt`` und ``conf/simpleuudb``
+* ``conf/user-authfile.txt`` und ``conf/user-mapfile``
 * Auth Server logs
 
 
@@ -143,9 +148,7 @@ ACL errors
 
 Check:
 
-* ``conf/uftpd.acl``
-* certificate DNs
-* TLS trust configuration
+* certificate DNs in ``conf/uftpd.acl``
 
 
 Certificate trust problems

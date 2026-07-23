@@ -388,7 +388,7 @@ certificates** included in the distribution package.
 
       sudo <uftpd-installation-dir>/bin/unicore-uftpd-start.sh
 
-   **Option 2: Switch to a root shell (Recommended if logging to stdout; see :ref:`logging`)**
+   **Option 2: Switch to a root shell** (Recommended if logging to stdout; see Step 8.)
 
    .. code:: console
 
@@ -405,8 +405,6 @@ certificates** included in the distribution package.
       
    If successful, the output will show:  
    ``UNICORE UFTPD running with PID xxxxxxx``.
-
-.. _logging:
 
 8. **Logging (Optional).** Monitor the system logs to verify operation:
 

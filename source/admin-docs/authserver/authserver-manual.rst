@@ -643,11 +643,11 @@ publicly accessible server address, such as when running the Auth server behind 
 
 .. _authserver-test-installation:
 
-Auth Server Installation using Test Certificates
+Auth server Installation using Test Certificates
 ------------------------------------------------
 
-This is a short guide on how to install the Auth server in a few steps, 
-using the **test certificates** provided in the distribution package. 
+This guide describes how to install the Auth server using the test certificates 
+included in the distribution package. 
 
 .. warning::
    This setup is intended **for testing only**. 
@@ -662,12 +662,12 @@ using the **test certificates** provided in the distribution package.
 
       tar -xvf unicore-authserver-<release>.tar.gz
 
-3. **Check file permissions.** All files must be **readable**, and all 
-   subdirectories as well as scripts in the ``bin`` directory must be 
-   **executable** by the user running the Auth server (e.g., the 
-   ``unicore`` user or your current account).
+   **Check file permissions.** All files must be **readable**, and all
+   subdirectories and the scripts in the ``bin`` directory must be
+   **executable** by the user running the Auth server (for example,
+   the ``unicore`` user or your current account).
 
-4. Configure :file:`conf/container.properties` to use the provided **test 
+3. Configure :file:`conf/container.properties` to use the provided **test 
    keystore and truststore**:
 
    .. code:: text
@@ -676,40 +676,35 @@ using the **test certificates** provided in the distribution package.
       container.security.credential.password=the!auth
       container.security.truststore.directoryLocations.1=certs/trusted-certs/*.pem
      
-5. If your uftpd server is running on another host, adjust this setting in
-   :file:`conf/container.properties` to make the publicly accessible interface 
-   of the UFTPD server:
+4. If your UFTPD server is running on a different host, configure this
+   setting in :file:`conf/container.properties` to specify the publicly
+   accessible hostname or IP address of the UFTPD server:
 
    .. code:: text
 
       authservice.server.TEST.host=<your-server-ip-address>
 
-6. Edit the ``user-mapfile.json`` file to map the demo certificate to a local
-   system account. Ensure that the ``xlogin`` value matches an existing 
-   **username** on your machine (e.g., ``unicore`` or your current 
-   username):
+5. Edit ``user-mapfile.json`` to map the demo certificate to a local
+   system account. Ensure that the ``xlogin`` value matches an existing
+   local username (for example, ``unicore`` or your current username):
 
    .. code:: json
 
-    {
-
-      "CN=Demo User,O=UNICORE,C=EU": {
-
-        "role":   "user",
-
-        "xlogin": [ "unicore" ]
+      {
+        "CN=Demo User,O=UNICORE,C=EU": {
+          "role":   "user",
+          "xlogin": [ "unicore" ]
+        }
       }
 
-    }
 
-
-7. Start the Auth server:
+6. Start the Auth server:
 
    .. code:: console
 
       ./bin/unicore-authserver-start.sh
 
-8. Check the server status:
+7. Check the server status:
 
    .. code:: console
 
@@ -718,21 +713,23 @@ using the **test certificates** provided in the distribution package.
    The output should show: 
    ``UNICORE service AUTHSERVER running with PID xxxxxx``.
 
-9. **Review logs.** Check :file:`authserver-startup.log` and
-    :file:`authserver.log` in the ``logs`` directory for details.
+8. **Review the logs.** Check :file:`authserver-startup.log` and
+   :file:`authserver.log` in the ``logs`` directory for startup
+   messages and any errors.
 
-10. **Verify via curl.** By default, the Auth server listens on
-    **port 9000** (defined by ``container.port`` in 
-    ``container.properties``). If running locally, execute:
+9. **Verify using curl.** By default, the Auth server listens on
+   **port 9000** (configured by ``container.port`` in
+   ``container.properties``). If the server is running locally,
+   execute:
 
-    .. code:: console
+   .. code:: console
 
-       curl -k https://localhost:9000/rest/auth \
-            -H "Accept: application/json" \
-            -u demouser:test123
+      curl -k https://localhost:9000/rest/auth \
+           -H "Accept: application/json" \
+           -u demouser:test123
 
-    This should return a **JSON document** containing the status of the 
-    configured UFTPD servers.
+   This command should return a JSON document containing the status of the
+   configured UFTPD servers.
 	
 .. raw:: html
 

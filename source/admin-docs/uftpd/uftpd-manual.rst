@@ -338,14 +338,16 @@ for detailed information on how to configure UFTP based data access and data tra
 UFTPD Installation using Test Certificates
 ------------------------------------------
 
-This guide describes how to install the UFTPD server using the **test 
-certificates** included in the distribution package. 
+This guide describes how to install the UFTPD server using the **test
+certificates** included in the distribution package.
 
 .. warning::
-   This setup is intended **for testing only**. 
-   For production deployments, you must use proper **CA-signed certificates**.
 
-1. Download the ``.tar.gz`` distribution from 
+   This setup is intended **for testing only**.
+   For production deployments, you must use proper
+   **CA-signed certificates**.
+
+1. Download the ``.tar.gz`` distribution from
    `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__.
 
 2. Unpack the package in your installation directory:
@@ -354,17 +356,17 @@ certificates** included in the distribution package.
 
       tar -xvf unicore-uftpd-<release>.tar.gz
 
-3. **Check file permissions.** All files in the ``conf`` and ``lib`` 
-   directories must be **readable** by the user specified as ``USER_NAME`` 
-   in :file:`conf/uftpd.conf`. The scripts in ``bin`` and all 
-   subdirectories must also be **executable** by this user. 
+3. **Check file permissions.** All files in the ``conf`` and ``lib``
+   directories must be **readable** by the user specified as
+   ``USER_NAME`` in :file:`conf/uftpd.conf`. The scripts in ``bin`` and
+   all subdirectories must also be **executable** by this user.
 
-   Ensure that a system user exists that matches the ``USER_NAME`` 
-   configured in the file (e.g., ``unicore``). If necessary, edit 
-   the configuration to match your current system username.
+   Ensure that a system user matching the configured ``USER_NAME``
+   (for example, ``unicore``) exists. If necessary, edit the
+   configuration to match your current system username.
 
-4. Configure :file:`conf/uftpd-ssl.conf` to use the provided **test 
-   keystore and truststore**:
+4. Configure :file:`conf/uftpd-ssl.conf` to use the provided
+   **test keystore and truststore**:
 
    .. code:: text
 
@@ -372,15 +374,12 @@ certificates** included in the distribution package.
       credential.password=the!uftpd
       truststore=conf/cacert.pem
 
-5. **Verify test certificates.** Ensure the ``uftpd.pem`` and ``cacert.pem`` 
-   files are in the ``conf`` directory. If they are missing, download and 
-   unpack the source package (``.tar.gz`` or ``.zip``) from 
-   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__, then 
-   **copy**  ``.pem`` from the ``tests`` subdirectory into your installation's 
-   ``conf`` directory.
+   Ensure that the ``uftpd.pem`` and ``cacert.pem`` files are present
+   in the ``conf`` directory. If they are missing, download them from
+   the source package (``.tar.gz`` or ``.zip``) available on
+   `GitHub <https://github.com/UNICORE-EU/uftpd/releases>`__.
 
-
-6. Start UFTPD as **root**:
+5. Start UFTPD as **root**:
 
    **Option 1: Run directly with sudo**
 
@@ -388,7 +387,8 @@ certificates** included in the distribution package.
 
       sudo <uftpd-installation-dir>/bin/unicore-uftpd-start.sh
 
-   **Option 2: Switch to a root shell** (Recommended if logging to stdout; see Step 8.)
+   **Option 2: Switch to a root shell**
+   (recommended if logging to stdout; see Step 7.)
 
    .. code:: console
 
@@ -396,37 +396,40 @@ certificates** included in the distribution package.
       cd <uftpd-installation-dir>
       ./bin/unicore-uftpd-start.sh
 
-7. **Verify server status.** You can check if the server is running by 
-   invoking the stop script, which will display the current status and PID:
+6. **Verify server status.** You can check whether the server is
+   running by invoking the status script, which displays the current
+   status and PID:
 
    .. code:: console
 
       ./bin/unicore-uftpd-status.sh
-      
-   If successful, the output will show:  
+
+   If successful, the output will show:
+
    ``UNICORE UFTPD running with PID xxxxxxx``.
 
-8. **Logging (Optional).** Monitor the system logs to verify operation:
+7. **Logging (Optional).** Monitor the system logs to verify
+   operation:
 
    .. code:: console
 
       sudo journalctl -f
 
-   * **For detailed debugging:** Set ``export LOG_VERBOSE=true`` in 
+   * **For detailed debugging:** Set ``export LOG_VERBOSE=true`` in
      :file:`conf/uftpd.conf`.
 
-   * **To print logs to stdout:** Set ``export LOG_SYSLOG=false`` in 
-     :file:`conf/uftpd.conf`. 
-   
+   * **To print logs to stdout:** Set ``export LOG_SYSLOG=false`` in
+     :file:`conf/uftpd.conf`.
+
    .. important::
-      If you disable syslog, the server might **fail to start** when 
-      using ``sudo``. This is because the process switches to the 
-      configured **USER_NAME** and may lose permission to write to 
-      the root terminal's stdout. To fix this, you must **start 
-      the server from a real root shell** (Option 2 in step 6).
-	  
-	  
-	  
+
+      If you disable syslog, the server might **fail to start** when
+      using ``sudo``. This is because the process switches to the
+      configured ``USER_NAME`` and may lose permission to write to the
+      root terminal's stdout. To fix this, start the server from a real
+      root shell (Option 2 in Step 5).
+
+
 .. _uftpd_test:
 
 |testing-img| Testing the UFTPD Server
@@ -441,26 +444,31 @@ To test a running UFTPD server, you must install the
 :ref:`UFTP client <uftpc-installation>`.
 
 Use the UFTP client to run functional tests against the UFTPD server
-with various command-line options to verify correct operation.
-For example, if the Auth server is running on the local host
-(port 9000 by default), you can use the UFTP client to list the home
-directory using username/password, if that type of authentication is
-enabled (see :ref:`authentication <uftpc-auth>`):
+using various command-line options to verify correct operation.
+For example, if the Auth Server is running on local host (port 9000
+by default), you can use the UFTP client to list the home directory
+using username/password authentication, if that authentication method
+is enabled (see :ref:`authentication <uftpc-auth>`):
 
 .. code:: console
 
-	$ uftp ls -u username:password https://localhost:9000/rest/auth/TEST:/home
+   $ uftp ls -u username:password \
+     https://localhost:9000/rest/auth/TEST:/home
 
 Performance tests can also be performed using the UFTP client.
-For performance measurements, it is simplest to use ``/dev/null`` as the data sink and
-``/dev/zero`` as the data source, as described in
+
+For performance measurements, it is simplest to use ``/dev/null`` as
+the data sink and ``/dev/zero`` as the data source, as described in
 :ref:`performance testing <uftpc-performance>`.
-For example, to transfer 10 gigabytes of zeros from the remote server:
+
+For example, the following command transfers 10 GB of zero-filled data
+from the remote server:
 
 .. code:: console
 
-	$ uftp cp -u username:password -B 0-10G -D https://localhost:9000/rest/auth/TEST:/dev/zero /dev/null
-
+   $ uftp cp -u username:password -B 0-10G -D \
+     https://localhost:9000/rest/auth/TEST:/dev/zero \
+     /dev/null
 
 .. raw:: html
 

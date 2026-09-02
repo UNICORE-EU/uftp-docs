@@ -81,13 +81,52 @@ Authentication and File Transfer Flow
 In this setup, the UFTP client authenticates using only a username and
 password. No client certificate is required.
 
-
 .. figure:: _static/test-uftp-setup.png
    :alt: UFTP Test Installation Authentication
    :width: 700px
    :align: center
 
+.. list-table::
+   :header-rows: 1
+   :widths: 20 22 28 30
 
+   * - File
+     - Location
+     - Purpose
+     - Notes
+   * - 👤 ``user-authfile.txt``
+     - Auth Server
+     - User authentication database
+     - Text file for authentication [username:hashedpassword:salt:DN]
+   * - 👥 ``user-mapfile.json``
+     - Auth Server
+     - Maps authenticated user to a local account
+     - JSON file for authorization
+   * - ⚙️ ``container.properties``
+     - Auth Server
+     - Auth Server configuration
+     - Text file containing the configuration for the Auth Server
+   * - 🔐 ``auth.p12``
+     - Auth Server
+     - Auth Server certificate
+     - PKCS#12 file containing the Auth Server certificate and private key
+   * - 🛡️ ``cacert.pem``
+     - Auth+UFTPD Servers
+     - CA certificate used to sign server certs
+     - Self-signed CA cert
+   * - 🔐 ``uftpd.pem``
+     - UFTPD Server
+     - UFTPD Server certificate
+     - PEM file containing the UFTPD server certificate
+   * - ⚙️ ``uftpd.conf``
+     - UFTPD Server
+     - UFTPD Server configuration
+     - Text file containing the configuration for the UFTPD Server
+   * - 🔑 ``uftpd.acl``
+     - UFTPD Server
+     - Access Control List (ACL)
+     - Text file containing the distinguished names (DNs) of servers authorized to initiate UFTP transfers
+	 
 The authentication and file transfer process works as follows:
 
 1. The client sends an authentication request containing its username and
@@ -112,9 +151,10 @@ The authentication and file transfer process works as follows:
 
 3. The UFTP client connects to the UFTPD server using the standard FTP
    protocol. It authenticates with the one-time password received from the 
-   Auth server. Once authentication succeeds, the client 
-   can open data connections, list files, transfer data, and perform other 
-   FTP operations.
+   Auth server. 
+   
+4. Once authentication succeeds, the client can open data connections, 
+   list files, transfer data, and perform other FTP operations.
 
 
 
@@ -139,7 +179,7 @@ Authentication failures
 Check:
 
 * username/password
-* ``conf/user-authfile.txt`` und ``conf/user-mapfile``
+* ``conf/user-authfile.txt`` und ``conf/user-mapfile.json``
 * Auth Server logs
 
 
@@ -156,7 +196,7 @@ Certificate trust problems
 
 Verify:
 
-* ``conf/cacert.pem``
+* ``conf/auth.p12``, ``conf/uftpd.pem``, ``conf/cacert.pem``
 * certificate validity
 * certificate subjects
 * matching CA certificates

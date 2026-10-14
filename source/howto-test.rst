@@ -40,12 +40,14 @@ testing.
 - Python 3.9 or later
 
 
-- The UFTPD command port (default 64435) must be accessible from the Auth server.
+- The Auth server port (default: ``9000``) must be always reachable from the client through your firewall.
 
-- The UFTPD server *listening* port (default 64434) must be always reachable from the client 
+- The UFTPD command port (default: ``64435``) must be accessible from the Auth server.
+
+- The UFTPD server *listening* port (default: ``64434``) must be always reachable from the client 
   through your firewall. The data ports must also be reachable. If stateful firewall inspection 
-  is availble, configure the listening port for FTP connection tracking. Alternatively, configure 
-  and open a fixed range of data ports.
+  is availble, configure the firewall to track FTP connections on the listening port. 
+  Alternatively, configure and open a fixed range of data ports.
 
 - For encrypted data transfers, the Python *Crypto* module is required.
   It can be installed using:

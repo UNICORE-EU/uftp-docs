@@ -350,14 +350,17 @@ To test a running UFTPD server, you must install the
 Use the UFTP client to run functional tests against the UFTPD server
 using various command-line options to verify correct operation.
 For example, if the Auth Server is running on local host (port 9000
-by default), you can use the UFTP client to list the home directory
+by default), you can use the UFTP client to check the authentication and list the home directory
 using username/password authentication, if that authentication method
 is enabled (see :ref:`authentication <uftpc-auth>`):
 
 .. code:: console
 
+   $ uftp info -u username:password \
+     https://localhost:9000/rest/auth/TEST
+
    $ uftp ls -u username:password \
-     https://localhost:9000/rest/auth/TEST:/home
+     https://localhost:9000/rest/auth/TEST:
 
 Performance tests can also be performed using the UFTP client.
 

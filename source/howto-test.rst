@@ -108,7 +108,7 @@ password. No client certificate is required.
      - UFTPD Server
      - Access Control List (ACL)
      - Text file containing the distinguished names (DNs) of servers authorized to initiate UFTP transfers
-   * - 🔒 ``uftpd-ssl.conf``
+   * - ⚙️ ``uftpd-ssl.conf``
      - UFTPD Server
      - UFTPD SSL/TLS configuration
      - Text file containing the SSL/TLS configuration, including the UFTPD credential and trusted CA certificate

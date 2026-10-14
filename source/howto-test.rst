@@ -167,8 +167,12 @@ All components can be installed on the same machine for testing purposes.
 
 .. _uftpd-test-installation:
 
-UFTPD Installation using Test Certificates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|uftpd-server-img| UFTPD Installation using Test Certificates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. |uftpd-server-img| image:: _static/uftpd-server-image.png
+   :height: 32px
+   :align: middle
 
 This guide describes how to install the UFTPD server using the **test
 certificates** included in the distribution package.
@@ -261,9 +265,13 @@ certificates** included in the distribution package.
 
 .. _authserver-test-installation:
 
-Auth Server Installation using Test Certificates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|auth-server-img| Auth Server Installation using Test Certificates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. |auth-server-img| image:: _static/auth-server-image.png
+   :height: 32px
+   :align: middle
+   
 This guide describes how to install the Auth server using the **test** certificates 
 included in the distribution package. 
 
@@ -347,8 +355,12 @@ included in the distribution package.
 
 
 
-Testing the Installation
-------------------------
+|testing-img| Testing the Installation
+--------------------------------------
+
+.. |testing-img| image:: _static/testing.png
+   :height: 32px
+   :align: middle
 
 To verify that the installation was successful, run the functional and
 performance tests described in :ref:`uftpd_test`.
@@ -356,8 +368,12 @@ These tests use the UFTP client to connect to the Auth server and the
 UFTPD server and verify authentication, file transfers, and performance.
 
 
-Troubleshooting
----------------
+|support-img| Troubleshooting 
+-----------------------------
+
+.. |support-img| image:: _static/support.png
+	:height: 32px
+	:align: middle
 
 
 Authentication failures

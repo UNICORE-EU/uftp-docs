@@ -44,7 +44,7 @@ testing.
 
 - The UFTPD command port (default: ``64435``) must be accessible from the Auth server.
 
-- The UFTPD server's listening port (default: 64434) must always be reachable by the client through the 
+- The UFTPD server's listening port (default: ``64434``) must always be reachable by the client through the 
   firewall. The data ports must also be accessible. If stateful firewall inspection is available, 
   configure the firewall to track FTP connections on the listening port (dynamic ports). Alternatively, 
   configure and open a fixed range of data ports.

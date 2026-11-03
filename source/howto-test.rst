@@ -170,7 +170,7 @@ All components can be installed on the same machine for testing purposes.
 |uftpd-server-img| UFTPD Installation using Test Certificates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |uftpd-server-img| image:: _static/uftpd-server-image.png
+.. |uftpd-server-img| image:: _static/uftpd-server-img.png
    :height: 32px
    :align: middle
 
@@ -268,7 +268,7 @@ certificates** included in the distribution package.
 |auth-server-img| Auth Server Installation using Test Certificates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |auth-server-img| image:: _static/auth-server-image.png
+.. |auth-server-img| image:: _static/auth-server-img.png
    :height: 32px
    :align: middle
    
